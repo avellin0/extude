@@ -1,6 +1,9 @@
 import { Router } from "express";
 const route = Router()
 
-route.get('/', (req,res) => res.send('Hello') )
+import {CreateTeachers} from '../controller/CreateTeachers'
+const teachers = new CreateTeachers()
+
+route.post('/teste', teachers.handle)
 
 export {route}
