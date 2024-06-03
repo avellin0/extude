@@ -1,0 +1,11 @@
+                                                                         Lista de bancos de dados
+      Nome       |   Dono   | Codificação | Provedor de localidade |       Ordenação        |         Ctype          | Localidade ICU | Regras ICU | Privilégios de acesso 
+-----------------+----------+-------------+------------------------+------------------------+------------------------+----------------+------------+-----------------------
+ postgres        | postgres | UTF8        | libc                   | Portuguese_Brazil.1252 | Portuguese_Brazil.1252 |                |            | 
+ school_schedule | postgres | UTF8        | libc                   | Portuguese_Brazil.1252 | Portuguese_Brazil.1252 |                |            | 
+ template0       | postgres | UTF8        | libc                   | Portuguese_Brazil.1252 | Portuguese_Brazil.1252 |                |            | =c/postgres          +
+                 |          |             |                        |                        |                        |                |            | postgres=CTc/postgres
+ template1       | postgres | UTF8        | libc                   | Portuguese_Brazil.1252 | Portuguese_Brazil.1252 |                |            | =c/postgres          +
+                 |          |             |                        |                        |                        |                |            | postgres=CTc/postgres
+(4 linhas)
+

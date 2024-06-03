@@ -1,0 +1,1 @@
+INSERT INTO students(students_id, name, age) VALUES(1, 'Davi', 17);
