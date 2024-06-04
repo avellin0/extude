@@ -1,1 +1,1 @@
-INSERT INTO students(students_id, name, age) VALUES(1, 'Davi', 17);
+INSERT INTO teachers(teacher_id, name,role ) VALUES(1, 'Alvaro', 'professor');
