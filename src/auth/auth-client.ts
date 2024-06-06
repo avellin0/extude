@@ -22,8 +22,8 @@ export const signIn = async (req: Request,res: Response) => {
         }
 
         const token = sign({
-            // userid: teacher,
-            // userRole: teacher_role.rows[0]
+            userid: teacher,
+            userRole: teacher_role.rows[0]
         },MY_SECRET_KEY,{
             algorithm: "HS256",
             expiresIn: "1h"
