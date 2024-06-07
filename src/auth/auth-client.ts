@@ -29,7 +29,7 @@ export const signIn = async (req: Request,res: Response) => {
             expiresIn: "1h"
         })
 
-        res.json({message: "hello"})
+        res.json(token)
 
     } catch (error) {
         console.error("Erro no servidor:", error);
