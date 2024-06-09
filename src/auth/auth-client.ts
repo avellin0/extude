@@ -1,5 +1,5 @@
 import { config } from "dotenv";
-config({path: "./Users/Plogl/Lessons/Projects/SchoolSchedule/src/.env"})
+config({path: "./src/.env"})
 import { db } from '../database/client-db';
 import { Request, Response } from 'express'
 import { sign } from 'jsonwebtoken';
@@ -9,6 +9,8 @@ export const signIn = async (req: Request,res: Response) => {
     try {
 
         const {teacher_id} = req.body;
+
+        db.connect()
 
         const teachers_id = await fetchTeachers(teacher_id)
         const teacher = await teachers_id.rows[0].teacher_id
@@ -38,7 +40,7 @@ export const signIn = async (req: Request,res: Response) => {
 
 
     async function fetchTeachers(id: number){
-        const result = await db.query('SELECT * FROM teachers WHERE teacher_id = $1', [id])
+        const result = await db.query(' SELECT * FROM teachers WHERE teacher_id  = $1', [id])
         if(result.rows.length === 0){
             throw new Error("Teacher's informations not found")
         }
