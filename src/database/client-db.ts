@@ -7,4 +7,5 @@ const db = new Client({
     password: 'pico'
 })
 
+db.connect()
 export {db}

@@ -6,7 +6,9 @@ export function authmiddleware(permissions?: string[]){
 
     interface DecodeUser {
         userid: number,
-        Access: string
+        userRole: { 
+            role: string 
+        }
     }
 
     return async (req: Request, res:Response, next:NextFunction) => {
@@ -31,6 +33,8 @@ export function authmiddleware(permissions?: string[]){
 
             const verificacao = verify(token,MY_SECRET_KEY) as DecodeUser
 
+            console.log(verificacao.userid);
+            
 
             const access = await fetchTeachersAccess(verificacao.userid)
             const access_name = access.rows[0].name
@@ -49,6 +53,14 @@ export function authmiddleware(permissions?: string[]){
                 }
                 return result
             }
+            
+            async function fetchTeachersAccessName(id: number){
+                const result = await db.query('SELECT role FROM teachers WHERE teacher_id = $1', [id])
+                if(result.rows.length === 0){
+                    throw new Error("Teacher's informations not found")
+                }
+                return result
+            }
     
 
             return next()
@@ -59,6 +71,8 @@ export function authmiddleware(permissions?: string[]){
 
 
     }
-
-
 }
+
+
+authmiddleware(['profesor'])
+

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "server": "tsx --watch src/client-code.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "tsx --watch src/middleware/middleware.ts"
   },
   "author": "",
   "license": "ISC",

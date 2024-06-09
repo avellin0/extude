@@ -10,7 +10,6 @@ export const signIn = async (req: Request,res: Response) => {
 
         const {teacher_id} = req.body;
 
-        db.connect()
 
         const teachers_id = await fetchTeachers(teacher_id)
         const teacher = await teachers_id.rows[0].teacher_id
