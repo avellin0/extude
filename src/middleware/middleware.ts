@@ -1,13 +1,15 @@
+import { config } from "dotenv";
+config({ path: "Users/plogl/Lessons/Projects/SchoolSchedule/src/.env" });
 import { NextFunction, Request, Response } from "express"
 import { db } from "../database/client-db"
 import { verify} from "jsonwebtoken"
 
-export function authmiddleware(permissions?: string[]){
+export function authMiddleware(permissions?: string[]){
 
     interface DecodeUser {
         userid: number,
         userRole: { 
-            role: string 
+             access: number
         }
     }
 
@@ -25,43 +27,30 @@ export function authmiddleware(permissions?: string[]){
     
         try {
             
+
             const MY_SECRET_KEY = process.env.MY_SECRET_KEY;
 
             if(!MY_SECRET_KEY){
                 return res.status(500).json({message: "chave secreta não informada"})
             }
 
-            const verificacao = verify(token,MY_SECRET_KEY) as DecodeUser
+            const decoded = verify(token,MY_SECRET_KEY) as DecodeUser
 
-            console.log(verificacao.userid);
+    
+            const access = await fetchTeachersAccess(decoded.userid)
+            const access_name = await fetchTeachersAccessName(access.rows[0].access)
+
+
+            const userPermissions = access_name.rows[0].role
+            const hasPermissions = permissions?.some((p) => userPermissions.includes(p))            
+
             
-
-            const access = await fetchTeachersAccess(verificacao.userid)
-            const access_name = access.rows[0].name
-
-            const hasPermissions = permissions?.some((p) => access_name.includes(p))            
 
             if(! hasPermissions){
                 return res.status(403).json({message: "permissão negada."})
             }
 
 
-            async function fetchTeachersAccess(id: number){
-                const result = await db.query('SELECT role FROM teachers WHERE teacher_id = $1', [id])
-                if(result.rows.length === 0){
-                    throw new Error("Teacher's informations not found")
-                }
-                return result
-            }
-            
-            async function fetchTeachersAccessName(id: number){
-                const result = await db.query('SELECT role FROM teachers WHERE teacher_id = $1', [id])
-                if(result.rows.length === 0){
-                    throw new Error("Teacher's informations not found")
-                }
-                return result
-            }
-    
 
             return next()
 
@@ -69,10 +58,25 @@ export function authmiddleware(permissions?: string[]){
             res.status(401).json({message: "deu merda!"})
         }
 
+        async function fetchTeachersAccess(id: number){
+            const result = await db.query('SELECT access FROM teachers WHERE teacher_id = $1', [id])
+            if(result.rows.length === 0){
+                throw new Error("Teacher's informations not found")
+            }
+            return result
+        }
+        
+        async function fetchTeachersAccessName(Accessid: number){
+            const result = await db.query('SELECT role FROM School_Access WHERE School_Access_id = $1', [Accessid])
+            if(result.rows.length === 0){
+                throw new Error("Teacher's informations not found")
+            }
+            return result
+        }
+
 
     }
 }
 
 
-authmiddleware(['profesor'])
 

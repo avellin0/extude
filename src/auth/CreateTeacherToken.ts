@@ -4,7 +4,7 @@ import { db } from '../database/client-db';
 import { Request, Response } from 'express'
 import { sign } from 'jsonwebtoken';
 
-export const signIn = async (req: Request,res: Response) => {
+export const signInTeacher = async (req: Request,res: Response) => {
 
     try {
 
@@ -13,14 +13,17 @@ export const signIn = async (req: Request,res: Response) => {
 
         const teachers_id = await fetchTeachers(teacher_id)
         const teacher = await teachers_id.rows[0].teacher_id
-        const teacher_role = await fetchTeachersAccess(teacher_id)
+        const teacher_role = await fetchTeachersAccess(teacher)
 
+        
         const MY_SECRET_KEY = process.env.MY_SECRET_KEY
     
 
         if (!MY_SECRET_KEY) {
             throw new Error("Chave Secreta não fornecida!");
         }
+
+        console.log(teacher_role.rows[0]);
 
         const token = sign({
             userid: teacher,
@@ -39,17 +42,17 @@ export const signIn = async (req: Request,res: Response) => {
 
 
     async function fetchTeachers(id: number){
-        const result = await db.query(' SELECT * FROM teachers WHERE teacher_id  = $1', [id])
+        const result = await db.query('SELECT * FROM teachers WHERE teacher_id = $1', [id])
         if(result.rows.length === 0){
             throw new Error("Teacher's informations not found")
         }
         return result
     }
 
-    async function fetchTeachersAccess(id: number){
-        const result = await db.query('SELECT role FROM teachers WHERE teacher_id = $1', [id])
+    async function fetchTeachersAccess(Accessid: number){
+        const result = await db.query('SELECT role FROM School_Access WHERE School_Access_id = $1', [Accessid])
         if(result.rows.length === 0){
-            throw new Error("Teacher's informations not found")
+            throw new Error("Teacher's Access informations not found")
         }
         return result
     }
