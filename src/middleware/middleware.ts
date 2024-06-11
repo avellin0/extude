@@ -37,8 +37,8 @@ export function authMiddleware(permissions?: string[]){
             const decoded = verify(token,MY_SECRET_KEY) as DecodeUser
 
     
-            const access = await fetchTeachersAccess(decoded.userid)
-            const access_name = await fetchTeachersAccessName(access.rows[0].access)
+            const access = await fetchTeachersAccess(decoded.userRole.access)
+            const access_name = await fetchSchoolAccessName(access.rows[0].access)
 
 
             const userPermissions = access_name.rows[0].role
@@ -66,7 +66,15 @@ export function authMiddleware(permissions?: string[]){
             return result
         }
         
-        async function fetchTeachersAccessName(Accessid: number){
+        async function fetchStudentsAccess(id: number){
+            const result = await db.query('SELECT access FROM students WHERE student_id = $1', [id])
+            if(result.rows.length === 0){
+                throw new Error("Teacher's informations not found")
+            }
+            return result
+        }
+
+        async function fetchSchoolAccessName(Accessid: number){
             const result = await db.query('SELECT role FROM School_Access WHERE School_Access_id = $1', [Accessid])
             if(result.rows.length === 0){
                 throw new Error("Teacher's informations not found")
