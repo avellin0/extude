@@ -13,6 +13,7 @@ export const signInStudent = async (req: Request,res: Response) => {
 
         const students_id = await fetchStudent(student_id)
         const student = await students_id.rows[0].student_id
+        const access_number = (await fetchStudent(student_id)).rows[0].access
         const student_role = await fetchStudentAccess(student)
 
         
@@ -27,7 +28,8 @@ export const signInStudent = async (req: Request,res: Response) => {
 
         const token = sign({
             userid: student,
-            userRole: student_role.rows[0]
+            userRole: student_role.rows[0],
+            access: access_number 
         },MY_SECRET_KEY,{
             algorithm: "HS256",
             expiresIn: "1h"

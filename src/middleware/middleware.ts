@@ -10,7 +10,8 @@ export function authMiddleware(permissions?: string[]){
         userid: number,
         userRole: { 
              access: number
-        }
+        },
+        access: number
     }
 
     return async (req: Request, res:Response, next:NextFunction) => {
@@ -37,8 +38,8 @@ export function authMiddleware(permissions?: string[]){
             const decoded = verify(token,MY_SECRET_KEY) as DecodeUser
 
     
-            const access = await fetchTeachersAccess(decoded.userRole.access)
-            const access_name = await fetchSchoolAccessName(access.rows[0].access)
+            const access = await fetchTeachersAccess(decoded.userid)
+            const access_name = await fetchSchoolAccessName(decoded.access)
 
 
             const userPermissions = access_name.rows[0].role
