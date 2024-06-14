@@ -4,6 +4,8 @@ import { ServerProtocol } from "./interfaces/Adapter-Server-Protocol";
 
 
 function RunServerAdapter(server: ServerProtocol): void{
+    const create_teacher = new AbstractClassesFactory() 
+
     if(server){
         console.log("Server is running");
     }else {

@@ -3,7 +3,7 @@ const route = Router()
 
 import {CreateTeachers} from '../controller/CreateTeachers'
 import { getTeachers } from "../controller/getTeachers";
-import { getStudents } from "../controller/CreateStudents";
+import { getStudents } from "../controller/getStudents";
 
 const teachers = new CreateTeachers()
 const getteachers = new getTeachers()
