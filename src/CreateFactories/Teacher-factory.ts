@@ -1,7 +1,8 @@
 import { TeacheProto} from "../interfaces/Teachers-proto";
+import { db } from "../database/client-db";
 
 export class Teacher implements TeacheProto{
-  constructor(public name: string, public subject: string , public classes: number[], readonly userid: number){} 
+  constructor(public name: string, public subject: string , public access: number, readonly userid: number){} 
 
   fullname(): string {
     return `${this.name}`
@@ -11,10 +12,11 @@ export class Teacher implements TeacheProto{
     const user = {
       nome: this.name,
       materia: this.subject,
-      turma: this.classes,
+      permissao: this.access,
       id: this.userid
     }
     
+
     return user
   }
 }

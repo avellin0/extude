@@ -1,6 +1,6 @@
 export interface TeacheProto{
   name: string,
   subject: string,
-  classes: number[],
+  access: number,
   infoTeacher(userid: string,name: string,subject:string,classes: number[]): object
 }

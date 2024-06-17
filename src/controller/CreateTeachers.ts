@@ -1,21 +1,17 @@
 import { Request, Response } from "express";
 import { Teacher } from "../CreateFactories/Teacher-factory";
+import { db } from "../database/client-db";
 
 export class CreateTeachers{
     async handle(req:Request,res:Response){
-        const { name, subject, classes, userid} = req.body;   
+        const { userid, name, subject,access} = req.body;   
+
+        const new_teacher = new Teacher(name,subject,access,userid)
         
-         const user = {
-            userid: userid,
-            nome: name,
-            materia: subject,
-            turma: classes,
-          }
+        const pushTeacher = await db.query('INSERT INTO teachers(teacher_id,name,subject,access) VALUES($1,$2,$3,$4);',[userid,name,subject,access])
 
-          const new_teacher = new Teacher(name,subject,classes,userid)
-          
-
-         return res.json(new_teacher.infoTeacher)
+        console.log(new_teacher);
+        return res.json(pushTeacher.rows)
     } 
 
  
