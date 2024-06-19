@@ -2,10 +2,12 @@ import { Router } from "express";
 const route = Router()
 
 import {CreateTeachers} from '../controller/CreateTeachers'
+import { CreateStudents } from "../controller/CreateStudents";
 import { getTeachers } from "../controller/getTeachers";
 import { getStudents } from "../controller/getStudents";
 
 const teachers = new CreateTeachers()
+const students = new CreateStudents()
 const getteachers = new getTeachers()
 const getstudents = new getStudents()
 
@@ -14,11 +16,12 @@ import { signInStudent } from "../auth/CreateStudentToken";
 
 import { authMiddleware } from "../middleware/middleware";
 
-route.post('/teste', teachers.handle)
+route.post('/new_teacher', teachers.handle)
+route.post('/new_student', students.handle)
 route.post('/teacher_token', signInTeacher)
 route.post('/student_token', signInStudent)
 route.get('/teachers', authMiddleware(['professor']), getteachers.handle)
-route.get('/students', authMiddleware(['aluno']), getstudents.handle)
+route.get('/students', authMiddleware(['aluno','professor']), getstudents.handle)
 
 
 export {route}

@@ -5,8 +5,10 @@ import { Students } from "./Students-factory";
 import { Teacher } from "./Teacher-factory";
 
 export class AbstractClassesFactory implements CreateClasses{
-  createStudents(First_Name: string, second_name: string, age: number , classe: number): StudentsProto {
-    return new Students(First_Name, second_name, age, classe)
+  createStudents(userid:number, First_Name: string, age: number , classe: number, access:number): StudentsProto {
+    const new_student = new Students(userid,First_Name, age,classe,access)
+    new_student.createStudents(userid,First_Name,age,classe,access)
+    return new_student
   }
 
   createTeachers(id:number, name: string, subject: string,classes: number[], access:number): TeacheProto {

@@ -1,8 +1,8 @@
 export interface StudentsProto {
+  userid: number,
   name: string,
-  second_name: string,
   age: number,
   classe: number,
-  fullname(): string
+  access: number,
   infoStudent(): object;
 }
