@@ -9,7 +9,10 @@ export class AbstractClassesFactory implements CreateClasses{
     return new Students(First_Name, second_name, age, classe)
   }
 
-  createTeachers(name: string, subject: string): TeacheProto {
-    return new Teacher(name, subject, [3001,3002,2001,2002])
-  }
+  createTeachers(id:number, name: string, subject: string,classes: number[], access:number): TeacheProto {
+     const new_teacher = new Teacher(id,name,subject,classes,access)
+      new_teacher.createTeacher(id,name,subject,access)
+
+      return new_teacher
+    }
 }

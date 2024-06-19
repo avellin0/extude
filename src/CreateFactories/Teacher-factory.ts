@@ -2,9 +2,8 @@ import { TeacheProto} from "../interfaces/Teachers-proto";
 import { db } from "../database/client-db";
 
 export class Teacher implements TeacheProto{
-  name: string;
-  subject: string;
-  access: number;
+
+  constructor(public id: number, public name: string , public subject: string,public classes: number[], public access: number){}
 
   fullname(): string {
     return `${this.name}`

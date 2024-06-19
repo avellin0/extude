@@ -1,21 +1,15 @@
 import { Request, Response } from "express";
+import { AbstractClassesFactory } from "../CreateFactories/Classes-factory";
 import { Teacher } from "../CreateFactories/Teacher-factory";
 
 export class CreateTeachers{
     async handle(req:Request,res:Response){
-        const { userid, name, subject,access} = req.body;   
+        const { userid, name, subject,access,classes} = req.body;   
 
-        const new_teacher = new Teacher()
-        new_teacher.createTeacher(userid,name,subject,access)
+        const new_teacher = new AbstractClassesFactory().createTeachers(userid,name,subject,classes,access)
 
-        const user = {
-            id: userid,
-            name: name,
-            tema: subject,
-            permissao: access
-        }
-
-        res.send(user)
+    
+        res.send(new_teacher)
     } 
 
  
