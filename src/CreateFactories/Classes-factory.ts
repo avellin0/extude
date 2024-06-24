@@ -6,12 +6,15 @@ import { Teacher } from "./Teacher-factory";
 
 export class AbstractClassesFactory implements CreateClasses{
   createStudents(userid:number, First_Name: string, age: number , classe: number, access:number): StudentsProto {
+
     const new_student = new Students(userid,First_Name, age,classe,access)
     new_student.createStudents(userid,First_Name,age,classe,access)
+    
     return new_student
   }
 
   createTeachers(id:number, name: string, subject: string,classes: number[], access:number): TeacheProto {
+    
      const new_teacher = new Teacher(id,name,subject,classes,access)
       new_teacher.createTeacher(id,name,subject,access)
 
