@@ -3,6 +3,7 @@ config({path: "./src/.env"})
 import { db } from '../database/client-db';
 import { Request, Response } from 'express'
 import { sign } from 'jsonwebtoken';
+// import { setRedis } from "../redisConfig";
 
 export const signInStudent = async (req: Request,res: Response) => {
 
@@ -11,10 +12,10 @@ export const signInStudent = async (req: Request,res: Response) => {
         const {student_id} = req.body;
 
 
-        const students_id = await fetchStudent(student_id)
-        const student = await students_id.rows[0].student_id
+        const student = await fetchStudent(student_id)
+        const students_id = await student.rows[0].student_id
         const access_number = (await fetchStudent(student_id)).rows[0].access
-        const student_role = await fetchStudentAccess(student)
+        const student_role = await fetchStudentAccess(students_id)
 
         
         const MY_SECRET_KEY = process.env.MY_SECRET_KEY
@@ -27,13 +28,16 @@ export const signInStudent = async (req: Request,res: Response) => {
         console.log(student_role.rows[0]);
 
         const token = sign({
-            userid: student,
+            userid: students_id,
             userRole: student_role.rows[0],
             access: access_number 
         },MY_SECRET_KEY,{
             algorithm: "HS256",
             expiresIn: "1h"
         })
+
+
+        // await setRedis(student_id, JSON.stringify(student))
 
         res.json(token)
 
