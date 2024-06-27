@@ -1,0 +1,14 @@
+*{
+ padding: 0;
+ margin: 0;   
+}
+
+body{ 
+    background: linear-gradient(to bottom right, #23628f, #d5dbf7);
+    height: 100vh;
+    margin: 0;
+    color: white;
+    font-style: italic;
+    text-indent: 20px;
+}
+
