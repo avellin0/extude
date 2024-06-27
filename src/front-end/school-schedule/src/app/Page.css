@@ -1,14 +1,124 @@
-*{
- padding: 0;
- margin: 0;   
+/* Reset de padding e margin */
+* {
+    padding: 0;
+    margin: 0;
+    font: 62.5%
 }
-
-body{ 
+  
+  /* Estilo do corpo */
+  body {
     background: linear-gradient(to bottom right, #23628f, #d5dbf7);
+    width: 100vw;
     height: 100vh;
     margin: 0;
+  }
+  
+  /* Estilo do cabeçalho */
+  header {
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  /* Estilo do título */
+  header h1 {
     color: white;
-    font-style: italic;
-    text-indent: 20px;
-}
+  }
+  
+  /* Contêiner de cadastro */
+  .cadastro {
+    display: flex;
+    gap: 40px; /* Espaço entre os botões */
+  }
+  
+  /* Estilo dos botões */
+  .btn_signIn,
+  .btn_signOut {
+    padding: 10px 20px;
+    background-color: #23628f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15pt;
+  }
+  
+  /* Estilo de hover para os botões */
+  .btn_signIn:hover,
+  .btn_signOut:hover {
+    background-color: #0366cf;
+  }
+  
 
+  main {
+    display: flex;
+    justify-content: center;
+    gap: 5%;
+    align-items: center;
+    margin-top: 40px;
+    padding: 20px;
+    flex-wrap: wrap;
+  }
+  
+  /* Estilo dos quadrados */
+  .quadrado {
+    border: 1px solid #23628f;
+    position: relative;
+    width: 15%;
+    height: 300px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    transition: opacity 0.3s;
+  }
+  
+  .quadrado .icone {
+    font-size: 2em;
+    color: #23628f; /* Cor que combina com o gradiente */
+  }
+  
+  .quadrado .conteudo {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #23628f; /* Cor que combina com o gradiente */
+  }
+  
+  .quadrado .footer {
+    padding: 10px 0;
+    color: #23628f; /* Cor que combina com o gradiente */
+  }
+  
+  .quadrado .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+    border-radius: 10px;
+  }
+  
+  .quadrado:hover .overlay {
+    box-shadow: 0 10px 20px rgba(2, 199, 248, 0.13);
+    cursor: pointer;
+    opacity: 0.9;
+  }
