@@ -37,7 +37,10 @@ const LoginPage = () => {
             </div>
 
 
-            <div className='create_account'></div>
+            <div className='create_account'>
+                <p>Don't have a account ?</p>
+                 <a href="">Sign In</a>
+            </div>
 
         </div>
     )
