@@ -1,0 +1,153 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font: 62.5%;
+}
+
+body{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+
+.FundoDeCadastro{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+    width: 400px;    
+    height: 600px;
+    background-color: white;
+    gap: 5%;
+}
+
+.titulo{
+    display: flex;
+    justify-content: center;
+    border-radius: 0 0 5px 5px;
+    width: 50%;
+    height: 5%;
+    background-color: #23628f;
+}   
+
+.info-login-template{
+    display: flex;
+    flex-direction: column;
+    gap: 20%;
+    font-size: 10pt;
+    padding: 5%;
+    width: 60%;
+    height: 30%;
+}
+
+.info-login{
+    color: black;
+}
+
+
+.input-style{
+    color: black;
+    width: 80%;
+    height: 30px;
+    border: none;
+    background-color: white;
+}
+
+
+.divisor{
+    width: 100%;
+    height: 1px;
+    background-color: #23628f;
+}
+
+.forgot-pass{
+    font-size: 8pt;
+    display: flex;
+    justify-content: end;
+}
+
+.forgot-pass p:hover{
+    color: #23628f;
+    cursor: pointer;
+}
+
+.btn-login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    width: 60%;
+    height: 8%;
+    background-color: #23628f;
+}
+
+.btn-login:hover{
+    background-color: #0366cf;
+    cursor: pointer;
+}
+
+.divisor-principal{
+    font-size: 10pt;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+.main-divisor{
+    position: relative;
+    top: 2px;
+    width: 25%;
+    height: 1px;
+    background-color: #0366cf;
+}
+
+.divisor-principal p{
+    margin: 0 2px 0 2px;
+}
+
+.Oauth-apps{
+    position: relative;
+    top: -30px;
+    width: 60%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: black; */
+    gap: 10%;
+}
+
+.apps-circle{
+    height: 40%;
+    width: 20%;
+    border-radius: 100px;
+}
+
+.apps-circle:hover{
+    cursor: pointer;
+}
+
+#facebook-circle,
+#google-circle,
+#twitter-circle{
+   background-repeat: no-repeat;
+   background-position: center;
+   background-size: contain;
+}
+
+#facebook-circle{
+   background-image: url("https://cdn-icons-png.flaticon.com/128/145/145802.png");
+}
+
+#google-circle{
+    background-image: url("https://cdn-icons-png.flaticon.com/128/300/300221.png");
+}
+
+#twitter-circle{
+    background-image: url("https://cdn-icons-png.flaticon.com/128/3670/3670151.png");
+}
+
