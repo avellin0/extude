@@ -1,1 +1,1 @@
-this is a schedule system for a school , felling free to look around this code and thank you !
+preciso dar um jeito de usar o controller no front , pois não adianta eu fazer direto pelo front , sendo que tem uma aplicação feita para isso

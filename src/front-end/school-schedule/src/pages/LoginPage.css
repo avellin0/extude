@@ -74,6 +74,7 @@ body{
 }
 
 .btn-login{
+    border: none;
     display: flex;
     justify-content: center;
     align-items: center;
