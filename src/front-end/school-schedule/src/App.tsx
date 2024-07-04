@@ -1,8 +1,10 @@
+import React from 'react'
 import './App.css'
 
 const App = () => {
   return (
-    <div>
+    <>
+
     <header>
       <h1>SmartSpace</h1>
       <div className="cadastro">
@@ -10,6 +12,8 @@ const App = () => {
         <div className="btn_signOut">Sign Out</div>
       </div>
     </header>
+
+
     <main>
       <div className="quadrado">
         <div className="icone">👨🏼‍⚕️</div>
@@ -44,7 +48,7 @@ const App = () => {
         <div className="overlay">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
       </div>
     </main>
-  </div>
+  </>
   )
 }
 
