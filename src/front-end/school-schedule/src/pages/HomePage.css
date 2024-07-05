@@ -137,6 +137,6 @@ body{
 
 .main-content #conversation:hover .overlay{
     box-shadow: 0 10px 20px rgba(2, 199, 248, 0.13);
-     cursor: pointer;
+    cursor: pointer;
     opacity: 0.9;
 }
