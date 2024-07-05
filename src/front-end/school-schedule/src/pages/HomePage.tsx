@@ -9,7 +9,8 @@ export function Home(){
     }
 
     return(
-        <>  
+        <body>
+            
         <div className='root'>
 
             <div className='header'>
@@ -21,12 +22,35 @@ export function Home(){
             </div>
 
             <div className='main'>
-                    <div className='main-content'></div>
-                    <div className='main-content'></div>
+                    <p>New</p>
+                    <div className='main-first-row'>
+
+                        <div className='main-content' id='conversation'>
+                            <div className='overlay'>Conversação</div>
+                        </div>
+                        <div className='main-content' id='economia'>
+                            <div className="overlay">Economia</div>
+                        </div>
+                        <div className='main-content' id="nutricao">
+                            <div className="overlay">Nutrição</div>
+                        </div>
+                        <div className='main-content'></div>
+                    </div>
+
+                    <div className='main-divisor'></div>
+                   
+                   <p>Your Progress</p>
+                    <div className='main-second-row'>
+                        <div className='main-content'></div>
+                        <div className='main-content'></div>
+                        <div className='main-content'></div>
+                        <div className='main-content'></div>
+                    </div>
             </div>
 
         </div>
-        </>
+    </body>  
+
     )
 }
 

@@ -23,6 +23,7 @@ const App = () => {
         <div className="footer">Mais informações</div>
         <div className="overlay">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
       </div>
+
       <div className="quadrado">
         <div className="icone">👨🏼‍🎓</div>
         <div className="conteudo">
@@ -31,6 +32,7 @@ const App = () => {
         <div className="footer">Mais informações</div>
         <div className="overlay">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
       </div>
+      
       <div className="quadrado">
         <div className="icone">👨🏼‍💻</div>
         <div className="conteudo">
