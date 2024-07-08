@@ -13,17 +13,22 @@ body{
 }
 
 .FundoDeCadastro{
+    border: 1px solid black;
     display: flex;
     align-items: center;
     flex-direction: column;
     border-radius: 10px;
     width: 400px;    
     height: 600px;
+    /* background-color: #0366cf; */
     background-color: white;
     gap: 5%;
 }
 
 .titulo{
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+    border-left: 2px solid black;
     display: flex;
     justify-content: center;
     border-radius: 0 0 5px 5px;

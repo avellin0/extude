@@ -1,5 +1,6 @@
 import { config } from "dotenv";
 config({ path: "Users/plogl/Lessons/Projects/SchoolSchedule/src/.env" });
+
 import { NextFunction, Request, Response } from "express"
 import { db } from "../database/client-db"
 import { verify} from "jsonwebtoken"
