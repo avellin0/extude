@@ -32,6 +32,11 @@ header{
 
 .nav .logo{
     text-indent: 10px;
+
+}
+
+.nav .logo img{
+    height: 50px;
 }
 
 .ListLink{
@@ -107,10 +112,10 @@ span{
 }
 
 .content{
-    background-color: white;
-    height: 100vh;
+    height: 50vh;
     width: 100vw;
     display: flex;
+    justify-content: center;
     flex-direction: column;
     padding: 100px;
     gap: 2%;
@@ -123,7 +128,7 @@ span{
     align-items: center;
     gap: 50px;
     width: 100%;
-    height: 48%;
+    height: 38vh;
 }
 
 
@@ -168,10 +173,14 @@ span{
 
 
 .banner-check-atributes{
-    /* background-color: #3FA77B; */
     height: 100%;
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
+
+.landing-resource{
+    width: 100vw;
+    height: 50vh;
+}

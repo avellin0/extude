@@ -2,6 +2,7 @@ CREATE TABLE User (
     userId INT NOT NULL,
     name VARCHAR(100) NOT NULL, 
     email VARCHAR(100) NOT NULL,
-    password VARCHAR(250) NOT NULL
+    password VARCHAR(250) NOT NULL,
+    create_at DATETIME DEFAULT GETDATE()
 );
 

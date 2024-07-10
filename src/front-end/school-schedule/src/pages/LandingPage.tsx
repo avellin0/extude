@@ -10,9 +10,10 @@ export function LandingPage(){
     return (
         <>
             <div className="LandingBody">    
+                
                 <header>
                     <div className="nav">
-                        <div className="logo">Logo</div>
+                        <div className="logo"><img src="https://cdn-icons-png.flaticon.com/128/171/171322.png" alt="" /></div>
                         <div className="ListLink">
                                 <li>Home</li>
                                 <li>Pages</li>
@@ -61,6 +62,11 @@ export function LandingPage(){
                     </div>
 
                 </div>  
+
+                <div className="landing-resource">
+
+                </div>
+
             </div>
         </>
     )
