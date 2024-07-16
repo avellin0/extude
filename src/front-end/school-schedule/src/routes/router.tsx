@@ -4,6 +4,7 @@ import Home from "../pages/HomePage";
 import LandingPage from "../pages/LandingPage";
 import App from "../App";
 import LoginPage from "../pages/LoginPage";
+import {Register } from "../pages/JoinPage";
 
 export const router = createBrowserRouter([
  {
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
  {
   path:"/login",
   element: <LoginPage/>
+ },
+ {
+  path: "cadastro",
+  element: <Register/>
  }
 ])
 

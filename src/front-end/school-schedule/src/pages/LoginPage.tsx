@@ -90,9 +90,10 @@ const LoginPage = () => {
                  <a href="">Sign In</a>
             </div>
 
-            </div>
-        </form>
-    )
+        </div>
+    </form>
+    
+)
 }
 
 export default LoginPage

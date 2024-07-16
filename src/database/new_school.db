@@ -5,4 +5,3 @@ CREATE TABLE User (
     password VARCHAR(250) NOT NULL,
     create_at DATETIME DEFAULT GETDATE()
 );
-
