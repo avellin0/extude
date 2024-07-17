@@ -1,24 +1,25 @@
-import express from 'express'
-import { ServerProtocol } from "../interfaces/Adapter-Server-Protocol";
-import { route } from '../routes/routes';
-import cors from 'cors'
-import bodyParser from 'body-parser'
+    import cors from 'cors'
+    import bodyParser from 'body-parser'
+    import express from 'express'
+    import { ServerProtocol } from '../interfaces/Adapter-Server-Protocol'
+    import {rota} from '../routes/routes'
 
-export class AdapterServer implements ServerProtocol {
- isRunning() {
-        const app = express()
-
-        app.use(cors)
-        app.use(bodyParser.urlencoded({extended: true}))
-
-        app.use(express.json())
-        app.use(route)
+    export class AdapterServer implements ServerProtocol {
+        isRunning(): void {
+            const app = express()
         
-         app.listen(3000, () => {
-            console.log('server is running...');
-        })
-    }
-}
+            
+            app.use(cors())
+            app.use(bodyParser.urlencoded({extended: true}))
 
-const server = new AdapterServer()
-server.isRunning()
+            app.use(express.json())
+            app.use(rota)
+
+            app.listen(3000, () => {
+                console.log('Server done');
+            })
+        }
+    }
+
+    const server = new AdapterServer()
+    server.isRunning()

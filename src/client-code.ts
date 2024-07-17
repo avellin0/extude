@@ -1,13 +1,11 @@
-import { AdapterServer} from "./server/Adapter-Server";
-import { ServerProtocol } from "./interfaces/Adapter-Server-Protocol";
-
-
-function RunServerAdapter(server: ServerProtocol): void{
+import {ServerProtocol} from './interfaces/Adapter-Server-Protocol'
+import {AdapterServer} from './server/Adapter-Server'
+function RunServer(server: ServerProtocol){
     if(server){
-        console.log("Server is running");
-    }else {
-        console.log(" server is falled")
+        console.log('Server is running');
+    }else{
+        console.log('Server is Falled');
     }
 }
 
-RunServerAdapter(new AdapterServer())
+RunServer(new AdapterServer())

@@ -1,68 +1,68 @@
-CREATE TABLE School_Access(
-    school_access_id INT PRIMARY KEY,
-    role VARCHAR(150) NOT NULL
-);
+-- CREATE TABLE School_Access(
+--     school_access_id INT PRIMARY KEY,
+--     role VARCHAR(150) NOT NULL
+-- )
 
-CREATE TABLE classes (
-    classe_id INT PRIMARY KEY
-);
+-- CREATE TABLE classes (
+--     classe_id INT PRIMARY KEY
+-- );
 
-CREATE TABLE teachers(
-    teacher_id INT PRIMARY KEY,
-    name VARCHAR(150) NOT NULL,
-    subject VARCHAR(100) NOT NULL,
-    access INT,
-    FOREIGN KEY (access) REFERENCES School_Access(school_access_id)
-);
+-- CREATE TABLE teachers(
+--     teacher_id INT PRIMARY KEY,
+--     name VARCHAR(150) NOT NULL,
+--     subject VARCHAR(100) NOT NULL,
+--     access INT,
+--     FOREIGN KEY (access) REFERENCES School_Access(school_access_id)
+-- );
 
-CREATE TABLE students(
-    student_id INT PRIMARY KEY,
-    name VARCHAR(150) NOT NULL,
-    age INT,
-    access INT,
-    FOREIGN KEY (access) REFERENCES School_Access(school_access_id)
-);
+-- CREATE TABLE students(
+--     student_id INT PRIMARY KEY,
+--     name VARCHAR(150) NOT NULL,
+--     age INT,
+--     access INT,
+--     FOREIGN KEY (access) REFERENCES School_Access(school_access_id)
+-- );
 
-CREATE TABLE students_classes(
-    student_id INT,
-    classe_id INT,
-    PRIMARY KEY (student_id, classe_id),
-    FOREIGN KEY (student_id) REFERENCES students(student_id),
-    FOREIGN KEY (classe_id) REFERENCES classes(classe_id)
-);
+-- CREATE TABLE students_classes(
+--     student_id INT,
+--     classe_id INT,
+--     PRIMARY KEY (student_id, classe_id),
+--     FOREIGN KEY (student_id) REFERENCES students(student_id),
+--     FOREIGN KEY (classe_id) REFERENCES classes(classe_id)
+-- );
 
-CREATE TABLE teachers_classes(
-    teacher_id INT,
-    classe_id INT,
-    PRIMARY KEY (teacher_id, classe_id),
-    FOREIGN KEY (teacher_id) REFERENCES teachers(teacher_id),
-    FOREIGN KEY (classe_id) REFERENCES classes(classe_id)
-);
+-- CREATE TABLE teachers_classes(
+--     teacher_id INT,
+--     classe_id INT,
+--     PRIMARY KEY (teacher_id, classe_id),
+--     FOREIGN KEY (teacher_id) REFERENCES teachers(teacher_id),
+--     FOREIGN KEY (classe_id) REFERENCES classes(classe_id)
+-- );
 
-INSERT INTO School_Access(school_access_id, role) VALUES (
-    1,
-    'aluno'
-);
+-- INSERT INTO School_Access(school_access_id, role) VALUES (
+--     1,
+--     'aluno'
+-- );
 
-INSERT INTO School_Access(school_access_id, role) VALUES (
-    2,
-    'professor'
-);
+-- INSERT INTO School_Access(school_access_id, role) VALUES (
+--     2,
+--     'professor'
+-- );
 
-INSERT INTO students (student_id, name, age, access) VALUES
-(1, 'Davi', 17, 1);
+-- INSERT INTO students (student_id, name, age, access) VALUES
+-- (1, 'Davi', 17, 1);
 
--- Inserindo dados na tabela teachers
-INSERT INTO teachers (teacher_id, name, subject, access) VALUES
-(1, 'Aline', 'portugues', 2);
+-- -- Inserindo dados na tabela teachers
+-- INSERT INTO teachers (teacher_id, name, subject, access) VALUES
+-- (1, 'Aline', 'portugues', 2);
 
-INSERT INTO classes (classe_id) VALUES
-(3002);
+-- INSERT INTO classes (classe_id) VALUES
+-- (3002);
 
-Inserindo dados nas tabelas intermediárias
+-- Inserindo dados nas tabelas intermediárias
 
-INSERT INTO students_classes (student_id, classe_id) VALUES
-(1, 3002);
+-- INSERT INTO students_classes (student_id, classe_id) VALUES
+-- (1, 3002);
 
-INSERT INTO teachers_classes (teacher_id, classe_id) VALUES
-(1, 3002);
+-- INSERT INTO teachers_classes (teacher_id, classe_id) VALUES
+-- (1, 3002);

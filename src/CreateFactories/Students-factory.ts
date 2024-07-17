@@ -1,11 +1,17 @@
+import crypto from 'node:crypto'
 import { db } from "../database/client-db";
 import { ProxyCacheStudent, StudentsProto } from "../interfaces/students-proto";
 
 export class Students implements StudentsProto{
-  constructor(public userid: number, public name: string,public age: number, public classe: number, public access: number){} 
+  constructor(public userid: number, public name: string,public email: string, public password: string, public permission: string){} 
 
-  async createStudents(id:number, name:string,age:number,classe:number,access:number){
-    const addStudents = await db.query('INSERT INTO students(student_id,name,age,access) VALUES($1,$2,$3,$4)',[id,name,age,access])
+  
+  async createStudents(id:number, name:string,email:string,password:string, permission:string){
+    
+
+    const HashPassword = crypto.createHash('sha256').update(password).digest('hex')
+    
+    const addStudents = await db.query('INSERT INTO Usuario(userId,name,email,password,permission) VALUES($1,$2,$3,$4,$5)',[id,name,email,HashPassword,permission])
     return addStudents
   }
 
@@ -15,9 +21,9 @@ export class Students implements StudentsProto{
         {
           userid: this.userid, 
           name: this.name,
-          age: this.age,
-          classe: this.classe,
-          access: this.access
+          email: this.email,
+          password: this.password,
+          permission: this.permission
         }
       ]);
     });
