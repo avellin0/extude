@@ -1,12 +1,12 @@
-export type ProxyCacheStudent = {userid: number , name:string , age: number, classe: number, access: number}
+export type ProxyCacheStudent = {userid: number , name:string , email: string, password: string, permission: string}
 
 
 export interface StudentsProto {
   userid: number,
   name: string,
-  age: number,
-  classe: number,
-  access: number,
+  email: string,
+  password: string,
+  permission: string,
   
   infoStudent(): Promise<ProxyCacheStudent[]>;
 }

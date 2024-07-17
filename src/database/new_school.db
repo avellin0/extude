@@ -1,8 +1,11 @@
-CREATE TABLE User (
-    userId INT NOT NULL,
+CREATE TABLE Usuario (
+    userId INT PRIMARY KEY NOT NULL,
     name VARCHAR(100) NOT NULL, 
     email VARCHAR(100) NOT NULL,
-    password VARCHAR(250) NOT NULL,
-    create_at DATETIME DEFAULT GETDATE()
+    password VARCHAR(64) NOT NULL,
+    create_at DATE DEFAULT CURRENT_DATE,
+    permission VARCHAR(20) NOT NULL
 );
+
+INSERT INTO Usuario (userId, name, email, password, permission) VALUES (1,'Davi', 'ploglamador@hotmail.com', '4ad9a07a6a31673e9cff028fd9bb46528275f56858f16ca08e12260e99d65af3', 'Admin');
 

@@ -1,7 +1,7 @@
 -- CREATE TABLE School_Access(
 --     school_access_id INT PRIMARY KEY,
 --     role VARCHAR(150) NOT NULL
--- );
+-- )
 
 -- CREATE TABLE classes (
 --     classe_id INT PRIMARY KEY

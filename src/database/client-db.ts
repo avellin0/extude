@@ -1,4 +1,4 @@
-import { config } from "dotenv";
+import {config} from 'dotenv'
 config({path: "./src/.env"})
 
 import {Client} from 'pg'
