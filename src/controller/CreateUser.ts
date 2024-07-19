@@ -23,5 +23,4 @@ export class CreateUser{
                 res.status(500).send('Erro interno')
             }
     }
->>>>>>> schedule_2.0
 }
