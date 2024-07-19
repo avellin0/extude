@@ -22,7 +22,7 @@ route.post('/new_teacher', teachers.handle)
 route.post('/new_student', students.handle)
 route.post('/teacher_token', signInTeacher)
 route.post('/student_token', signInStudent)
-route.get('/teachers', authMiddleware(['professor']), getteachers.handle)
+// route.get('/teachers', authMiddleware(['professor']), getteachers.handle)
 route.get('/students', authMiddleware(['aluno','professor']), getstudents.handle)
 route.get('/teste',authMiddleware(['aluno','professor']), getstudentinfo.handle)
 
