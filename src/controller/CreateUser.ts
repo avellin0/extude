@@ -14,12 +14,12 @@ export class CreateUser{
             try{
 
             const create = await db.query('INSERT INTO Usuario(userId,name,email,password,permission) VALUES($1,$2,$3,$4,$5)', [userId,name,email,Hash,permissions])
-
-            res.send(create.rows)
             
+            res.status(201).json({ message: 'User created successfully', data: create.rows }).send(create.rows);
+
             }catch(err){
                 console.log(err);
                 res.status(500).send('Erro interno')
             }
     }
-}
+}   
