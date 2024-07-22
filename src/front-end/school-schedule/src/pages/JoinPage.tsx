@@ -51,9 +51,12 @@ export function Register() {
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
 
-        const data: DataPayload = { userId: 4, name: username, email: email, password: password, permissions: "client" };
+        const data: DataPayload = { userId: 5, name: username, email: email, password: password, permissions: "client" };
         await sendData(data);
         console.log("enviado com sucesso");
+        setEmail('')
+        setPassword('')
+        setUsername('')
     }
 
     return (
