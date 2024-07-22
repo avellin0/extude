@@ -19,7 +19,7 @@ export function Register() {
     }
     
     const handleEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setEmail(event.target.value);
+        setEmail(event.target.value);''
     }
     
     const handlePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
