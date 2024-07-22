@@ -2,7 +2,6 @@ import './JoinPage.css'
 import { useState } from 'react'
 
 interface DataPayload {
-    userId: number,
     name: string,
     email: string,
     password: string,
@@ -48,18 +47,42 @@ export function Register() {
         }
     }
 
+ 
+
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
+        
+        try{
+        
+        const data: DataPayload = { name: username, email: email, password: password, permissions: "client" };
+    
+        if(data){
+            setEmail('')
+            setPassword('')
+            setUsername('') 
+        }   
 
-        const data: DataPayload = { userId: 4, name: username, email: email, password: password, permissions: "client" };
         await sendData(data);
         console.log("enviado com sucesso");
+
+        }catch(err){
+            console.log("erro aqui:", err);
+        }
     }
 
-    return (
+    return ( 
+    <div className='register-body'>
+
+        <div className="register-image-scope">
+            <div className="register-image"></div>
+        </div>
+
         <form onSubmit={handleSubmit}>
             <div className="register-scope">
-                <div className="register-header">ExTudex</div>
+                <div className="register-header">
+                    <h1>Create an account</h1>
+                    <p>Already have an account? <a href="/login">Log in</a></p>
+                    </div>
 
                 <div className="register-fields">
                     
@@ -67,8 +90,9 @@ export function Register() {
                         <p>Username</p>
                         <input 
                             type="text" 
+                            maxLength={25}
                             className='register-input-text' 
-                            placeholder='Type Your Username' 
+                            placeholder='Username' 
                             value={username} 
                             onChange={handleName} 
                         />
@@ -77,9 +101,10 @@ export function Register() {
                     <div className="register-field">
                         <p>Email</p>
                         <input 
-                            type="text" 
+                            type="email" 
+                            maxLength={25}
                             className='register-input-text'  
-                            placeholder='Type Your Email' 
+                            placeholder='Email@email.com' 
                             value={email} 
                             onChange={handleEmail} 
                         />
@@ -89,10 +114,11 @@ export function Register() {
                         <p>Password</p>
                         <input 
                             type="password" 
+                            maxLength={25}
                             className='register-input-text' 
-                            placeholder='Type Your Password' 
+                            placeholder='********' 
                             value={password} 
-                            onChange={handlePassword} 
+                            onChange={handlePassword}
                         />
                     </div>
                 
@@ -102,5 +128,7 @@ export function Register() {
                 
             </div>
         </form>
-    );
+    
+  </div>
+ );
 }
