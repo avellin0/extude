@@ -1,57 +1,36 @@
 import './HomePage.css'
-import {useNavigate} from 'react-router-dom'
-export function Home(){
 
-    const navigate = useNavigate()
+export default function Home(){
+    return (
+        <>
+            <div className="Home-body">
 
-    const redirectLogin = () => {
-        navigate('/login')        
-    }
+                <div className="Home-sideBar-Scope">
 
-    return(
-        <body>
-            
-        <div className='root'>
+                    <div className="Home-sideBar-tittle">
+                        <h1>Tittle</h1>
+                    </div>
+                    <div className="Home-sideBar-list">
+                        <h2>Overview</h2>
+                        <h2>Course</h2>
+                        <h2>My Progress</h2>
+                        <div className="Home-sideBar-list-comunity">
+                            <h2>Comunity</h2>
+                        </div>
+                    </div>
+                    <div className="Home-sideBar-workSpace">
+                        <p>WorkSpace</p>
+                        <h2>Overview</h2>
+                        <h2>My Progress</h2>
+                    </div>
+                </div>
 
-            <div className='header'>
-                <h1>SmartSpace</h1>
-                <div className='btn_log'>
-                    <div className="btn_login" onClick={redirectLogin}>Sign In</div>
-                    <div className="btn_logout">Sign Out</div>
+                <div className="Home-Main-Scope">
+                    <div className="Home-Main-Header"></div>
+                    <div className="Home-Main-Introduction"></div>
+                    <div className="Home-Main-Content"></div>
                 </div>
             </div>
-
-            <div className='main'>
-                    <p>New</p>
-                    <div className='main-first-row'>
-
-                        <div className='main-content' id='conversation'>
-                            <div className='overlay'>Conversação</div>
-                        </div>
-                        <div className='main-content' id='economia'>
-                            <div className="overlay">Economia</div>
-                        </div>
-                        <div className='main-content' id="nutricao">
-                            <div className="overlay">Nutrição</div>
-                        </div>
-                        <div className='main-content'></div>
-                    </div>
-
-                    <div className='main-divisor'></div>
-                   
-                   <p>Your Progress</p>
-                    <div className='main-second-row'>
-                        <div className='main-content'></div>
-                        <div className='main-content'></div>
-                        <div className='main-content'></div>
-                        <div className='main-content'></div>
-                    </div>
-            </div>
-
-        </div>
-    </body>  
-
+        </>
     )
 }
-
-export default Home
