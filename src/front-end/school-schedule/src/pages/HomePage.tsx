@@ -1,4 +1,11 @@
 import './HomePage.css'
+import star from "../icons/star.png" 
+import graphic from "../icons/statistics.png"
+import flash from "../icons/thunder.png"
+import people from "../icons/people.png"
+
+
+
 
 export default function Home(){
     return (
@@ -8,13 +15,23 @@ export default function Home(){
                 <div className="Home-sideBar-Scope">
 
                     <div className="Home-sideBar-tittle">
-                        <h1>Tittle</h1>
+                        <h1>Piccoro</h1>
                     </div>
                     <div className="Home-sideBar-list">
-                        <h2>Overview</h2>
-                        <h2>Course</h2>
-                        <h2>My Progress</h2>
                         <div className="Home-sideBar-list-comunity">
+                            <img src={star} alt="" />
+                            <h2>Course</h2>
+                        </div>
+                        <div className="Home-sideBar-list-comunity">
+                            <img src={graphic} alt="" />
+                            <h2>OverView</h2>
+                        </div>
+                        <div className="Home-sideBar-list-comunity">
+                            <img src={flash} alt="" />
+                            <h2>Learning Progress</h2>
+                        </div>
+                        <div className="Home-sideBar-list-comunity">
+                            <img src={people} alt="" />
                             <h2>Comunity</h2>
                         </div>
                     </div>
