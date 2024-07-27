@@ -4,9 +4,6 @@ import graphic from "../icons/statistics.png"
 import flash from "../icons/thunder.png"
 import people from "../icons/people.png"
 
-
-
-
 export default function Home(){
     return (
         <>
