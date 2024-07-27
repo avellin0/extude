@@ -3,6 +3,7 @@ import star from "../icons/star.png"
 import graphic from "../icons/statistics.png"
 import flash from "../icons/thunder.png"
 import people from "../icons/people.png"
+import search from "../icons/search.png"
 
 export default function Home(){
     return (
@@ -40,7 +41,13 @@ export default function Home(){
                 </div>
 
                 <div className="Home-Main-Scope">
-                    <div className="Home-Main-Header"></div>
+
+                    <div className="Home-Main-Header">
+                        <div className='Home-Main-Header-search'>
+                            <img src={search} alt="" />
+                            <input type="text" placeholder='Press F to search' className='Home-Main-Header-search-input'/>
+                        </div>
+                    </div>
                     <div className="Home-Main-Introduction"></div>
                     <div className="Home-Main-Content"></div>
                 </div>
