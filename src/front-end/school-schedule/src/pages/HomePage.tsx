@@ -48,7 +48,10 @@ export default function Home(){
                             <input type="text" placeholder='Press F to search' className='Home-Main-Header-search-input'/>
                         </div>
                     </div>
-                    <div className="Home-Main-Introduction"></div>
+                    <div className="Home-Main-Introduction">
+                        <h1>expand your horizon</h1>
+                        <h1>to the Future</h1>
+                    </div>
                     <div className="Home-Main-Content"></div>
                 </div>
             </div>
