@@ -18,7 +18,7 @@ export default function Home(){
                     <div className="Home-sideBar-list">
                         <div className="Home-sideBar-list-comunity">
                             <img src={star} alt="" />
-                            <h2>Course</h2>
+                            <h2>New Project</h2>
                         </div>
                         <div className="Home-sideBar-list-comunity">
                             <img src={graphic} alt="" />
@@ -52,6 +52,8 @@ export default function Home(){
                         <h1>expand your horizon</h1>
                         <h1>to the Future</h1>
                     </div>
+                    <div className="Home-Main-Content"></div>
+                    <div className="Home-Main-Content"></div>
                     <div className="Home-Main-Content"></div>
                 </div>
             </div>

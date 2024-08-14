@@ -1,52 +1,53 @@
+import video from '../videos/video_completo.mp4'
+import './Project.css'
+import {useState, useEffect} from 'react'
+
 export function AdmPage(){
+
+  const [text,setText] = useState("")
+
+    useEffect(() => {
+      fetch('http://localhost:5000/text/economia.txt')
+      .then(response => {
+        if(response.ok){
+            return response.text()
+        }
+
+          throw('Dados não encontrado')
+      })
+      
+      .then(data => {
+        setText(data)
+      })
+    },[])
+
     return (
         <>
-        <header>
-        <h1>SmartSpace</h1>
-        <div className="cadastro">
-          <div className="btn_signIn">Sign In</div>
-          <div className="btn_signOut">Sign Out</div>
-        </div>
-      </header>
-  
-  
-      <main>
-        <div className="quadrado">
-          <div className="icone">👨🏼‍⚕️</div>
-          <div className="conteudo">
-            Salve vidas e faça a diferença. Torne-se um profissional de medicina e inspire o futuro!
+          <div className="project-body">
+
+          <div className="project-yt">
+            
+            <div className="project-videos">
+            
+            <video controls height="100%">
+            <source src={video} type="video/mp4" />
+            Seu navegador não suporta o elemento de vídeo.
+            </video>
+            
+            </div>
+
+                <div className="project-transcricao">
+                    <textarea id="project-transcription-area" value={text} readOnly></textarea>
+                </div>
+            </div>
+
+            <div className="project-notes-scope">
+              <div className="project-notes">
+                <textarea name="" id="project-notes-item" placeholder='Liberte sua mente' spellCheck='false' ></textarea>
+              </div>
+            </div>
+
           </div>
-          <div className="footer">Mais informações</div>
-          <div className="overlay">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-        </div>
-  
-        <div className="quadrado">
-          <div className="icone">👨🏼‍🎓</div>
-          <div className="conteudo">
-            Confira os outros cursos disponíveis e descubra novas oportunidades de aprendizado!
-          </div>
-          <div className="footer">Mais informações</div>
-          <div className="overlay">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-        </div>
-        
-        <div className="quadrado">
-          <div className="icone">👨🏼‍💻</div>
-          <div className="conteudo">
-            Se torne um programador e transforme suas ideias em realidade. Comece sua jornada hoje!
-          </div>
-          <div className="footer">Mais informações</div>
-          <div className="overlay">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-        </div>
-        <div className="quadrado">
-          <div className="icone">👨🏼‍🔬</div>
-          <div className="conteudo">
-            Explore o mundo dos elementos e reações. Inicie sua carreira em Química e inove o amanhã!
-          </div>
-          <div className="footer">Mais informações</div>
-          <div className="overlay">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-        </div>
-      </main>
-    
-    </>
+        </>
     )
 }
