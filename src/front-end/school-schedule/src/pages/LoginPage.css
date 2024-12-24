@@ -5,164 +5,48 @@
     font: 62.5%;
 }
 
-body{
-    height: 100vh;
+#Login-Scope{
     width: 100vw;
+    height: 100vh;
     display: flex;
     justify-content: center;
-}
-
-.FundoDeCadastro{
-    border: 1px solid black;
-    display: flex;
     align-items: center;
-    flex-direction: column;
-    border-radius: 10px;
-    width: 400px;    
-    height: 600px;
-    /* background-color: #0366cf; */
-    background-color: white;
-    gap: 5%;
+    padding: 20px;
 }
 
-.titulo{
-    border-bottom: 2px solid black;
-    border-right: 2px solid black;
-    border-left: 2px solid black;
+#login-form-scope{
+    width: 100%;
+    height: 100%;
+    margin: auto;
     display: flex;
     justify-content: center;
-    border-radius: 0 0 5px 5px;
-    width: 50%;
-    height: 5%;
-    background-color: #23628f;
-}   
+    align-items: center;
+    gap: 10rem;
+}
 
-.info-login-template{
+#login-title{
+    font-size: 50pt;
+}
+
+#login-input-scope{
+    width: 20rem;
+    height: 15rem;
     display: flex;
     flex-direction: column;
-    gap: 20%;
-    font-size: 10pt;
-    padding: 5%;
-    width: 60%;
-    height: 30%;
+    gap: 10px;
+    padding-top: 20px;
 }
 
-.info-login{
-    color: black;
+#login-btn{
+    width: 100px;
+    height: 35px;
 }
 
-
-.input-style{
-    color: black;
-    width: 100%;
-    height: 30px;
+.login-input{
+    width: 80%;
+    height: 35px;
+    background-color: gainsboro;
     border: none;
-    background-color: white;
-}
-
-
-.divisor{
-    width: 100%;
-    height: 1px;
-    background-color: #23628f;
-}
-
-.forgot-pass{
-    font-size: 8pt;
-    display: flex;
-    justify-content: end;
-}
-
-.forgot-pass p:hover{
-    color: #23628f;
-    cursor: pointer;
-}
-
-.btn-login{
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 30px;
-    width: 60%;
-    height: 8%;
-    background-color: #23628f;
-}
-
-.btn-login:hover{
-    background-color: #0366cf;
-    cursor: pointer;
-}
-
-.divisor-principal{
-    font-size: 10pt;
-    color: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50%;
-}
-
-.main-divisor{
-    position: relative;
-    top: 2px;
-    width: 25%;
-    height: 1px;
-    background-color: #0366cf;
-}
-
-.divisor-principal p{
-    margin: 0 2px 0 2px;
-}
-
-.Oauth-apps{
-    position: relative;
-    top: -30px;
-    width: 60%;
-    height: 20%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* background-color: black; */
-    gap: 10%;
-}
-
-.apps-circle{
-    height: 40%;
-    width: 20%;
-    border-radius: 100px;
-}
-
-.apps-circle:hover{
-    cursor: pointer;
-}
-
-#facebook-circle,
-#google-circle,
-#twitter-circle{
-   background-repeat: no-repeat;
-   background-position: center;
-   background-size: contain;
-}
-
-#facebook-circle{
-   background-image: url("https://cdn-icons-png.flaticon.com/128/145/145802.png");
-}
-
-#google-circle{
-    background-image: url("https://cdn-icons-png.flaticon.com/128/300/300221.png");
-}
-
-#twitter-circle{
-    background-image: url("https://cdn-icons-png.flaticon.com/128/3670/3670151.png");
-}
-
-.create_account{
-    color: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    height: 10%;
+    text-indent: 10px;
+    border-radius: 5px;
 }

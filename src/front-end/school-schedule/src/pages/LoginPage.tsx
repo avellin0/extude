@@ -1,99 +1,45 @@
 import './LoginPage.css'
-import { useState } from 'react'
+import {useState} from 'react'
+import { useNavigate } from 'react-router-dom'
 
+export function LoginPage(){
+    const [email,setEmail] = useState('')
+    const [senha,setSenha] = useState('')
+    const navigate = useNavigate()
 
-const LoginPage = () => {
+    const verificacao = async() => { 
 
-    const [name, setName] = useState('Davi')
-    const [password, setPassword] = useState<string>('')
+    try{
+        const getId = await fetch(`http://localhost:3000/student_id/${email}`)
 
-    const handleName = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setName(event.target.value)
-    }
-    
-    const handlePass = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setPassword(event.target.value)
-    }
-
-    const handleSubmit = async (event: React.FormEvent) => {
-        event.preventDefault()
-
-        try{
-
-            const student = {
-                userid: 4, 
-                name: name,
-                age: 18,
-                classe: 1001,
-                access: 1
-            }
-
-            const response = await fetch('http://localhost:3000/new_student', {
-                method: 'POST',
-                headers:{ 'Content-Type': 'application/json'},
-                body: JSON.stringify(student)
-            })
-
-            if(!response.ok){
-                console.log('deu merda!');
-            }
-
-            console.log('Safe!');
-        
-        }catch(err){
-            console.log(err);
+        if(!getId.ok){
+            throw new Error('Não estou conseguindo buscar');
         }
+
+        const data = await getId.json()
+        const id = data[0]?.user_notes_id
+        
+        console.log("esse é o id do usuario:", id);
+
+        navigate(`/home/${id}`)
+        
+     }catch(err){
+        console.log("Deu essa merda ai:", err); 
+     }
     }
 
-    return (
-    
-    <form onSubmit={handleSubmit}>
-        <div className='FundoDeCadastro'>
-            <div className='titulo'>SmartSpace</div>
-
-            <div className='info-login-template'>
-        
-
-                <div className='info-login'>
-                    <p>Username</p>
-                    <input type="text" className='input-style' placeholder='Type your Username' value={name} onChange={handleName}/>
-                    <div className='divisor'></div>
+    return(
+        <>
+            <div id="Login-Scope">
+                <div id="login-form-scope">
+                    <h1 id='login-title'>Welcome <br/> back  to the <br/> exTude</h1>
+                    <div id="login-input-scope">
+                        <input type="text" className='login-input' placeholder='Email' onChange={(e) => setEmail(e.target.value) }/>
+                        <input type="text" className='login-input' placeholder='Senha' defaultValue={senha} onChange={(e) => setSenha(e.target.value)}/>
+                        <button id='login-btn' onClick={() => verificacao()}>Entrar</button>
+                    </div>
                 </div>
-
-                <div className='info-login'>
-                    <p>Password</p>
-                    <input type="password" className='input-style' placeholder='Type your Password' value={password} onChange={handlePass}/>
-                    <div className='divisor'></div>
-                    <div className='forgot-pass'><p>Forgot Password?</p></div>
-                </div>
-            
             </div>
-
-            <input type="submit" className='btn-login' value="Cadastrar-se"  />
-        
-
-        <div className='divisor-principal'>
-            <div className='main-divisor'></div>
-            <p>sign up using</p>
-            <div className='main-divisor'></div>
-        </div>
-
-            <div className='Oauth-apps'>
-                <div className='apps-circle' id='facebook-circle'></div>
-                <div className='apps-circle' id='google-circle'></div>
-                <div className='apps-circle' id='twitter-circle'></div>
-            </div>
-
-
-            <div className='create_account'>
-                <p>Don't have a account ?</p>
-                 <a href="">Sign In</a>
-            </div>
-
-        </div>
-    </form>
-    
-)
+        </>
+    )
 }
-
-export default LoginPage

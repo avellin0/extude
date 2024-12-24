@@ -1,16 +1,22 @@
 import { Request, Response } from "express";
 import { db } from "../database/client-db";
 
-export class getStudents{
+export class GetStudents{
     async handle(req:Request, res: Response){
-        const {student_id} = req.body
+        const {email} = req.body
 
         console.time()
         
-        const research = await db.query('SELECT * FROM students WHERE student_id = $1', [student_id])
+        const alreadyHaveAccount = await db.query('SELECT * FROM Usuario WHERE email = $1', [email])
 
+        if(alreadyHaveAccount.rows.length > 0){
+            console.log('Email já registrado');
+            return res.send('Usuario ja  existe') 
+        } 
+        
         console.timeEnd()
 
-        res.send(research.rows)
+        res.status(500).send("Tudo certo")
     }
 }
+

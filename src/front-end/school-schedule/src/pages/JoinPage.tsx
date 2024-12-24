@@ -1,5 +1,6 @@
 import './JoinPage.css'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 interface DataPayload {
     name: string,
@@ -8,7 +9,15 @@ interface DataPayload {
     permissions: string        
 }
 
+interface Email{
+    email: string
+}
+
+
 export function Register() {
+
+    const navigate = useNavigate()
+
     const [username, setUsername] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
@@ -25,9 +34,41 @@ export function Register() {
         setPassword(event.target.value);
     }
 
+
+    
+
+    const AlreadySign = async(email: Email | string) => {
+        try{
+            const response = await fetch('http://localhost:3000/students',{
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email: email
+                })
+            })
+
+            if(! response.ok){
+                console.log("Deu MERDA");
+            }
+
+            const user = await response.json()
+
+            console.log("Usuario registrado com sucesso:", user);
+
+         }catch(err){
+            console.log('deu esse erro aqui na importação:', err);
+            return
+        }
+    }
+
+
     const sendData = async (data: DataPayload): Promise<void> => {
         try {
-            const response = await fetch('http://localhost:3000/create_account', {
+            AlreadySign(email)
+
+            const createAccount = await fetch('http://localhost:3000/create_account', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -35,27 +76,43 @@ export function Register() {
                 body: JSON.stringify(data),
             });
 
-            if (!response.ok) {
+            if (!createAccount.ok) {
                 throw new Error('network response not ok');
             }
 
-            const responseData = await response.json();
-            console.log('Success:', responseData);
+            const responseData = await createAccount.json();
 
+            console.log('Success:', responseData);   
         } catch (err) {
             console.log("erro:", err);
         }
     }
 
- 
+    const pegarId = async() => {
+        
+        const getId = await fetch(`http://localhost:3000/student_id/${email}`)
 
+        if(!getId.ok){
+            throw new Error('Não estou conseguindo buscar');
+        }
+
+        const data = await getId.json()
+        const id = data[0]?.user_notes_id
+        
+        console.log("esse é o id do usuario:", id);
+        
+        navigate(`/home/${id}`)
+    }
+
+   
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
         
         try{
-        
+  
         const data: DataPayload = { name: username, email: email, password: password, permissions: "client" };
-    
+        
+
         if(data){
             setEmail('')
             setPassword('')
@@ -63,6 +120,8 @@ export function Register() {
         }   
 
         await sendData(data);
+        await pegarId()
+
         console.log("enviado com sucesso");
 
         }catch(err){
@@ -70,11 +129,15 @@ export function Register() {
         }
     }
 
+
+
     return ( 
     <div className='register-body'>
 
-        <div className="register-image-scope">
-            <div className="register-image"></div>
+        <div id="register-introduction-scope">
+            <div id='register-triangulo-itens'/>
+            <h1 id='register-introduction-text'>Junte-se a <span>maior</span> <br/> <span>comunidade</span> de estudos</h1>
+            <div id='register-three-bolls-itens'/>
         </div>
 
         <form onSubmit={handleSubmit}>

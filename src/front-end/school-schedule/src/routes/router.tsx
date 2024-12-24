@@ -3,9 +3,12 @@ import { Default } from '../pages/Default'
 import Home from "../pages/HomePage";
 import LandingPage from "../pages/LandingPage";
 import App from "../App";
-import LoginPage from "../pages/LoginPage";
+import {LoginPage} from "../pages/LoginPage";
 import {Register } from "../pages/JoinPage";
-import { AdmPage } from "../pages/AdmPage";
+import { AdmPage } from "../pages/Project";
+import { Download } from "../pages/Download";
+import {LibraryPage} from "../pages/LibraryPage"
+import LibraryBookPage from "../pages/LibraryBookPage";
 
 export const router = createBrowserRouter([
  {
@@ -17,7 +20,7 @@ export const router = createBrowserRouter([
    element: <App/>
  },
  {
-   path: "/home",
+   path: "/home/:id",
    element: <Home/>
  },
  {
@@ -33,8 +36,20 @@ export const router = createBrowserRouter([
   element: <Register/>
  },
  {
-  path: "/project",
+  path: "/project/:id",
   element: <AdmPage/>
+ },
+ {
+  path: "/Baixe",
+  element: <Download/>
+ },
+ {
+  path: "/library/:id",
+  element: <LibraryPage/>
+ },
+ {
+  path: "/book/:id/:book",
+  element: <LibraryBookPage/>
  }
 ])
 
