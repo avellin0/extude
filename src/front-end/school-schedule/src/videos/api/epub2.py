@@ -28,23 +28,19 @@ def get_epub(bookname):
     
 
     try:
-        # Tenta carregar o arquivo EPUB
         book = epub.read_epub(file_path)
     except FileNotFoundError:
         return jsonify({'error': 'Arquivo livro.epub não encontrado'}), 404
     except Exception as e:
-        # Captura outros erros relacionados ao EPUB
         return jsonify({'error': f'Erro ao ler o arquivo: {str(e)}'}), 500
 
     extracted_text = []
 
-    # Itera pelos itens do EPUB
     for item in book.get_items():
-        if item.media_type == "application/xhtml+xml":  # Verifica se é um capítulo
-            # Processa o conteúdo do item
+        if item.media_type == "application/xhtml+xml":
             soup = BeautifulSoup(item.get_content(), "html.parser")
-            text = soup.get_text()  # Extrai texto puro
-            extracted_text.append(text)  # Armazena o texto extraído
+            text = soup.get_text() 
+            extracted_text.append(text)  
 
     if not extracted_text:
         # Caso nenhum texto seja encontrado
@@ -54,8 +50,6 @@ def get_epub(bookname):
     return jsonify({'livro': extracted_text})
 
 
-
-#=================================== Downloader ================================= 
 
 
 # Inicia o servidor
