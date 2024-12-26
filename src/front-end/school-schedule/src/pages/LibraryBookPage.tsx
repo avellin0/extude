@@ -56,32 +56,51 @@ export default function LibraryBookPage(){
             }
 
             CountString(text,600)
-
+            
+            
             setSections(text)
-
-          console.log("Esse são os dados recebidos",data);
-           
-          setMessage('Clique em "Veja" para inicar a leitura')
+            setMessage('Clique em "Veja" para inicar a leitura')
          
         }catch(err){
         console.log("esse é o erro:", err)
         }
+
      }
      
-     getEpub()
+        
+    getEpub()     
     
-    },[])
+},[])
 
 
     const CountCharcter = () => {
+        
         const texto = document.getElementById('epub-book')
         if(!texto) return
-        texto.innerText = sections[indice]
+
+        const page = sections[indice].substring(4,6)
+        const nowPage = page
+
+        if(nowPage){
+            console.log(indice);
+            console.log(nowPage);
+        }
+
+        const newArray:number[] = [28,29,1,12,21,22,23,24,25,26,27,2,3,4,5,6,7,8,9,10,11,13,14,15,16,17,18,19,20]
+       
+
+        console.log(newArray);
         
-        setIndice((prevIndex) => (prevIndex + 1) % sections.length);
+        setIndice((prevIndex) => (prevIndex + 1) % newArray.length);
+        
+        
+
+        
+        texto.innerText = sections[newArray[indice]]
     }
+
+
     
-  // quotes.tsx
 const handleMouseUp = () => {
     
     const selection = window.getSelection();

@@ -100,7 +100,7 @@
 }
 
 .default-style-bolls{
-    background-image: url("C:\Users\plogl\Dev\First_Saas\SchoolSchedule\src\front-end\school-schedule\src\image\bolls.png");
+    background-image: url("../image/bolls.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -110,7 +110,7 @@
 }
 
 .default-style-trhee-bolls{
-    background-image: url("C:\Users\plogl\Dev\First_Saas\SchoolSchedule\src\front-end\school-schedule\src\image\TrheeBolls.png");
+    background-image: url("../image/TrheeBolls.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -120,7 +120,7 @@
 }
 
 .default-style-multiple{
-    background-image: url("C:\Users\plogl\Dev\First_Saas\SchoolSchedule\src\front-end\school-schedule\src\image\multiple.png");
+    background-image: url("../image/multiple.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: auto;
@@ -247,7 +247,7 @@
     border-radius: 10px;
     width: 100%;
     height: 50%;
-    background-image: url("../videos/youtubeimage.webp");
+    background-image: url("../image/youtubeimage.webp");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
