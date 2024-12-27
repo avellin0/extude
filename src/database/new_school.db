@@ -1,11 +1,13 @@
 CREATE TABLE usuario (
     userId UUID PRIMARY KEY NOT NULL,
-    user_notes_id SERIAL UNIQUE,
     name VARCHAR(100) NOT NULL, 
     email VARCHAR(100) NOT NULL,
     password VARCHAR(64) NOT NULL,
     create_at DATE DEFAULT CURRENT_DATE,
-    permission VARCHAR(20) NOT NULL
+    permission VARCHAR(20) NOT NULL,
+
+    user_notes_id SERIAL UNIQUE,
+    favorites_books INTEGER UNIQUE
 );
 
 CREATE TABLE notes (
@@ -16,6 +18,9 @@ CREATE TABLE notes (
     date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-INSERT INTO usuario (userId,user_notes_id,name, email, password, permission) VALUES (uuid_generate_v4(),1,'Davi', 'ploglamador@hotmail.com', '4ad9a07a6a31673e9cff028fd9bb46528275f56858f16ca08e12260e99d65af3', 'Admin');
-INSERT INTO notes(note_id,user_id,content) VALUES (uuid_generate_v4(),1,'hello');
-
+CREATE TABLE books (
+    book_id UUID PRIMARY KEY NOT NULL, 
+    title VARCHAR(50) NOT NULL,
+    author VARCHAR(50), 
+    user_id INTEGER REFERENCES usuario(favorites_books) ON DELETE SET NULL
+);

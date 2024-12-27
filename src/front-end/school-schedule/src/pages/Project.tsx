@@ -32,6 +32,7 @@ export function AdmPage() {
     GetLastSave();
   }, [id]);
 
+  
   const sendSubmit = async () => {
     const getFileNameId = document.getElementById('file_name') as HTMLInputElement;
     if (!getFileNameId.files) return;
