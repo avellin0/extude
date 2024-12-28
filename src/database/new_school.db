@@ -1,26 +1,32 @@
-CREATE TABLE usuario (
+CREATE TABLE usuario(
     userId UUID PRIMARY KEY NOT NULL,
     name VARCHAR(100) NOT NULL, 
     email VARCHAR(100) NOT NULL,
     password VARCHAR(64) NOT NULL,
     create_at DATE DEFAULT CURRENT_DATE,
-    permission VARCHAR(20) NOT NULL,
-
-    user_notes_id SERIAL UNIQUE,
-    favorites_books INTEGER UNIQUE
-);
-
-CREATE TABLE notes (
-    note_id UUID PRIMARY KEY NOT NULL,
-    user_id INTEGER REFERENCES usuario(user_notes_id) ON DELETE SET NULL ,
-    content TEXT,
-    title TEXT,
-    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    permission VARCHAR(20) NOT NULL
 );
 
 CREATE TABLE books (
     book_id UUID PRIMARY KEY NOT NULL, 
     title VARCHAR(50) NOT NULL,
     author VARCHAR(50), 
-    user_id INTEGER REFERENCES usuario(favorites_books) ON DELETE SET NULL
+    user_id UUID REFERENCES usuario(userId) ON DELETE CASCADE
 );
+
+CREATE TABLE notes (
+    note_id UUID PRIMARY KEY NOT NULL,
+    user_id UUID REFERENCES usuario(userId) ON DELETE CASCADE,
+    book_id UUID REFERENCES books(book_id) ON DELETE CASCADE,
+    content TEXT,
+    title TEXT,
+    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE favorite_books (
+    id SERIAL PRIMARY KEY,
+    user_id UUID REFERENCES usuario(userId) ON DELETE CASCADE,
+    book_id UUID REFERENCES books(book_id) ON DELETE CASCADE,
+    favorited_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE (user_id, book_id)
+)
