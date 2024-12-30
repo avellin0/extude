@@ -49,7 +49,7 @@ export function LibraryPage(){
             <div className="library-menu-books-area" onClick={() => navigate(`/book/${id}/${"algoritmo"}`)} id='library-menu-book-freud'/>
             <div className="library-menu-books-area" onClick={() => navigate(`/book/${id}/${"conde"}`)} id='library-menu-book-conde'/>
             <div className="library-menu-books-area" onClick={() => navigate(`/book/${id}/${"prince"}`)} id='library-menu-book-prince'/>
-            <div className="library-menu-books-area"/>
+            <div className="library-menu-books-area" onClick={() => navigate(`/book/${id}/${"poemas"}`)} id='library-menu-book-poemas'/>
          </div>
          <div className='library-menu-title'><h1>Most Recomended</h1></div>
          <div className='library-menu-row'>

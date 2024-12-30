@@ -88,15 +88,17 @@ export default function LibraryBookPage(){
 
         const newArray:number[] = [28,29,1,12,21,22,23,24,25,26,27,2,3,4,5,6,7,8,9,10,11,13,14,15,16,17,18,19,20]
        
+    
+        if(book === "prince"){
+            setIndice((prevIndex) => (prevIndex + 1) % newArray.length);
+            return texto.innerText = sections[newArray[indice]]
+        }
+        
+        setIndice((prevIndex) => (prevIndex + 1) % sections.length);
 
-        console.log(newArray);
-        
-        setIndice((prevIndex) => (prevIndex + 1) % newArray.length);
-        
-        
 
-        
-        texto.innerText = sections[newArray[indice]]
+        console.log("this is the sections:", sections.length);
+        texto.innerText = sections[indice]
     }
 
 

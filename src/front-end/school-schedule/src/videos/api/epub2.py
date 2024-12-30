@@ -15,10 +15,10 @@ def get_epub(bookname):
         "livro",
         "algoritmo",
         "conde",
-        "prince"
+        "prince",
+        "poemas"
     ]
 
-    #Caso o bookname seja igual a algum dos nomes do array, ele será concatenado com (.epub) e será posto na variavel "file_path"
     for book in books:
         if(bookname == book):
             file_path = "./books/"+book+".epub"    

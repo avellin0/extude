@@ -10,8 +10,14 @@ CREATE TABLE usuario(
 CREATE TABLE books (
     book_id UUID PRIMARY KEY NOT NULL, 
     title VARCHAR(50) NOT NULL,
-    author VARCHAR(50), 
-    user_id UUID REFERENCES usuario(userId) ON DELETE CASCADE
+    author VARCHAR(50)
+);
+
+
+CREATE TABLE user_books (
+    user_id UUID REFERENCES usuario(userId) ON DELETE CASCADE,
+    book_id UUID REFERENCES books(book_Id) ON DELETE CASCADE,
+    PRIMARY KEY (user_id, book_Id)
 );
 
 CREATE TABLE notes (
