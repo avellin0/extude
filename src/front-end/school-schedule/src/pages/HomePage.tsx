@@ -30,7 +30,7 @@ export default function Home(){
                         </div>
                         <div className="Home-sideBar-list-comunity">
                             {/* <img src={flash} alt="" /> */}
-                            <h2>amanager</h2>
+                            <h2><a href={`/comunity/:${id}`} className='Home-link'>Chat</a></h2>
                         </div>
                         <div className="Home-sideBar-list-comunity">
                             {/* <img src={people} alt="" /> */}

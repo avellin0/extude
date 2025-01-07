@@ -9,7 +9,7 @@ import { AdmPage } from "../pages/Project";
 import { Download } from "../pages/Download";
 import {LibraryPage} from "../pages/LibraryPage"
 import LibraryBookPage from "../pages/LibraryBookPage";
-
+import Chat from "../pages/Chat";
 export const router = createBrowserRouter([
  {
     path: "/",
@@ -50,6 +50,10 @@ export const router = createBrowserRouter([
  {
   path: "/book/:id/:book",
   element: <LibraryBookPage/>
+ },
+ {
+  path: "/comunity/:id",
+  element: <Chat/>
  }
 ])
 

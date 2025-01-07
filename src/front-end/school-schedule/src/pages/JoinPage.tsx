@@ -97,9 +97,10 @@ export function Register() {
         }
 
         const data = await getId.json()
-        const id = data[0]?.user_notes_id
+        const id = data[0]?.userid
         
         console.log("esse é o id do usuario:", id);
+        
         
         navigate(`/home/${id}`)
     }

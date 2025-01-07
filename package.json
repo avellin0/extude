@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "chat": "tsx --watch src/server/server-socket.ts",
     "server": "tsx --watch src/client-code.ts",
     "test": "tsx --watch src/middleware/middleware.ts"
   },
@@ -19,6 +20,8 @@
     "jsonwebtoken": "^9.0.2",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.24.0",
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.8.1",
     "ytdl-core": "^4.11.5"
   },
   "devDependencies": {
@@ -27,6 +30,7 @@
     "@types/ioredis": "^5.0.0",
     "@types/jsonwebtoken": "^9.0.6",
     "@types/node": "^20.14.11",
+    "@types/socket.io": "^3.0.1",
     "dotenv": "^16.4.5",
     "pg": "^8.11.5",
     "ts-node": "^10.9.2",

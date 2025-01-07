@@ -1,14 +1,18 @@
 import "./LibraryBookPage.css"
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useParams} from "react-router-dom"
 
 interface ApiResponse{
     livro: string[]
 }
 
+interface LocalStoragePage{
+    page: number
+}
 
 export default function LibraryBookPage(){
     
+    const [lastPage, setLastPage] = useState<number>(0)
     const [indice,setIndice] = useState<number>(0)
     const [message, setMessage] = useState<string>('')
     const [sections, setSections] = useState<string[]>([])
@@ -16,12 +20,12 @@ export default function LibraryBookPage(){
     const [result, setResult] = useState<string[]>([])
 
 
-    const {book} = useParams<{book: string}>()
+    let {book} = useParams<{book: string}>()
 
     useEffect(() => {
      const getEpub = async() => {
         try{
-
+        
         const response = await fetch(`http://localhost:5000/book/${book}`)
        
         if(!response){
@@ -35,6 +39,7 @@ export default function LibraryBookPage(){
           
             const text = data.livro.map((capitulo) => capitulo)
 
+            
 
         function CountString(text: string[], tamanho: number){
                 
@@ -60,6 +65,7 @@ export default function LibraryBookPage(){
             
             setSections(text)
             setMessage('Clique em "Veja" para inicar a leitura')
+
          
         }catch(err){
         console.log("esse é o erro:", err)
@@ -67,16 +73,23 @@ export default function LibraryBookPage(){
 
      }
      
-    
     getEpub()     
     
 },[])
 
+    const SavePage = () => {
+        const page: LocalStoragePage = {page: indice}
+        localStorage.setItem('page', JSON.stringify(page))
+    }
 
     const CountCharcter = () => {
-        
+
         const texto = document.getElementById('epub-book')
-        if(!texto) return
+        const messageTextBook = document.getElementById('epub-message')
+
+        if(!texto || !messageTextBook) return
+
+        messageTextBook.innerText = ""
 
         const page = sections[indice].substring(4,6)
         const nowPage = page
@@ -96,11 +109,31 @@ export default function LibraryBookPage(){
         
         setIndice((prevIndex) => (prevIndex + 1) % sections.length);
 
+        
+        const pageJson: string | null = localStorage.getItem('page')
 
-        console.log("this is the sections:", sections.length);
-        texto.innerText = sections[indice]
+        if(pageJson === null){throw new Error()}
+
+        try{
+
+        const page: LocalStoragePage = JSON.parse(pageJson)
+
+        console.log("ultima pagina", page.page - 1 );
+
+        const ultimaPagina = page.page - 1
+
+        if(typeof(ultimaPagina) !== 'number' || ultimaPagina === undefined){
+            throw new Error("Pagina não encontrada")
+        }
+
+        setLastPage(ultimaPagina)
+        
+        texto.innerText = `${indice}` + sections[indice]    
+
+        }catch(e){
+            console.log("Deu outra merda nesse krlh:", e);    
+        }
     }
-
 
     
 const handleMouseUp = () => {
@@ -108,18 +141,17 @@ const handleMouseUp = () => {
     const selection = window.getSelection();
     const selectedText = selection?.toString().trim() || "";
 
-    // Adiciona ao estado se o texto for válido
     if (selectedText) {
       setQuotes((prevQuotes) => [...prevQuotes, selectedText]);
-      console.log("Texto selecionado:", selectedText); // Para depuração
+
+      console.log("Texto selecionado:", selectedText); 
     }
 
-    // Limpa a seleção visual da página
     selection?.removeAllRanges()
   }
 
     return (
-        <div id="epub-body" >
+        <div id="epub-body">
             <div id="epub-sidebar-scope">
                 <div id="epub-side-book-notes">
                     <h3>Notes</h3>
@@ -136,10 +168,12 @@ const handleMouseUp = () => {
                     </ul>
 
                 </div>
-                <button onClick={() => CountCharcter()} id="epub-side-book-btn" >VEJA</button>
+                <button onClick={() => CountCharcter()} id="epub-side-book-btn">VEJA</button>
+                <button onClick={() => SavePage()}>Salvar pagina</button>
             </div>
             <div id="epub-book-scope" onMouseUp={() => handleMouseUp()}>
-                <div id="epub-book">{message}</div>
+                <h2 id="epub-message">{message}</h2>
+                <div id="epub-book">{sections[lastPage]}</div>
             </div>
         </div>
     )
