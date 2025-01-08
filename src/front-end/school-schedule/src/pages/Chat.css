@@ -26,8 +26,10 @@
 }
 
 #chat-scope-area{
+    padding: 10px 0 0 10px;
     width: 100%;
     height: 90%;
+    color: aliceblue;
 }
 
 #chat-text-input-scope{
