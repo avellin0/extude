@@ -1,0 +1,33 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#Contact-scope{
+    width: 100%;
+    height: 10%;
+    background-color: rgb(72, 185, 77);
+    display: flex;
+}
+
+#Contact-image-user{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#Contact-info-scope{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    text-indent: 10px;
+    justify-content: center;
+}
+
+#Contact-leastmessage{
+    color: rgb(46, 46, 46);
+}

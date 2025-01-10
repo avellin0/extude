@@ -1,10 +1,11 @@
 import "./Chat.css"
 import React, { useState, useRef, useEffect} from "react"
 import { useParams } from "react-router-dom"
+import {socket} from "../../Chat/socket"
 
-import {socket} from "../Chat/socket"
+import {Contact} from "../Chat/Chat-Contact/Contact"
 
-type TypeOfMessage = {
+export type TypeOfMessage = {
     message: string,
     author: string,
     authorId: string
@@ -12,18 +13,21 @@ type TypeOfMessage = {
 
 export default function Chat(){
     const [messageList, setmessageList] = useState<TypeOfMessage[]>([])
+    const [username, setUsername] = useState()
     
     const messageRef = useRef<HTMLInputElement>(null)
     
-    const params = useParams()
+    const {id} = useParams<{id: string}>()
+
 
     useEffect(() => {
-        
+
         const hanldeMessage = (data: TypeOfMessage) => {
             setmessageList((current) => [...current, data])
         }
 
         socket.on('port3004', hanldeMessage)
+
 
         return () => {
             socket.off('port3004', hanldeMessage)
@@ -31,8 +35,39 @@ export default function Chat(){
 
     },[])
 
-  
 
+    const fetchData = async () => {
+        const payload = {
+         id: id?.toString().slice(1)
+        };
+
+      
+        try {
+          const response = await fetch('http://localhost:3000/userInfo', {
+            method: 'POST', 
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(payload), 
+          });
+      
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+      
+          const data = await response.json();
+          console.log(data[0].name);
+          setUsername(data[0].name)
+          console.log();
+          
+        } catch (error) {
+          console.error('Erro ao fazer a requisição:', error);
+        }
+      };
+      
+      fetchData();
+
+      const teste = id?.toString().slice(1)
 
     const HandleSubmitMessage = () => {
         if(messageRef.current === null || messageRef.current === undefined) return
@@ -41,11 +76,16 @@ export default function Chat(){
 
         if(!message.trim()) return 
 
+
+
         socket.emit('port3003', {
             message,
-            author: "Davi", 
-            authorid: params 
+            author: username, 
+            authorid: teste
         })
+
+        console.log("Esse é o id:", id);
+        
 
         cleanInput()
     }
@@ -62,9 +102,12 @@ export default function Chat(){
         }
     }
 
+
     return (
         <div id="chat-body-scope">
-            <div id="chat-sidebar-scope"/>  
+            <div id="chat-sidebar-scope">
+                <Contact username={"Amigo1"} leastMessage={true}/>    
+            </div>  
            
             <div id="chat-scope">
                 <div id="chat-scope-area">
@@ -73,8 +116,11 @@ export default function Chat(){
                     messageList.map((message, index) => (
                         
                         <div>
-                            <p key={`${index + 1}`}>{message.author}: {message.message}</p>                                         
-                    
+                            {
+                              message.authorId === teste? (
+                                <p key={`${index + 1}`} >{message.author}: {message.message}</p>                                         
+                              ): <p key={`${index + 1}`} id="chat-host-side">{message.author}: {message.message}</p> 
+                            }                          
                         </div> 
         
                     )

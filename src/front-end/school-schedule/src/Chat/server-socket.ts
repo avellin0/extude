@@ -23,11 +23,11 @@ io.on("connection", (socket: Socket) => {
     socket.on("port3003", data => {
         console.log("info received:", data);
         socket.data.authorId = data.authorid;
-        console.log("User id:", data.authorid.id);
+        console.log("User id:", data.authorid);
         
         io.emit('port3004', {
             message: data.message,
-            authorId: socket.data.authorId.id,
+            authorId: socket.data.authorId,
             author: data.author
         })
     })

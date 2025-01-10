@@ -9,7 +9,7 @@ import { AdmPage } from "../pages/Project";
 import { Download } from "../pages/Download";
 import {LibraryPage} from "../pages/LibraryPage"
 import LibraryBookPage from "../pages/LibraryBookPage";
-import Chat from "../pages/Chat";
+import Chat from "../pages/Chat/Chat";
 export const router = createBrowserRouter([
  {
     path: "/",

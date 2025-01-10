@@ -64,3 +64,9 @@
     cursor: pointer;
     background-color: rgba(0,0,0, 0.2);
 }
+
+#chat-host-side{
+    position: relative;
+    right: -40rem;
+    color: aqua;
+}
