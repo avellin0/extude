@@ -1,6 +1,6 @@
 import "./Chat.css"
 import React, { useState, useRef, useEffect} from "react"
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate} from "react-router-dom"
 import {socket} from "../../Chat/socket"
 
 import {Contact} from "../Chat/Chat-Contact/Contact"
@@ -11,9 +11,14 @@ export type TypeOfMessage = {
     authorId: string
 }
 
-export default function Chat(){
+type ChatProps = {
+    permission: boolean;
+};
+
+export default function Chat({permission}: ChatProps){
     const [messageList, setmessageList] = useState<TypeOfMessage[]>([])
     const [username, setUsername] = useState()
+    const [count, setCount] = useState(0)
     
     const messageRef = useRef<HTMLInputElement>(null)
     
@@ -56,9 +61,10 @@ export default function Chat(){
           }
       
           const data = await response.json();
+
           console.log(data[0].name);
+
           setUsername(data[0].name)
-          console.log();
           
         } catch (error) {
           console.error('Erro ao fazer a requisição:', error);
@@ -81,7 +87,7 @@ export default function Chat(){
         socket.emit('port3003', {
             message,
             author: username, 
-            authorid: teste
+            authorid: teste,
         })
 
         console.log("Esse é o id:", id);
@@ -102,11 +108,25 @@ export default function Chat(){
         }
     }
 
+    const navigate = useNavigate()
+
+    const redirectMessage = () => { 
+            const currentPath = window.location.pathname;
+    
+            if (permission && !currentPath.includes(`/${username}`)) {
+                navigate(`${username}`);
+            } else {
+                console.error("Já estou na página ou URL já contém o username");
+            }
+    }
+
 
     return (
         <div id="chat-body-scope">
             <div id="chat-sidebar-scope">
-                <Contact username={"Amigo1"} leastMessage={true}/>    
+                <div id="Contact-scope" onClick={() => redirectMessage()}>
+                    <Contact username={"Amigo1"} leastMessage={true}/>   
+                 </div> 
             </div>  
            
             <div id="chat-scope">

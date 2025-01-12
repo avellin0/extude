@@ -10,6 +10,7 @@ import { Download } from "../pages/Download";
 import {LibraryPage} from "../pages/LibraryPage"
 import LibraryBookPage from "../pages/LibraryBookPage";
 import Chat from "../pages/Chat/Chat";
+import { PrivateChat } from "../pages/Chat/Individual-chat/PrivateChat";
 export const router = createBrowserRouter([
  {
     path: "/",
@@ -53,7 +54,11 @@ export const router = createBrowserRouter([
  },
  {
   path: "/comunity/:id",
-  element: <Chat/>
+  element: <Chat permission={true}/>
+ },
+ {
+  path:"/comunity/:id/:username",
+  element: <PrivateChat/>
  }
 ])
 

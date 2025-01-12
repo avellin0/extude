@@ -4,12 +4,6 @@
     box-sizing: border-box;
 }
 
-#Contact-scope{
-    width: 100%;
-    height: 10%;
-    background-color: rgb(72, 185, 77);
-    display: flex;
-}
 
 #Contact-image-user{
     width: 20%;

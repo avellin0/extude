@@ -28,7 +28,7 @@ io.on("connection", (socket: Socket) => {
         io.emit('port3004', {
             message: data.message,
             authorId: socket.data.authorId,
-            author: data.author
+            author: data.author,
         })
     })
 

@@ -6,9 +6,10 @@ interface ContactConfigProps{
 }
 
 export function Contact({username,leastMessage}:ContactConfigProps){
+
+  
     return (
-        <>
-            <div id="Contact-scope">
+        <div id="Contact-friend-scope">
                 <div id="Contact-image-user">
                     <img src="" alt="" />
                 </div>
@@ -19,7 +20,6 @@ export function Contact({username,leastMessage}:ContactConfigProps){
                         {leastMessage? "✔✔ vlw" : ""}
                     </div>
                 </div>
-            </div>
-        </>
+        </div>
     )
 }
