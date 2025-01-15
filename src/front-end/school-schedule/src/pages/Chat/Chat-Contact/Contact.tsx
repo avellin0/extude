@@ -1,15 +1,30 @@
 import "./Contact.css"
+import { useNavigate } from "react-router-dom"
 
 interface ContactConfigProps{
     username?: string,
     leastMessage?: boolean,    
+    permission?: boolean;
 }
 
-export function Contact({username,leastMessage}:ContactConfigProps){
+
+export function Contact({username,leastMessage, permission}:ContactConfigProps){
+
+      const navigate = useNavigate()
+
+    const redirectMessage = () => { 
+            const currentPath = window.location.pathname;
+    
+            if (permission && !currentPath.includes(`/${username}`)) {
+                navigate(`${username}`);
+            } else {
+                console.error("Já estou na página ou URL já contém o username");
+            }
+    }
 
   
     return (
-        <div id="Contact-friend-scope">
+        <div id="Contact-friend-scope" onClick={() => redirectMessage()}>
                 <div id="Contact-image-user">
                     <img src="" alt="" />
                 </div>

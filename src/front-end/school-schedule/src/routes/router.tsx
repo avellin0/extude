@@ -11,6 +11,7 @@ import {LibraryPage} from "../pages/LibraryPage"
 import LibraryBookPage from "../pages/LibraryBookPage";
 import Chat from "../pages/Chat/Chat";
 import { PrivateChat } from "../pages/Chat/Individual-chat/PrivateChat";
+import { AddFriends } from "../pages/Chat/AddFriends/AddFriends";
 export const router = createBrowserRouter([
  {
     path: "/",
@@ -54,11 +55,15 @@ export const router = createBrowserRouter([
  },
  {
   path: "/comunity/:id",
-  element: <Chat permission={true}/>
+  element: <Chat/>
  },
  {
   path:"/comunity/:id/:username",
   element: <PrivateChat/>
+ },
+ {
+  path: "comunity/:id/new_friends",
+  element: <AddFriends/>
  }
 ])
 

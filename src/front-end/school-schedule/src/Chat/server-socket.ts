@@ -32,6 +32,8 @@ io.on("connection", (socket: Socket) => {
         })
     })
 
+  
+
     //devo fazer criar uma porta para escutar(on) o chamado do front e enviar uma resposta(emit)
 })
 

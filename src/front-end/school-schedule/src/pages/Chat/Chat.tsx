@@ -1,6 +1,6 @@
 import "./Chat.css"
 import React, { useState, useRef, useEffect} from "react"
-import { useParams, useNavigate} from "react-router-dom"
+import { useParams} from "react-router-dom"
 import {socket} from "../../Chat/socket"
 
 import {Contact} from "../Chat/Chat-Contact/Contact"
@@ -11,15 +11,20 @@ export type TypeOfMessage = {
     authorId: string
 }
 
-type ChatProps = {
-    permission: boolean;
-};
+type UserFriendsList = {
+    name: string
+}
 
-export default function Chat({permission}: ChatProps){
+
+interface TesteProps{
+    id: string
+}
+
+
+export default function Chat(){
     const [messageList, setmessageList] = useState<TypeOfMessage[]>([])
-    const [username, setUsername] = useState()
-    const [count, setCount] = useState(0)
-    
+    const [username, setUsername] = useState() 
+    const [UserFriends , setUserFriends] = useState<UserFriendsList[]>([])  
     const messageRef = useRef<HTMLInputElement>(null)
     
     const {id} = useParams<{id: string}>()
@@ -27,17 +32,47 @@ export default function Chat({permission}: ChatProps){
 
     useEffect(() => {
 
+        const teste = async() => {
+            
+            const User = id?.toString().slice(1)
+
+            if(!User) return 
+
+            const UserId: TesteProps = {id: User}
+
+            const response = await fetch('http://localhost:3000/friends', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify(UserId) 
+            })
+            
+           if(!response.ok) return 
+       
+           const data = await response.json();
+            
+           setUserFriends([...data])
+           console.log(UserFriends);
+           
+            
+        }
+
+        teste()
+
+
+        
+        
+
         const hanldeMessage = (data: TypeOfMessage) => {
             setmessageList((current) => [...current, data])
         }
 
         socket.on('port3004', hanldeMessage)
 
-
         return () => {
             socket.off('port3004', hanldeMessage)
         }
-
     },[])
 
 
@@ -62,9 +97,9 @@ export default function Chat({permission}: ChatProps){
       
           const data = await response.json();
 
-          console.log(data[0].name);
-
           setUsername(data[0].name)
+
+          
           
         } catch (error) {
           console.error('Erro ao fazer a requisição:', error);
@@ -81,7 +116,6 @@ export default function Chat({permission}: ChatProps){
         const message = messageRef.current.value
 
         if(!message.trim()) return 
-
 
 
         socket.emit('port3003', {
@@ -108,25 +142,19 @@ export default function Chat({permission}: ChatProps){
         }
     }
 
-    const navigate = useNavigate()
-
-    const redirectMessage = () => { 
-            const currentPath = window.location.pathname;
-    
-            if (permission && !currentPath.includes(`/${username}`)) {
-                navigate(`${username}`);
-            } else {
-                console.error("Já estou na página ou URL já contém o username");
-            }
-    }
-
-
     return (
         <div id="chat-body-scope">
             <div id="chat-sidebar-scope">
-                <div id="Contact-scope" onClick={() => redirectMessage()}>
-                    <Contact username={"Amigo1"} leastMessage={true}/>   
-                 </div> 
+                    <button><a href={`${id}/new_friends`}>New Friends</a></button>
+                    
+                        {
+                          UserFriends.map((user,index)=> (
+                            <>
+                                <Contact username={user.name} leastMessage={true} permission={true} key={index}/>  
+                            </>
+                          ))
+                        }
+                    
             </div>  
            
             <div id="chat-scope">
@@ -142,7 +170,6 @@ export default function Chat({permission}: ChatProps){
                               ): <p key={`${index + 1}`} id="chat-host-side">{message.author}: {message.message}</p> 
                             }                          
                         </div> 
-        
                     )
                  )}
 
@@ -155,3 +182,6 @@ export default function Chat({permission}: ChatProps){
         </div>
     )
 }
+
+
+// Ja passei todos os amigos para um array chamada UserFriends que tem todos os amigos de um usuario , usando postgres; 
