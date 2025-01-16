@@ -8,11 +8,17 @@ import {Contact} from "../Chat/Chat-Contact/Contact"
 export type TypeOfMessage = {
     message: string,
     author: string,
-    authorId: string
+    authorId: string,
+    addresse: string
 }
 
 type UserFriendsList = {
     name: string
+}
+
+type PermissionOfNavigate={
+    permission: boolean,
+    address?: string
 }
 
 
@@ -21,7 +27,7 @@ interface TesteProps{
 }
 
 
-export default function Chat(){
+export default function Chat({permission, address}:PermissionOfNavigate){
     const [messageList, setmessageList] = useState<TypeOfMessage[]>([])
     const [username, setUsername] = useState() 
     const [UserFriends , setUserFriends] = useState<UserFriendsList[]>([])  
@@ -55,7 +61,7 @@ export default function Chat(){
            setUserFriends([...data])
            console.log(UserFriends);
            
-            
+                       
         }
 
         teste()
@@ -122,6 +128,7 @@ export default function Chat(){
             message,
             author: username, 
             authorid: teste,
+            addresse: address
         })
 
         console.log("Esse é o id:", id);
@@ -150,7 +157,7 @@ export default function Chat(){
                         {
                           UserFriends.map((user,index)=> (
                             <>
-                                <Contact username={user.name} leastMessage={true} permission={true} key={index}/>  
+                                <Contact username={user.name} leastMessage={true} permission={permission} key={index}/>  
                             </>
                           ))
                         }
@@ -159,17 +166,20 @@ export default function Chat(){
            
             <div id="chat-scope">
                 <div id="chat-scope-area">
-               
+                                
                 {
-                    messageList.map((message, index) => (
-                        
+                    messageList.map((message, index) => (                        
                         <div>
+
                             {
                               message.authorId === teste? (
                                 <p key={`${index + 1}`} >{message.author}: {message.message}</p>                                         
                               ): <p key={`${index + 1}`} id="chat-host-side">{message.author}: {message.message}</p> 
-                            }                          
+                            }
+                                                  
                         </div> 
+                    
+                            
                     )
                  )}
 
@@ -183,5 +193,3 @@ export default function Chat(){
     )
 }
 
-
-// Ja passei todos os amigos para um array chamada UserFriends que tem todos os amigos de um usuario , usando postgres; 

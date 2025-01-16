@@ -29,6 +29,7 @@ io.on("connection", (socket: Socket) => {
             message: data.message,
             authorId: socket.data.authorId,
             author: data.author,
+            addresse: data.addresse
         })
     })
 

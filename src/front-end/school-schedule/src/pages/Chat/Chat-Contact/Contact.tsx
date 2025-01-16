@@ -15,9 +15,9 @@ export function Contact({username,leastMessage, permission}:ContactConfigProps){
     const redirectMessage = () => { 
             const currentPath = window.location.pathname;
     
-            if (permission && !currentPath.includes(`/${username}`)) {
+            if (permission && !currentPath.includes(`/${username}`)){
                 navigate(`${username}`);
-            } else {
+            } else if (!currentPath.includes(`/${''}`)){
                 console.error("Já estou na página ou URL já contém o username");
             }
     }

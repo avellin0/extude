@@ -55,7 +55,7 @@ export const router = createBrowserRouter([
  },
  {
   path: "/comunity/:id",
-  element: <Chat/>
+  element: <Chat permission={true}/>
  },
  {
   path:"/comunity/:id/:username",
