@@ -104,7 +104,8 @@ export default function Chat({permission, address}:PermissionOfNavigate){
           const data = await response.json();
 
           setUsername(data[0].name)
-
+          console.log(data);
+          
           
           
         } catch (error) {
@@ -131,7 +132,7 @@ export default function Chat({permission, address}:PermissionOfNavigate){
             addresse: address
         })
 
-        console.log("Esse é o id:", id);
+        console.log("Estou enviando para:", address, "desse usuario:", username , "essa menssagem:", message);
         
 
         cleanInput()
@@ -148,6 +149,17 @@ export default function Chat({permission, address}:PermissionOfNavigate){
             HandleSubmitMessage()
         }
     }
+
+    const ImplementTheChat = (message:any, index: number) => {
+        return (
+            <div>
+                <p key={`${index + 1}`} >{message.author}: {message.message}</p>                                         
+                <p key={`${index + 1}`} id="chat-host-side">{message.author}: {message.message}</p> 
+            </div>
+        )
+    }
+
+
 
     return (
         <div id="chat-body-scope">
@@ -171,10 +183,10 @@ export default function Chat({permission, address}:PermissionOfNavigate){
                     messageList.map((message, index) => (                        
                         <div>
 
+                            
+
                             {
-                              message.authorId === teste? (
-                                <p key={`${index + 1}`} >{message.author}: {message.message}</p>                                         
-                              ): <p key={`${index + 1}`} id="chat-host-side">{message.author}: {message.message}</p> 
+                              message.addresse === message.author && ImplementTheChat(message, index)
                             }
                                                   
                         </div> 
