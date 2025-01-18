@@ -153,8 +153,11 @@ export default function Chat({permission, address}:PermissionOfNavigate){
     const ImplementTheChat = (message:any, index: number) => {
         return (
             <div>
-                <p key={`${index + 1}`} >{message.author}: {message.message}</p>                                         
-                <p key={`${index + 1}`} id="chat-host-side">{message.author}: {message.message}</p> 
+                {
+                    message.author === username? 
+                    <p key={`${index + 1}`} >{message.author}: {message.message}</p> :                                  
+                    <p key={`${index + 1}`} id="chat-host-side">{message.author}: {message.message}</p> 
+                }     
             </div>
         )
     }
@@ -182,13 +185,9 @@ export default function Chat({permission, address}:PermissionOfNavigate){
                 {
                     messageList.map((message, index) => (                        
                         <div>
-
-                            
-
                             {
-                              message.addresse === message.author && ImplementTheChat(message, index)
-                            }
-                                                  
+                              message.addresse === username || message.author === username? ImplementTheChat(message, index) : ""                            
+                            }                     
                         </div> 
                     
                             
