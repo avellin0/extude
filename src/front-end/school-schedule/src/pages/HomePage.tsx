@@ -30,11 +30,11 @@ export default function Home(){
                         </div>
                         <div className="Home-sideBar-list-comunity">
                             {/* <img src={flash} alt="" /> */}
-                            <h2><a href={`/comunity/:${id}`} className='Home-link'>Chat</a></h2>
+                            <h2><a href={`/chat/:${id}`} className='Home-link'>Chat</a></h2>
                         </div>
                         <div className="Home-sideBar-list-comunity">
                             {/* <img src={people} alt="" /> */}
-                            <h2>Comunity</h2>
+                            <h2><a href={`/comunity/:${id}`} className='Home-link'>Comunity</a></h2>
                         </div>
                     </div>
                     <div className="Home-sideBar-workSpace">
@@ -52,15 +52,17 @@ export default function Home(){
                             <input type="text" placeholder='Press F to search' className='Home-Main-Header-search-input'/>
                         </div>
                     </div>
+
                     <div className="Home-Main-Introduction">
                         <h1>expand your horizon</h1>
                         <h1>to the Future</h1>
                     </div>
+
                     <div className="Home-Main-Content"></div>
                     <div className="Home-Main-Content"></div>
                     <div className="Home-Main-Content"></div>
                 </div>
-            </div>
+            </div>          
         </>
     )
 }

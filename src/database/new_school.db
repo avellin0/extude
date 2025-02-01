@@ -7,6 +7,14 @@ CREATE TABLE usuario(
     permission VARCHAR(20) NOT NULL
 );
 
+CREATE TABLE user_friends(
+    user_id UUID REFERENCES usuario(userId) ON DELETE CASCADE,
+    friend_id UUID REFERENCES usuario(userId) ON DELETE CASCADE,
+    status VARCHAR(20) DEFAULT 'pending',
+    created_at TIMESTAMP DEFAULT NOW(),
+    PRIMARY KEY (user_id, friend_id)
+);
+
 CREATE TABLE books (
     book_id UUID PRIMARY KEY NOT NULL, 
     title VARCHAR(50) NOT NULL,

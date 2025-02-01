@@ -29,9 +29,32 @@
 #chat-scope-area{
     padding: 10px 0 0 10px;
     width: 100%;
-    height: 90%;
+    height: 90vh;
     color: aliceblue;
 }
+
+
+
+#chat-left-side,
+#chat-right-side{
+    width: 40%;
+    overflow-wrap: break-word;
+}
+
+#chat-left-side span{
+    color: #dbdada;
+}
+
+
+#chat-right-side span{
+    color: #5cb351;
+}
+
+#chat-right-side{
+ margin-left: 50%;
+}
+
+
 
 #chat-text-input-scope{
     width: 100%;
@@ -66,12 +89,6 @@
     background-color: rgba(0,0,0, 0.2);
 }
 
-#chat-host-side{
-    position: relative;
-    right: -40rem;
-    color: aqua;
-}
-
 
 #Contact-scope{
     height: 100%;
@@ -79,4 +96,23 @@
     display: flex;
     flex-direction: column;
     background-color: antiquewhite;
+}
+
+#chat-new-friend-btn{
+    width: 100%;
+    height: 60px;
+    font-size: 16pt;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+#chat-new-friend-btn:hover{
+    cursor: pointer;
+    background-color: #dbdada;
+}
+
+#chat-new-friend-btn a{
+    color: black;
+    text-decoration: none;
 }

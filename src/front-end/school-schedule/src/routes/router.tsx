@@ -55,7 +55,11 @@ export const router = createBrowserRouter([
  },
  {
   path: "/comunity/:id",
-  element: <Chat permission={true}/>
+  element: <Home/>
+ },
+ {
+  path: "/chat/:id",
+  element:<Chat permission={true}/>
  },
  {
   path:"/comunity/:id/:username",
@@ -63,6 +67,10 @@ export const router = createBrowserRouter([
  },
  {
   path: "comunity/:id/new_friends",
+  element: <AddFriends/>
+ },
+ {
+  path: "comunity/:id/:username/new_friends",
   element: <AddFriends/>
  }
 ])

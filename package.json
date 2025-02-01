@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "chat": "tsx --watch src/server/server-socket.ts",
     "server": "tsx --watch src/client-code.ts",
     "test": "tsx --watch src/middleware/middleware.ts"
   },

@@ -26,7 +26,6 @@ export function Contact({username,leastMessage, permission}:ContactConfigProps){
     return (
         <div id="Contact-friend-scope" onClick={() => redirectMessage()}>
                 <div id="Contact-image-user">
-                    <img src="" alt="" />
                 </div>
 
                 <div id="Contact-info-scope">
