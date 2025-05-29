@@ -1,7 +1,7 @@
 import "./Chat.css"
 import React, { useState, useRef, useEffect} from "react"
 import { useParams, useNavigate} from "react-router-dom"
-import {socket} from "../../Chat/socket"
+import {socket} from "./connect/socket"
 
 import {Contact} from "../Chat/Chat-Contact/Contact"
 

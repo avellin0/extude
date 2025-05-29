@@ -1,5 +1,5 @@
 import "./AddFriends.css"
-import {socket} from "../../../Chat/socket"
+import {socket} from "../connect/socket"
 import {useState} from "react"
 import { useParams, useNavigate} from "react-router-dom"
 
