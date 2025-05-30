@@ -1,11 +1,11 @@
-import {config} from 'dotenv'
-config({path: "./src/.env"})
+import dotenv from 'dotenv'
+dotenv.config()
 
 import {Client} from 'pg'
 const db = new Client({
     user: process.env.USER,
     host: process.env.HOST,
-    port: 5432,
+    port: Number(process.env.PORT),
     database: process.env.DATABASE,
     password: process.env.PASS
 })

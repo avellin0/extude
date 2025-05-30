@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server": "tsx --watch src/client-code.ts",
+    "server": "tsx --watch client-code.ts",
     "test": "tsx --watch src/middleware/middleware.ts"
   },
   "author": "",
