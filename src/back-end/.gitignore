@@ -3,4 +3,5 @@ node_modules
 README.md
 new_school.db
 school.db
+update-data.db
 Dockerfile
