@@ -9,14 +9,12 @@ export class GetStudents{
         
         const alreadyHaveAccount = await db.query('SELECT * FROM Usuario WHERE email = $1', [email])
 
-        if(alreadyHaveAccount.rows.length > 0){
-            console.log('Email já registrado');
-            return res.send('Usuario ja  existe') 
+        if(alreadyHaveAccount.rows.length < 0){
+            console.log('Usuario não encontrado');
+            res.status(404).json("usuario não encontrado")
         } 
         
-        console.timeEnd()
-
-        res.status(500).send("Tudo certo")
+        res.status(200).send(alreadyHaveAccount.rows)
     }
 }
 
