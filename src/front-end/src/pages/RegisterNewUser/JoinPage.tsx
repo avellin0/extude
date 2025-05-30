@@ -68,7 +68,7 @@ export function Register() {
         try {
             AlreadySign(email)
 
-            const createAccount = await fetch('http://localhost:3000/create_account', {
+            const createAccount = await fetch('https://extude.onrender.com/create_account', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -90,7 +90,7 @@ export function Register() {
 
     const pegarId = async() => {
         
-        const getId = await fetch(`http://localhost:3000/student_id/${email}`)
+        const getId = await fetch(`https://extude.onrender.com/student_id/${email}`)
 
         if(!getId.ok){
             throw new Error('Não estou conseguindo buscar');

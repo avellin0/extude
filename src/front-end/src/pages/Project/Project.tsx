@@ -18,7 +18,7 @@ export function AdmPage() {
   useEffect(() => {
     const GetLastSave = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/lastMessage/${id}`);
+        const response = await fetch(`https://extude.onrender.com/lastMessage/${id}`);
         if (!response.ok) {
           throw new Error('Erro ao buscar última mensagem');
         }
@@ -97,7 +97,7 @@ export function AdmPage() {
     const info: SaveProps = { user_id: newId, content_text: note };
 
     try {
-      const response = await fetch('http://localhost:3000/notes', {
+      const response = await fetch('https://extude.onrender.com/notes', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

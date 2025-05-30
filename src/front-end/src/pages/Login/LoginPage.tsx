@@ -10,7 +10,7 @@ export function LoginPage(){
     const verificacao = async() => { 
 
     try{
-        const getId = await fetch(`http://localhost:3000/student_id/${email}`)
+        const getId = await fetch(`https://extude.onrender.com/student_id/${email}`)
 
         if(!getId.ok){
             throw new Error('Não estou conseguindo buscar');
