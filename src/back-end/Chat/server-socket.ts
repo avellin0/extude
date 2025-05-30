@@ -8,7 +8,7 @@ const app = express()
 
 const io = new Server(server, {
     cors: {
-        origin: "https://extude.vercel.app/",
+        origin: "*/",
         methods: ['GET','POST']
     }
 })
