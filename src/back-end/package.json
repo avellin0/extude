@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "server": "tsx --watch client-code.ts",
-    "test": "tsx --watch src/middleware/middleware.ts"
+    "test": "tsx --watch src/middleware/middleware.ts",
+    "build": "tsc",
+    "start": "node dist/client-code.js"
   },
   "author": "",
   "license": "ISC",
@@ -34,6 +36,6 @@
     "pg": "^8.11.5",
     "ts-node": "^10.9.2",
     "tsx": "^4.10.2",
-    "typescript": "^5.5.3"
+    "typescript": "^5.8.3"
   }
 }
