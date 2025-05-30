@@ -7,7 +7,10 @@ const db = new Client({
     host: process.env.HOST,
     port: Number(process.env.PORT),
     database: process.env.DATABASE,
-    password: process.env.PASS
+    password: process.env.PASS,
+    ssl:{
+        rejectUnauthorized: false
+    }
 })
 
 db.connect()
