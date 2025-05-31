@@ -7,6 +7,9 @@ export class CreateUser{
     async handle(req:Request ,res:Response){
             const {name,email,password,permissions} = req.body
 
+            console.log(name,email,password,permissions);
+            
+
             if(!name || !email || !password || !permissions){
                 return res.status(400).send('Todos os campos são obrigatorios')
             }

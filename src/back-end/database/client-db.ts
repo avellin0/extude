@@ -9,6 +9,5 @@ const db = new Client({
     }
 })
 
-
 db.connect()
 export {db}
