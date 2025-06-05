@@ -31,7 +31,7 @@ export class CreateUser{
 
             }catch(err){
                 console.log("esse é o erro:", err);
-                res.status(500).send('Erro interno')
+                res.status(404).send('Erro interno')
             }
     }
 }   

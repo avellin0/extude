@@ -46,7 +46,7 @@ export default function Chat({permission, address}:PermissionOfNavigate){
 
             const UserId: TesteProps = {id: User}
 
-            const response = await fetch('http://localhost:3000/friends', {
+            const response = await fetch('https://extude.onrender.com/friends', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -89,7 +89,7 @@ export default function Chat({permission, address}:PermissionOfNavigate){
 
       
         try {
-          const response = await fetch('http://localhost:3000/userInfo', {
+          const response = await fetch('https://extude.onrender.com/userInfo', {
             method: 'POST', 
             headers: {
               'Content-Type': 'application/json',

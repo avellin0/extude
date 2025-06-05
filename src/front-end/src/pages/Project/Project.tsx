@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 interface SaveProps {
-  user_id: number;
+  user_id: string;
   content_text: string;
 }
 
@@ -18,12 +18,20 @@ export function AdmPage() {
   useEffect(() => {
     const GetLastSave = async () => {
       try {
-        const response = await fetch(`https://extude.onrender.com/lastMessage/${id}`);
+
+        if(!id) return
+
+        const response = await fetch(`http://localhost:3000/lastMessage/180bca53-d7dd-4468-b8e6-31306c731149`);
+              
+        
         if (!response.ok) {
           throw new Error('Erro ao buscar última mensagem');
         }
         const data = await response.json();
-        setMessage(data[0]?.content);
+        setMessage(data.content);
+        
+        console.log("this is the last notes", message);
+        
       } catch (err) {
         console.log('Erro:', err);
       }
@@ -82,22 +90,24 @@ export function AdmPage() {
   };
 
   const Save = async () => {
+
     if (!id || isNaN(parseInt(id))) {
       console.error('Id inválido ou não fornecido');
       return;
     }
-
-    const newId = parseInt(id);
 
     if (!note.trim()) {
       console.error('A nota está vazia');
       return;
     }
 
-    const info: SaveProps = { user_id: newId, content_text: note };
+    const info: SaveProps = { user_id: id, content_text: note };
+
+    console.log(info);
+    
 
     try {
-      const response = await fetch('https://extude.onrender.com/notes', {
+      const response = await fetch('http://localhost:3000/create_notes', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -129,6 +139,7 @@ export function AdmPage() {
       }
       message.textContent = 'Suas ideias estão salvas!';
       console.log('Alteração salva com sucesso!');
+
     } catch (error) {
       console.log('Ocorreu esse erro:', error);
     }

@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "chat": "tsx --watch src/Chat/server-socket.ts",
+   
     "download": "tsx --watch src/Downloader/TypeDownloader.ts",
     "epub": "tsx --watch src/library/ebooks.ts",
     "dev": "vite",

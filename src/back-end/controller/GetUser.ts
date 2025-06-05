@@ -11,7 +11,7 @@ export class GetUser{
             
         }
         
-        const getUserInfo = await db.query("SELECT name FROM Usuario WHERE userid = $1", [id])
+        const getUserInfo = await db.query("SELECT name FROM usuario WHERE userid = $1", [id])
 
         console.log(getUserInfo.rows);
         

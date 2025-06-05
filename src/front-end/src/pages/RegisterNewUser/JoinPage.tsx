@@ -39,7 +39,7 @@ export function Register() {
 
     const AlreadySign = async(email: Email | string) => {
         try{
-            const response = await fetch('http://localhost:3000/students',{
+            const response = await fetch('https://extude.onrender.com/students',{
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
