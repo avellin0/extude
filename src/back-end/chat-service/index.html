@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>React + Socket.IO Test</title>
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        const socket = io("http://localhost:3030");
+
+        function App() {
+            const [message, setMessage] = React.useState("");
+            const [chat, setChat] = React.useState([]);
+
+            React.useEffect(() => {
+                socket.on("port3004", (data) => {
+                    setChat(prev => [...prev, data]);
+                });
+
+                return () => socket.off("port3004");
+            }, []);
+
+            const sendX = () => {
+                socket.emit("port3003", {
+                    message,
+                    author: "UsuarioX",
+                    authorid: Date.now(), // simula id
+                    addresse: "Todos"
+                });
+                setMessage("");
+            };
+
+            const sendY = () => {
+                socket.emit("port3003", {
+                    message,
+                    author: "UsuarioY",
+                    authorid: Date.now(), // simula id
+                    addresse: "Todos"
+                });
+                setMessage("");
+            };
+
+            return (
+                <div>
+                    <h1 style={{color: "white"}}>Chat</h1>
+                    <div id="input-area">
+                        <div>
+                            <input
+                                value={message}
+                                onChange={e => setMessage(e.target.value)}
+                                placeholder="Digite sua mensagem"
+                            />
+                            <button onClick={sendX}>Enviar</button>
+                        </div>
+
+                        <div>
+                            <input
+                                value={message}
+                                onChange={e => setMessage(e.target.value)}
+                                placeholder="Digite sua mensagem"
+                            />
+                            <button onClick={sendY}>Enviar</button>
+                        </div>
+
+                    </div>
+
+                    <div id="chat-area">
+
+                        <div className="chat">
+                            {chat.map((item, i) => (
+                                <>
+                                    {item.author === "UsuarioX" ?
+                                        <p key={i} id="autor"><b>{item.author}:</b> {item.message}</p> :
+                                            <p key={i} id="visitante"><b>{item.author}:</b> {item.message}</p>
+                                    }
+                                </>
+                            ))}
+                        </div>
+
+                        <div className="chat">
+                            {chat.map((item, i) => (
+                                <>
+                                    {item.author === "UsuarioY" ?
+                                        <p key={i} id="autor"><b>{item.author}:</b> {item.message}</p> :
+                                         <p key={i} id="visitante"><b>{item.author}:</b> {item.message}</p>
+                                    }
+                                </>
+                            ))}
+                        </div>
+
+                    </div>
+
+
+                </div>
+            );
+        }
+
+
+
+
+
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+        root.render(<App />);
+
+    </script>
+</body>
+
+</html>
