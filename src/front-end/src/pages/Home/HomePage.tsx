@@ -39,7 +39,7 @@ export default function Home(){
                     </div>
                     <div className="Home-sideBar-workSpace">
                         <p>profile</p>
-                        <h2>Overview</h2>
+                        <h2><a href={`/profile/:${id}`} className='Home-link'>Overview</a></h2>
                         <h2>My Progress</h2>
                     </div>
                 </div>
