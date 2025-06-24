@@ -1,3 +1,6 @@
+#user-profile-content-list h4{
+    color: black;
+}
 
 #user-profile-scope{
     width: 100vw;
@@ -40,7 +43,9 @@
 
 
 
-
+#home-link:hover{
+    cursor: pointer;
+}
 
 
 

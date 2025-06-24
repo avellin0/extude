@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 interface SaveProps {
-  user_id: number;
+  user_id: string;
   content_text: string;
 }
 
@@ -18,12 +18,15 @@ export function AdmPage() {
   useEffect(() => {
     const GetLastSave = async () => {
       try {
-        const response = await fetch(`https://extude.onrender.com/lastMessage/${id}`);
+        const response = await fetch(`http://localhost:3000/lastNote/${id}`);
         if (!response.ok) {
           throw new Error('Erro ao buscar última mensagem');
         }
-        const data = await response.json();
-        setMessage(data[0]?.content);
+        
+        const data = await response.text();
+        console.log("this is the data:", data);
+        
+        setMessage(data);
       } catch (err) {
         console.log('Erro:', err);
       }
@@ -87,17 +90,15 @@ export function AdmPage() {
       return;
     }
 
-    const newId = parseInt(id);
-
     if (!note.trim()) {
       console.error('A nota está vazia');
       return;
     }
 
-    const info: SaveProps = { user_id: newId, content_text: note };
+    const info: SaveProps = { user_id: id, content_text: note };
 
     try {
-      const response = await fetch('https://extude.onrender.com/notes', {
+      const response = await fetch('http://localhost:3000/notes', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -105,30 +106,19 @@ export function AdmPage() {
         body: JSON.stringify(info),
       });
 
-      if (!response.ok) {
-        switch (response.status) {
-          case 400:
-            throw new Error('Campos obrigatórios estão faltando.');
-          case 401:
-            throw new Error('Você não está autorizado.');
-          case 404:
-            throw new Error('Recurso não encontrado.');
-          case 500:
-            throw new Error('Erro interno do servidor. Tente novamente mais tarde.');
-          default:
-            throw new Error(`Erro desconhecido: ${response.status}`);
-        }
-      }
-
+    
       const alteracao = await response.json();
       console.log(alteracao);
 
       const message = document.getElementById('project-notes-alert-save');
+
       if (!message) {
         throw new Error('Não existe esse elemento html');
       }
+
       message.textContent = 'Suas ideias estão salvas!';
       console.log('Alteração salva com sucesso!');
+    
     } catch (error) {
       console.log('Ocorreu esse erro:', error);
     }
@@ -136,6 +126,7 @@ export function AdmPage() {
 
   return (
     <div className="project-body">
+
       <div className="project-yt">
         <div id="project-video-url">
           <input
@@ -175,6 +166,7 @@ export function AdmPage() {
               <h1>Notes</h1>
             </div>
           </div>
+
           <textarea
             name=""
             id="project-notes-item"
@@ -183,7 +175,9 @@ export function AdmPage() {
             onChange={(e) => setNotes(e.target.value)}
             defaultValue={message}
           />
+          
           <p id="project-notes-alert-save"></p>
+
           <div id="project-notes-save" onClick={Save}>
             Save
           </div>
