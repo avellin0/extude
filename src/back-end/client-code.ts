@@ -5,7 +5,7 @@ function RunServer(server: ServerProtocol){
     if(server){
         
         server.isRunning()
-        console.log('Server is running');
+        console.log('Server is running...');
     }else{
         console.log('Server is Falled');
     }

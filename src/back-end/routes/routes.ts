@@ -9,6 +9,7 @@ import {GetLastSave} from '../controller/GetLastSave'
 import { GetUser } from "../controller/GetUser";
 import { CreateFriends } from "../controller/CreateFriends";
 import { GetFriends } from "../controller/GetFriends";
+import { AllInfo } from "controller/GetAllInformations";
 
 const create = new CreateUser()
 const students = new GetStudents()
@@ -18,7 +19,7 @@ const lastMessage = new GetLastSave()
 const getUserInfo = new GetUser()
 const friends = new CreateFriends()
 const getFriends = new GetFriends()
-
+const allinfo = new AllInfo()
 
 route.post('/create_account', create.handle)
 route.post('/students', students.handle)
@@ -28,5 +29,6 @@ route.get('/lastMessage/:id', lastMessage.handle)
 route.post('/userInfo', getUserInfo.handle)
 route.post('/friends', getFriends.handle)
 route.post('/newfriends', friends.handle)
+route.post('/all_info', allinfo.handle)
 
 export {route}
