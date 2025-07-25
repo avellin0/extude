@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { db } from "database/client-db";
+import { db } from "../database/client-db";
 
 export class AllInfo{
     async handle(req:Request,res:Response){

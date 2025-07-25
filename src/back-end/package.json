@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "commonjs",
   "scripts": {
     "chat": "tsx --watch Chat/server-socket.ts",
     "server": "tsx --watch client-code.ts",
