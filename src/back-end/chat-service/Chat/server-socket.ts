@@ -9,8 +9,6 @@ const io = new Server(server, {
     }
 })
 
-
-
 io.on("connection", (socket: Socket) => {
     console.log("User connected !"); 
 
@@ -26,10 +24,4 @@ io.on("connection", (socket: Socket) => {
             addresse: data.addresse
         })
     })
-
-  
-
-    //devo fazer criar uma porta para escutar(on) o chamado do front e enviar uma resposta(emit)
 })
-
-console.log("chat esta funcionando! na porta 3030");
