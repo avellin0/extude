@@ -168,8 +168,9 @@
 }
 
 #project-notes-alert-save{
+    font-size: 9pt;
+    margin-left: 2%;
     position: absolute;
-    bottom: 40px;
-    right: 200px;
-    color: #f8f8ff;
+    bottom: 7.5%;
+    color: #b9b9bb;
 }
