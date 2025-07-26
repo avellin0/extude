@@ -1,5 +1,4 @@
-import { db } from "database/client-db";
-import { notes } from "src/Queries/Notes.queries";
+import { notes } from "../../Queries/Notes.queries";
 
 export class LastSaveNotes {
     async execute(id: string) {

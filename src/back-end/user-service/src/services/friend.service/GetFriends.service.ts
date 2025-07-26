@@ -1,4 +1,4 @@
-import { friends } from "src/Queries/Friends.queries";
+import { friends } from "../../Queries/Friends.queries";
 
 export class GetFriendService{
     async execute(id: string){

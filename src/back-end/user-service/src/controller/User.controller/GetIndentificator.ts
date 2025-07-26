@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import {GetUserInentificator} from "src/services/user.service/GetIndentificator.service";
+import {GetUserInentificator} from "../../services/user.service/GetIndentificator.service";
 
 export class GetId {
    async handle(req: Request, res: Response){

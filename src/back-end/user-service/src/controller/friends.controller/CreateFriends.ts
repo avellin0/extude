@@ -1,5 +1,5 @@
 import {Request,Response} from "express"
-import { CreateFriendService } from "src/services/friend.service/CreateFriends.service";
+import { CreateFriendService } from "../../services/friend.service/CreateFriends.service";
 
 export class CreateFriends{
     async handle(req:Request,res:Response){

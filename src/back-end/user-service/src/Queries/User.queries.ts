@@ -1,4 +1,4 @@
-import { db } from "database/client-db";
+import { db } from "../../database/client-db";
 import { UserProps } from "../interface/CreateUser.interface"
 
 export class User {

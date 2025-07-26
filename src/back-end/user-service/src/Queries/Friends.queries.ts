@@ -1,4 +1,4 @@
-import { db } from "database/client-db"
+import { db } from "../../database/client-db"
 import { FriendsProps } from "../interface/Friends.interface"
 
 export class friends {

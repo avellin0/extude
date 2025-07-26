@@ -1,5 +1,4 @@
-import { db } from "database/client-db";
-import { friends } from "src/Queries/Friends.queries";
+import { friends } from "../../Queries/Friends.queries";
 
 interface FriendsProps{
     friendOf: string

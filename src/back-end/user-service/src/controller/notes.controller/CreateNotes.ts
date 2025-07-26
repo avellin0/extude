@@ -1,5 +1,5 @@
 import {Request, Response} from 'express'
-import { CreateNoteService } from 'src/services/notes.service/CreateNotes.service'
+import { CreateNoteService } from '../../services/notes.service/CreateNotes.service'
 
 export class CreateNotes {
     async handle(req: Request, res: Response){

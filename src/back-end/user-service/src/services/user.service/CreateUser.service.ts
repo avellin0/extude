@@ -1,6 +1,6 @@
 import { createHash } from "crypto"; 
 import {UserProps} from "../../interface/CreateUser.interface"
-import { User } from "src/Queries/User.queries";
+import { User } from "../../Queries/User.queries";
 
 export class CreateUserService{
     async execute({name,email,password,permissions}: UserProps){

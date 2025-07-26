@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { Userinfo } from "src/services/user.service/GetStudentes.service";
+import { Userinfo } from "../../services/user.service/GetStudentes.service";
 
 export class GetStudents {
     async handle(req: Request, res: Response) {

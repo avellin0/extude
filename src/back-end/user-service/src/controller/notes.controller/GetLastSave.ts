@@ -1,5 +1,5 @@
 import {Response,Request} from 'express'
-import { LastSaveNotes } from 'src/services/notes.service/GetLastSave.service'
+import { LastSaveNotes } from '../../services/notes.service/GetLastSave.service'
 
 export class GetLastSave{
     async handle(req:Request,res:Response){
