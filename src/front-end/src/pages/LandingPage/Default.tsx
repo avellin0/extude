@@ -35,7 +35,7 @@ export function Default() {
                 <div id="default-introduction-scope">
                     <div id="default-text-scope">
                         <div id="default-text-main">
-                            <h1>Fomos <span>condenados</span> a ser <br /> <span>livres</span>, liberte sua <span>mente.</span></h1>
+                            <h1>Fomos <span className="default-text-main-span">condenados</span> a ser <br /> <span className="default-text-main-span">livres</span>, liberte sua <span className="default-text-main-span">mente.</span></h1>
                             <p>Com acesso a vídeos, transcrições e ferramentas de aprendizado, seu progresso nunca esteve tão ao seu alcance.</p>
 
                             <div id="default-introduction-btn-scope">

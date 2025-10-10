@@ -1,0 +1,226 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scrollbar-width: none;
+}
+
+#library-search-books{
+    position: absolute;
+    top: 0%;
+    width: 100vw;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#view-exit{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+#library-body{
+    width: 100vw;
+    height: 250vh;
+    background-color: #041620;
+}
+
+#library-header-scope{
+    height: 7%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    justify-content: center;
+}
+
+#library-header-logo-scope{
+    width: 45%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+#library-header-logo{
+    height: 60px;
+    width: 60px;
+    background-image: url("../../assets/icons/v3.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#library-header-links{
+    width: 45%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+}
+
+#library-header-links p{
+    color: white;
+    text-decoration: none;
+    font-size: 15pt;
+}
+
+#library-header-links p:hover{
+    cursor: pointer;
+    border-bottom: 1px solid #5cb351;
+}
+
+#library-introduction-scope{
+    width: 100%;
+    height: 23%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+#library-introduction{
+    margin-left: 50px;
+    width: 40%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    word-break: break-all;
+    flex-direction: column;
+    padding: 10px;
+    gap: 20px;
+}
+
+#library-introduction p, h4{
+    color: #c2c2c2;
+}
+
+#library-introduction-image{
+    width: 60%;
+    height: 80%;
+}
+
+#library-introduction-btn-scope{
+    width: 80%;
+    height: 15%;
+}
+
+#library-introduction-btn{
+    width: 40%;
+    height: 100%;
+    border: none;
+    border: 3px solid #5cb351;
+    background: transparent;
+    color: white;
+}
+
+#library-introduction-btn:hover{
+    cursor: pointer;
+    background-color: rgba(255,255,255,0.05);
+}
+
+#library-menu-scope{
+    width: 100vw;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+}
+
+.library-menu-title{
+    color: #c2c2c2;
+}
+
+.library-menu-row{
+    width: 90vw;
+    height: 40vh;
+    padding: 10px;
+    gap: 5%;
+    display: flex;
+    justify-content: center;
+}
+
+.library-menu-books-area{
+    width: 15%;
+    height: 35vh;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.library-menu-books-area:hover{
+    cursor: pointer;
+    background-color: rgba(0,0,0,0.2);
+    transform: translateY(-10px);
+    box-shadow: 1px 1px 5px black;
+    transition: ease-in-out .3s ;
+}
+
+#library-menu-book-seneca{
+    background-image: url("../../assets/images/seneca.jpg");
+}
+
+#library-menu-book-freud{
+    background-image: url("../../assets/images/freud.jpg");
+}
+
+#library-menu-book-conde{
+    background-image: url("../../assets/images/conde.jpg");
+}
+
+#library-menu-book-prince{
+    background-image: url("../../assets/images/prince.jpg");
+}
+
+
+#library-menu-book-poemas{
+    background-image: url("../../assets/images/poemas.jpg");
+    background-position: top;
+}
+
+#library-menu-book-poor-folk{
+    background-position: center;
+    background-image: url("../../assets/images/poor_folk.jpg");
+}
+
+#library-menu-book-picture{
+    background-image: url("../../assets/images/picture.jpg");
+}
+
+#library-menu-book-alice{
+    background-image: url("../../assets/images/alice.jpg");
+}
+
+#library-menu-book-estranho{
+    background-image: url("../../assets/images/estranho.jpg");
+}
+
+#library-menu-book-mobi_dick{
+    background-image: url("../../assets/images/mobi_dick.jpg");
+}
+
+#library-menu-book-war_and_peace{
+    background-image: url("../../assets/images/war_and_peace.jpg");
+}
+
+#library-menu-book-underground{
+    background-image: url("../../assets/images/underground.jpg");
+}
+
+#library-menu-book-white_nights{
+    background-image: url("../../assets/images/white_nights.jpg");
+}
+
+#library-menu-book-crime_castigo{
+    background-image: url("../../assets/images/crime_castigo.jpg");
+}
+
+#library-menu-book-idiot{
+    background-image: url("../../assets/images/idiot.jpg");
+}

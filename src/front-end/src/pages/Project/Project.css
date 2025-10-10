@@ -32,6 +32,11 @@
     border-radius: 10px;
 }
 
+
+#project-video-subtitle{
+    position: absolute;
+}
+
 .project-notes-scope{
     display: flex;
     justify-content: center;
@@ -155,6 +160,10 @@
     height: 100px;
     background-color: #252525;
     color: gainsboro;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15pt;
     overflow-y: scroll;
     padding: 10px;
     text-align: left;

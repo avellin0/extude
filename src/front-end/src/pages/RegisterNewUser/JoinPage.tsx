@@ -34,12 +34,9 @@ export function Register() {
         setPassword(event.target.value);
     }
 
-
-    
-
     const AlreadySign = async(email: Email | string) => {
         try{
-            const response = await fetch('https://extude.onrender.com/students',{
+            const response = await fetch('http://localhost:3000/students',{
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -49,7 +46,7 @@ export function Register() {
                 })
             })
 
-            if(! response.ok){
+            if(response.ok){
                 console.log("Deu MERDA");
             }
 
@@ -63,12 +60,11 @@ export function Register() {
         }
     }
 
-
     const sendData = async (data: DataPayload): Promise<void> => {
         try {
             AlreadySign(email)
 
-            const createAccount = await fetch('https://extude.onrender.com/create_account', {
+            const createAccount = await fetch('http://localhost:3000/create_account', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -81,31 +77,27 @@ export function Register() {
             }
 
             const responseData = await createAccount.json();
+            console.log('Success:', responseData);
 
-            console.log('Success:', responseData);   
         } catch (err) {
             console.log("erro:", err);
         }
     }
 
-    const pegarId = async() => {
-        
-        const getId = await fetch(`https://extude.onrender.com/student_id/${email}`)
+    const pegarId = async() => {    
+        const getId = await fetch(`http://localhost:3000/student/${email}`)
 
         if(!getId.ok){
             throw new Error('Não estou conseguindo buscar');
         }
 
         const data = await getId.json()
-        const id = data[0]?.userid
-        
-        console.log("esse é o id do usuario:", id);
-        
+        const id = data.data[0]?.name
+                
         
         navigate(`/home/${id}`)
     }
 
-   
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
         
@@ -129,8 +121,6 @@ export function Register() {
             console.log("erro aqui:", err);
         }
     }
-
-
 
     return ( 
     <div className='register-body'>

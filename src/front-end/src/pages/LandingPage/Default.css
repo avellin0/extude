@@ -178,6 +178,10 @@
     font-size: 18pt;
 }
 
+.default-text-main-span{
+    color: black;
+}
+
 #default-introduction-btn-scope{
     position: relative;
     top: 20%;

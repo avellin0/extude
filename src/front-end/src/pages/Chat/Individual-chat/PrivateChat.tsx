@@ -1,15 +1,26 @@
-import Chat from "../Chat";
+import { useEffect } from "react";
+import { Mobile } from "../Modules/mobile/Mobile";
+import { SideBar } from "../Modules/sidebar/SideBar";
 import { useParams } from "react-router-dom";
 
 
+export function PrivateChat() {
 
-export function PrivateChat(){
+    const {id,username} = useParams<{id: string, username: string}>()
 
-    const {username} = useParams<{username: string}>()
-    
+    useEffect(() => {
+        console.log("this is friend name:", username);
+    }, [username])
+
     return (
         <>
-            <Chat permission={false} address={username}/>
+            <div id="body">
+                <div id="chat-body-scope">
+                    <Mobile/>
+                    
+                    
+                </div>
+            </div>
         </>
     )
 }

@@ -1,10 +1,12 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-#AddFriends-scope{
+
+
+#AddFriends-scope {
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -12,4 +14,76 @@
     align-items: center;
     flex-direction: column;
     gap: 10px;
+    background-color: #041620;
+}
+
+#addfriends-menu {
+    width: 30%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#addfriends_logo,
+#addfriends_info {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#addfriends_info {
+    gap: 5%;
+}
+
+.addfriend-btn {
+    background-color: transparent;
+    border: 1px solid gray;
+    border-radius: 5px;
+    text-indent: 10px;
+    width: 90%;
+    height: 30%;
+    color: white;
+    font-family: sans-serif;
+}
+
+.addfriend-btn:focus {
+    border: 1px solid #5cb351;
+}
+
+#addfriend-send-btn-scope {
+    width: 90%;
+    height: 30%;
+    display: flex;
+    align-items: center;
+    gap: 10%;
+}
+
+#addfriend-send-btn {
+    width: 60%;
+    height: 100%;
+    background-color: #041620;
+    border: 1px solid gray;
+}
+
+#addfriend-send-btn:hover {
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #5cb351;
+    border: 1px solid #5cb351;
+}
+
+#addfriend_voltar:hover {
+    cursor: pointer;
+    color: #5cb351;
+}
+
+
+
+#user-img {
+    width: 100px;
+    height: 100px;
 }

@@ -37,7 +37,8 @@
     padding-top: 20px;
 }
 
-#login-btn{
+.login-btn{
+    cursor: pointer;
     width: 100px;
     height: 35px;
 }
@@ -49,4 +50,16 @@
     border: none;
     text-indent: 10px;
     border-radius: 5px;
+}
+
+#login-btn-scope{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+}
+
+#login-btn-recrutadores{
+    width: 55%;
 }

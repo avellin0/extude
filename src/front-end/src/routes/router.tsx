@@ -6,12 +6,22 @@ import {LoginPage} from "../pages/Login/LoginPage";
 import {Register } from "../pages/RegisterNewUser/JoinPage";
 import { AdmPage } from "../pages/Project/Project";
 import { Download } from "../pages/Downloader/Download";
-import {LibraryPage} from "../pages/Library/LibraryPage"
-import LibraryBookPage from "../pages/Library/Books/LibraryBookPage";
-import Chat from "../pages/Chat/Chat";
-import { PrivateChat } from "../pages/Chat/Individual-chat/PrivateChat";
-import { AddFriends } from "../pages/Chat/AddFriends/AddFriends";
+
+
+import {UserProfileTimer} from "../pages/profile/src/App"
 import {UserProfile} from "../pages/profile/UserProfile"
+import { Chat } from "../pages/Chat/Chat"
+import { AddFriends } from "../pages/Chat/AddFriends/AddFriends"
+import { PersonalBooks } from '../pages/Library/pages/PrivateBooks/personalBook';
+import { TranslateEpub } from '../pages/Library/pages/Translate/Translate';
+import { PageNotFound } from '../pages/Library/pages/PageNotFound/PageNotFound';
+import { EbookReader } from "../pages/Library/pages/NewEbook/book_reader";
+
+import Library from "../pages/Library/pages/web_library/LibraryPage";
+
+import {BookReader} from "../pages/Library/pages/book_reader/book_reader";
+import { Legendas } from "../pages/Legendas/Legendas";
+
 
 export const router = createBrowserRouter([
  {
@@ -44,23 +54,43 @@ export const router = createBrowserRouter([
  },
  {
   path: "/library/:id",
-  element: <LibraryPage/>
+  element: <Library/>
  },
  {
-  path: "/book/:id/:book",
-  element: <LibraryBookPage/>
- },
+    path: "/book/:name",
+    element: <EbookReader/>,
+  },
+  {
+    path: "/personal_book",
+    element: <PersonalBooks mobile={false} />
+  },
+  {
+    path: "/m_personal_book",
+    element: <PersonalBooks mobile={true} />
+  },
+  {
+    path: "/translate",
+    element: <TranslateEpub />
+  },
+  {
+    path: "/favorites",
+    element: <PageNotFound/>
+  },
+  {
+    path: "/reading",
+    element: <PageNotFound/>
+  },
  {
   path: "/comunity/:id",
   element: <Home/>
  },
  {
   path: "/chat/:id",
-  element:<Chat permission={true}/>
+  element:<Chat />
  },
  {
   path:"/chat/:id/:username",
-  element: <PrivateChat/>
+  element: <Chat/>
  },
  {
   path: "chat/:id/new_friends",
@@ -73,7 +103,18 @@ export const router = createBrowserRouter([
  {
   path: "profile/:id",
   element: <UserProfile/>
-
- }
+ },
+  {
+  path: "profile-timer/:id",
+  element: <UserProfileTimer/>
+ },
+ {
+    path: "/book/:name",
+    element: <BookReader />,
+  },
+  {
+    path: "/legendas",
+    element: <Legendas/>
+  }
 ])
 

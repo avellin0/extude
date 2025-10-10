@@ -2,6 +2,7 @@ import "./UserProfile.css"
 import userImg from "../image/profile.png"
 import image from "../icons/search.png"
 import image2 from "../icons/people.png"
+import arrow_back from "../icons/arrow_back.png"
 import { useNavigate, useParams} from "react-router-dom"
 
 
@@ -17,19 +18,19 @@ export function UserProfile() {
         <div id="user-profile-scope">
             <div id="user-profile-user-content-scope">
                 <div>
-                    <p id="home-link" onClick={() => redirect()}>{`< back`}</p>
+                    <img src={arrow_back} alt="voltar" id="user-profile-back-icon" onClick={() => navigate(-1)} />
                 </div>
                 <div id="user-profile-content-header">
                     <img src={userImg} alt="" />
-                    <h1>Davi Avelino</h1>
+                    <h1>{id}</h1>
                 </div>
                 <div id="user-profile-content-list">
 
                     <p>Level</p>
-                    <h3>Master +3</h3>
+                    <h3>Mid level</h3>
 
-                    <p>Guilda</p>
-                    <h3>Los Hermanos</h3>
+                    <p>Timer</p>
+                    <h3 onClick={() => navigate(`/profile-timer/${id}`)}>Pomodoro+</h3>
 
                     <p>Space</p>
                     <h3>Genius</h3>
