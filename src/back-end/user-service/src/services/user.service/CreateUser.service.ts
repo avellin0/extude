@@ -12,8 +12,13 @@ export class CreateUserService{
 
             const user_queries = new User()    
 
-            await user_queries.VerifyUserEmail(email)
-            const result =  await user_queries.CreateUser({name,email,password,permissions})
+            const emailExists = await user_queries.VerifyUserEmail(email)
+
+            if(emailExists){
+                throw new Error("Email já cadastrado")
+            }
+
+            const result =  await user_queries.CreateUser({name,email,password})
 
             return result
 

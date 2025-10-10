@@ -1,9 +1,10 @@
+import { title } from "process";
 import { db } from "../../database/client-db"
 
 
-interface NotesProps{
+interface NotesProps {
     user_id: string,
-    content_text: string
+    content_text: string,
 }
 
 export class notes {
@@ -21,15 +22,19 @@ export class notes {
         }
     }
 
-    async CreateNotes({user_id, content_text}: NotesProps){
+    async CreateNotes({ user_id, content_text }: NotesProps) {
         console.log({ user_id, content_text });
 
         if (!user_id || !content_text) {
             throw new Error("error ao salvar anotação")
         }
 
-        const user = await db.query('INSERT INTO notes(note_id,user_id,content) VALUES (uuid_generate_v4(),$1,$2)', [user_id, content_text])
+        const title = "hello"
+
+        const user = await db.query('INSERT INTO notes(id,user_id,title,content) VALUES (uuid_generate_v4(),$1,$2,$3)', [user_id, title, content_text])
 
         return user
     }
+
+   
 }

@@ -1,5 +1,6 @@
 import {User} from "../../Queries/User.queries"
-export class GetUserInentificator{
+
+export class GetUserIndentificator{
     async execute(email: string){
         const query = new User()
 

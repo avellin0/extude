@@ -1,13 +1,19 @@
 import { User } from "../../Queries/User.queries"
 
 export class Userinfo {
-    async execute(email: string) {
+    async execute(email: string): Promise<any[]> {
         const query = new User()
         
         try {
+            
             const result = await query.VerifyUserEmail(email)
 
-            return { message: "Usuario encontrado", data: result }
+            
+            if(!result){
+                throw new Error("Usuario não encontrado")
+            }
+
+            return result 
         
         }catch(error){
             console.log("this is the error:", error);
