@@ -1,0 +1,17 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "vitest"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "msw": "^2.11.2"
+  },
+  "dependencies": {
+    "vitest": "^3.2.4"
+  }
+}
