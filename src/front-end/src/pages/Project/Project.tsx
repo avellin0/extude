@@ -66,7 +66,12 @@ export function AdmPage() {
         // cria blob para track
         const blob = new Blob([text], { type: "text/vtt" });
         const blobUrl = URL.createObjectURL(blob);
+
+        console.log("Legendas carregadas:", subtitleUrl);
+
+
         setSubtitleUrl(blobUrl);
+        
       } catch (err) {
         console.log("Erro ao buscar legendas:", err);
       }

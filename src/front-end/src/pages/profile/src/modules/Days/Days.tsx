@@ -2,11 +2,6 @@ import { useParams } from "react-router-dom"
 import "./Days.css"
 import { useEffect, useState} from "react"
 
-interface ProgressInterface {
-    Yesterday: number,
-    Goal: number,
-    Sequencie: number
-}
 
 export function Days() {
 

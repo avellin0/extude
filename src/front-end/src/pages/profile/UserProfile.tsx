@@ -18,7 +18,7 @@ export function UserProfile() {
         <div id="user-profile-scope">
             <div id="user-profile-user-content-scope">
                 <div>
-                    <img src={arrow_back} alt="voltar" id="user-profile-back-icon" onClick={() => navigate(-1)} />
+                    <img src={arrow_back} alt="voltar" id="user-profile-back-icon" onClick={() => redirect()} />
                 </div>
                 <div id="user-profile-content-header">
                     <img src={userImg} alt="" />
