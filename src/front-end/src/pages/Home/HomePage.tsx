@@ -60,6 +60,27 @@ export default function Home() {
 
                     <div className="Home-Main-Content">
                         <div className='Home-Main-Content-title'>
+                            <h2>Como o cérebro aprende:</h2>
+                        </div>
+
+                        <div className='Home-Main-Content-text'>
+                            <text>
+                                Você sabia que entender como o cérebro funciona pode mudar completamente a forma como você estuda?
+                                Conheça os processos de memória, atenção e repetição que ajudam o aprendizado,
+                                e descubra técnicas para aprender de forma mais leve e eficiente.
+                            </text>
+                        </div>
+
+                        <div className='Home-Main-Content-author'>
+                            <p>Davi Avelino</p>
+                            <p>21/05/26</p>
+                            <p className='like'>👍</p>
+                            <p className='deslike'>👎</p>
+                        </div>
+                    </div>
+
+                    <div className="Home-Main-Content">
+                        <div className='Home-Main-Content-title'>
                             <h2>Como funciona numeros Binarios ?</h2>
                         </div>
 
@@ -80,34 +101,14 @@ export default function Home() {
 
                     <div className="Home-Main-Content">
                         <div className='Home-Main-Content-title'>
-                            <h2>Como o cérebro aprende:</h2>
-                        </div>
-
-                        <div className='Home-Main-Content-text'>
-                            <text>
-                                Você sabia que entender como o cérebro funciona pode mudar completamente a forma como você estuda? 
-                                Conheça os processos de memória, atenção e repetição que ajudam o aprendizado, 
-                                e descubra técnicas para aprender de forma mais leve e eficiente.
-                            </text>
-                        </div>
-
-                        <div className='Home-Main-Content-author'>
-                            <p>Davi Avelino</p>
-                            <p>21/05/26</p>
-                            <p className='like'>👍</p>
-                            <p className='deslike'>👎</p>
-                        </div>
-                    </div>
-                    <div className="Home-Main-Content">
-                        <div className='Home-Main-Content-title'>
                             <h2>Como organizar seus estudos para aprender mais em menos tempo</h2>
                         </div>
 
                         <div className='Home-Main-Content-text'>
                             <text>
-                            Manter o foco e estudar com constância é um desafio, mas com as estratégias certas tudo fica mais fácil.
-                            Aprenda a montar um cronograma eficiente, usar métodos como Pomodoro e revisão espaçada, 
-                            e descubra como estudar menos tempo e aprender muito mais.
+                                Manter o foco e estudar com constância é um desafio, mas com as estratégias certas tudo fica mais fácil.
+                                Aprenda a montar um cronograma eficiente, usar métodos como Pomodoro e revisão espaçada,
+                                e descubra como estudar menos tempo e aprender muito mais.
                             </text>
                         </div>
 

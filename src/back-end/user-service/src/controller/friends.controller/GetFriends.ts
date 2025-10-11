@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { GetFriendService } from "../../services/friend.service/GetFriends.service";
-import { User } from "src/Queries/User.queries";
+import { User } from "../../Queries/User.queries";
 
 
 export class GetFriends{

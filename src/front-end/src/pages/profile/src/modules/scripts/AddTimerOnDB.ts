@@ -1,33 +1,38 @@
-import {DadosAcumulados} from "../clock/Clock"
+import { DadosAcumulados } from "../clock/Clock"
 
-export async function AddTimerOnDB(tempoEstudado: DadosAcumulados, username: string|undefined) {
-    try{
-    
-    let minutes = Math.floor(tempoEstudado.totalEstudado / 60);
-    const tempo_minutos = minutes > 0 ? minutes : 0
+export async function AddTimerOnDB(tempoEstudado: DadosAcumulados, username: string | undefined) {
+    try {
 
-    const today = new Date();
-    const dateString = today.toISOString().split('T')[0]; // Formato "YYYY-MM-DD"
+        let minutes = Math.floor(tempoEstudado.totalEstudado / 60);
+        let tempo_minutos = minutes > 0 ? minutes : 0
 
-    const data = {username: username, duration: tempo_minutos, session_date: dateString};
+        const today = new Date();
+        const dateString = today.toISOString().split('T')[0]; // Formato "YYYY-MM-DD"
 
-    const response = await fetch("http://localhost:3000/update_timer",{
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {'Content-Type': 'application/json'}
-    })
+        console.log("duração em segundos:", tempoEstudado.totalEstudado);
+        console.log("duracao em minutos:", tempo_minutos);
+        
 
-    if(!response.ok){
-        throw new Error("Deu merda ao tentar criar timer")
-    }
+        const data = { username: username, duration: tempo_minutos, session_date: dateString };
 
-    const responseJson = await response.json()
-    
 
-    return responseJson
+        const response = await fetch("http://localhost:3000/update_timer", {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: { 'Content-Type': 'application/json' }
+        })
 
-    }catch(err){
+        if (!response.ok) {
+            throw new Error("Deu merda ao tentar criar timer")
+        }
+
+        const responseJson = await response.json()
+
+
+        return responseJson
+
+    } catch (err) {
         console.error(`Deu merda aqui: ${err}`);
-        return {status: 400, message: "error!"}
+        return { status: 400, message: "error!" }
     }
 }

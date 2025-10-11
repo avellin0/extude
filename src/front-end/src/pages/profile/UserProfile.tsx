@@ -33,10 +33,7 @@ export function UserProfile() {
                     <h3 onClick={() => navigate(`/profile-timer/${id}`)}>Pomodoro+</h3>
 
                     <p>Space</p>
-                    <h3>Genius</h3>
-
-                    <p>Progression</p>
-                    <h3>Expert</h3>
+                    <h3>Software Engineer</h3>
 
                     <p>Email</p>
                     <h4>Ploglamador@hotmail.com</h4>

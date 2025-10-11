@@ -1,7 +1,7 @@
 import { UpdateTimerService } from "../../services/timer.service/UpdateTimer";
 import { Request, Response } from "express";
 import { User } from "../../Queries/User.queries";
-import { GetLastTimer } from "src/services/timer.service/GetLastTimer";
+import { GetLastTimer } from "../../services/timer.service/GetLastTimer";
 
 
 

@@ -184,7 +184,10 @@ input:focus{
     color: gray;
     display: flex;
     text-align: justify;
+}
 
+.Home-Main-Content-text text{
+    font-family: sans-serif;
 }
 
 .Home-Main-Content-author{

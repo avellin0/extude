@@ -35,7 +35,7 @@ export default function Clock({time,setTime,tempoInicial,setTempoInicial,acumula
 
     const {id} = useParams<{id: string}>()
   
-  const tempoEstudado: DadosAcumulados = JSON.parse(localStorage.getItem("dadosAcumulados") || "null");
+  let tempoEstudado: DadosAcumulados = JSON.parse(localStorage.getItem("dadosAcumulados") || "null");
 
   useEffect(() => {
     if (running) {
@@ -61,7 +61,11 @@ export default function Clock({time,setTime,tempoInicial,setTempoInicial,acumula
     setTime(0);
     setRunning(false);
     setTempoInicial(0);
-    AddTimerOnDB(tempoEstudado, id);
+
+    console.log("tempo atual:", tempoEstudado, "quanto estudou de verdade:", acumulado + (tempoInicial - time));
+    
+
+    // AddTimerOnDB(tempoEstudado, id);
   };
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -93,6 +97,7 @@ export default function Clock({time,setTime,tempoInicial,setTempoInicial,acumula
       const tempoPassado = tempoInicial - time;
       if (tempoPassado > 0) {
         setAcumulado(acumulado + tempoPassado);
+        tempoEstudado.totalEstudado = 0;
       }
     }
 

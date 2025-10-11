@@ -5,6 +5,11 @@ export class GetLastTimer {
     async execute({userId,ultima_atualizacao}: GetTimerInterface) {
 
         const timer = new Timer();
-        return timer.getTimeStudiedToday(userId, ultima_atualizacao);
+        const result = await timer.getTimeStudiedToday(userId, ultima_atualizacao);
+
+        console.log("Resultado do GetLastTimer:", result);
+
+        return result;
+
     }
 }

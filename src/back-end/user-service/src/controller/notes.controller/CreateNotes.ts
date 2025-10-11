@@ -1,6 +1,6 @@
 import {Request, Response} from 'express'
 import { CreateNoteService } from '../../services/notes.service/CreateNotes.service'
-import { User } from 'src/Queries/User.queries'
+import { User } from '../../Queries/User.queries'
 
 export class CreateNotes {
     async handle(req: Request, res: Response){

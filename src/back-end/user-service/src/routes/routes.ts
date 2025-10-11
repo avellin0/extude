@@ -2,19 +2,19 @@ import { Router } from "express";
 const route = Router()
 
 
-import {CreateUser} from "../../src/controller/User.controller/CreateUser"
+import {CreateUser} from "../controller/User.controller/CreateUser"
 import {GetStudentByEmail} from '../controller/User.controller/getStudents'
-import { VerifyAccountLogin } from "src/controller/User.controller/VerifyUserLogin";
+import { VerifyAccountLogin } from "../controller/User.controller/VerifyUserLogin";
 
 import {GetId} from "../controller/User.controller/GetIndentificator"
 
-import {CreateNotes} from '../../src/controller/notes.controller/CreateNotes'
+import {CreateNotes} from '../controller/notes.controller/CreateNotes'
 
-import {GetLastSave} from '../../src/controller/notes.controller/GetLastSave'
+import {GetLastSave} from '../controller/notes.controller/GetLastSave'
 import { GetUser } from "../controller/User.controller/GetUser";
 
-import { CreateFriends } from "../../src/controller/friends.controller/CreateFriends";
-import { GetFriends } from "../../src/controller/friends.controller/GetFriends";
+import { CreateFriends } from "../controller/friends.controller/CreateFriends";
+import { GetFriends } from "../controller/friends.controller/GetFriends";
 
 import { CreateTimerController } from "../controller/timer.controller/CreateTimer";
 import { GetTimer } from "../controller/timer.controller/GetTimer";

@@ -1,7 +1,5 @@
-import { log } from "console"
 import { db } from "../../database/client-db"
 import { FriendsProps } from "../interface/Friends.interface"
-import { User } from "./User.queries"
 
 export class friends {
     async createFriends({ friendOf, id, status }: FriendsProps) {

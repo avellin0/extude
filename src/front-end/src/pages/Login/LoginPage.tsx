@@ -50,7 +50,7 @@ export function LoginPage() {
                         <input type="text" className='login-input' placeholder='Senha' defaultValue={senha} onChange={(e) => setSenha(e.target.value)} />
                         <div id='login-btn-scope'>
                             <button className='login-btn' onClick={() => verificacao()}>Entrar</button>
-                            <button className='login-btn' id='login-btn-recrutadores' onClick={() => alert("Recrutadores")}>Recrutadores</button>
+                            <button className='login-btn' id='login-btn-recrutadores' onClick={() => navigate('/home/Davi')}>Recrutadores</button>
                         </div>
 
                     </div>
