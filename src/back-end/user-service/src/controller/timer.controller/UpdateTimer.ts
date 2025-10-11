@@ -21,15 +21,15 @@ export class UpdateTimer {
         }
 
 
-        
-
-
+    
         const ultimas_horas = new GetLastTimer()
         const ultima_atualizacao:any = await ultimas_horas.execute({userId: userId[0].id, ultima_atualizacao: session_date})
         
+        console.log('Ultima Atualizacao:', ultima_atualizacao);
+
+
         const newTimer = ultima_atualizacao[0].duration + duration
         
-        console.log('Ultima Atualizacao:', ultima_atualizacao[0].duration);
 
         const updateTimer = new UpdateTimerService();
         const result = await updateTimer.execute({ userId: userId[0].id, duration: newTimer, session_date });

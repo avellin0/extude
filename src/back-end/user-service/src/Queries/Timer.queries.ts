@@ -5,10 +5,10 @@ export class Timer{
     async getTimeStudiedToday(user_id:string, ultima_atualizacao:string){
         const research = await db.query('SELECT * FROM study_sessions WHERE user_id = $1 AND session_date = $2', [user_id, ultima_atualizacao])
 
-        // if(research.rows.length === 0){
-        //     await db.query('INSERT INTO study_sessions(user_id, duration) VALUES ($1, $2)', [user_id, '0'])
-        //     return { totalEstudado: '0', ultima_atualizacao }
-        // }
+        if(research.rows.length === 0){
+            await db.query('INSERT INTO study_sessions(user_id, duration) VALUES ($1, $2)', [user_id, '0'])
+            return { totalEstudado: '0', ultima_atualizacao }
+        }
 
         console.log("Resultado do getTimeStudiedToday:", research.rows);
         
