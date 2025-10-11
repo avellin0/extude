@@ -18,7 +18,7 @@ export function Days() {
     }, [])
 
     const getYesterday = async () => {
-        const timer_spend = await fetch("http://localhost:3000/get_yesterday_timer", {
+        const timer_spend = await fetch("https://extude.onrender.com/get_yesterday_timer", {
             method: "POST",
             body: JSON.stringify({ "username": id }),
             headers: { 'Content-Type': 'application/json' }
@@ -35,7 +35,7 @@ export function Days() {
     }
 
     const BestTimer = async () => {
-        const timer_spend = await fetch("http://localhost:3000/get_best_timer", {
+        const timer_spend = await fetch("https://extude.onrender.com/get_best_timer", {
             method: "POST",
             body: JSON.stringify({ "username": id }),
             headers: { 'Content-Type': 'application/json' }

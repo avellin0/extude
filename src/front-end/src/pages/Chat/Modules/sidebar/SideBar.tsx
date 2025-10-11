@@ -17,7 +17,7 @@ export function SideBar({id}: FriendsProps){
     
     const getAllUsers = async () => {
             
-        const response = await fetch("http://localhost:3000/friends", {
+        const response = await fetch("https://extude.onrender.com/friends", {
             method: 'POST', 
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify({"user_name": id })

@@ -16,7 +16,7 @@ export async function AddTimerOnDB(tempoEstudado: DadosAcumulados, username: str
         const data = { username: username, duration: tempo_minutos, session_date: dateString };
 
 
-        const response = await fetch("http://localhost:3000/update_timer", {
+        const response = await fetch("https://extude.onrender.com/update_timer", {
             method: "POST",
             body: JSON.stringify(data),
             headers: { 'Content-Type': 'application/json' }

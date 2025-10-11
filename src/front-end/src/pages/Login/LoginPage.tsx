@@ -9,7 +9,7 @@ export function LoginPage() {
 
     const verificacao = async () => {
         try {
-            const getId = await fetch(`http://localhost:3000/verify_account`, {
+            const getId = await fetch(`https://extude.onrender.com/verify_account`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

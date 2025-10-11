@@ -172,7 +172,7 @@ export function AdmPage() {
 
 
     try {
-      const response = await fetch('http://localhost:3000/notes', {
+      const response = await fetch('https://extude.onrender.com/notes', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
