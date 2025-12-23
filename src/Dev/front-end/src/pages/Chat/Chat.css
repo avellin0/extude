@@ -1,0 +1,142 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+    
+#chat-body-scope{
+    width: 100vw;
+    height: 100vh;
+    background-color: #041620;
+    display: flex;
+}
+
+#chat-sidebar-scope{
+    width: 25%;
+    height: 100%;
+    background-color: rgba(0,0,0, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+#chat-scope{
+    width: 75%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#chat-scope-area{
+    padding: 10px 0 0 10px;
+    width: 100%;
+    height: 90vh;
+    color: aliceblue;
+}
+
+
+.chat-left-side,
+.chat-right-side{
+    width: 40%;
+    overflow-wrap: break-word;
+}
+
+.chat-right-side{
+    display: flex;
+    justify-content: end;
+}
+
+.chat-left-side span{
+    color: #dbdada;
+}
+
+
+.chat-right-side span{
+    color: #5cb351;
+}
+
+.chat-right-side{
+ margin-left: 50%;
+}
+
+
+#chat-text-input-scope{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+#chat-input{
+    border-radius: 10px;
+    border: none;
+    width: 65%;
+    height: 50%;
+    background-color: rgba(0,0,0, 0.5);
+    color: aliceblue;
+    text-indent: 10px;
+}
+
+#chat-submit-btn{
+    color: aliceblue;
+    border: 1px solid white;
+    width: 10%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    background-color: #041620;
+}
+
+#chat-submit-btn:hover{
+    cursor: pointer;
+    background-color: rgba(0,0,0, 0.2);
+}
+
+
+#Contact-scope{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: antiquewhite;
+}
+
+#chat-new-friend-btn{
+    width: 100%;
+    height: 60px;
+    font-size: 16pt;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+#chat-new-friend-btn:hover{
+    cursor: pointer;
+    background-color: #dbdada;
+}
+
+#chat-new-friend-btn a{
+    color: black;
+    text-decoration: none;
+}
+
+.chat-friends-contact{
+    font-size: 15pt;
+    color: white;
+    width: 90%;
+    height: 7.5%;
+    border-bottom: 1px solid gray;
+    display: flex;
+    align-items: center;
+    text-indent: 25%;
+}
+
+.chat-friends-contact:hover{
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+

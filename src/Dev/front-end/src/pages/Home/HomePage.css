@@ -1,0 +1,209 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Bona Nova SC", sans-serif;
+}
+
+.Home-link{
+    color: black;
+    text-decoration: none;
+}
+
+.like:hover, .deslike:hover{
+    transition: .3s ease-in-out;
+    transform: translateY(-3px);
+    font-size: 12pt;
+    cursor: pointer;
+}
+
+html{
+    overflow-x: hidden;
+}
+
+input:focus{
+    outline: 0;
+    border: 0px;
+}
+
+.Home-body{
+    width: 100vw;
+    height: 200vh;
+    display: flex;
+}
+
+.Home-sideBar-Scope{
+    position: fixed;
+    width: 21vw;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 1%;
+    gap: 5%;
+    font-size: 15pt;
+    border: 1px solid gainsboro
+}
+
+.Home-sideBar-tittle{
+    width: 100vw;
+    height: 10%;
+}
+
+.Home-sideBar-list,
+.Home-sideBar-workSpace{
+    font-size: 9pt;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.Home-sideBar-list{
+    width: 100vw;
+    height: 40%;
+    gap: 20px;
+}
+
+.Home-sideBar-list img {
+    width: 25px;
+    height: 25px;
+}
+
+
+
+.Home-sideBar-list-comunity{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 19vw;
+    height: 40px;
+    border-radius: 5px;
+}
+
+.Home-sideBar-list-comunity:hover{
+    cursor: pointer;
+    background-color: whitesmoke;
+}
+
+.Home-sideBar-workSpace{
+    width: 100%;
+    height: 30%;
+}
+
+.Home-sideBar-workSpace p ,
+.Home-sideBar-list p{
+    font-size: 14pt;
+    color: gray;
+    font-weight: bold;
+}
+
+.Home-Main-Scope{
+    margin-left: 20vw;
+    width: 80vw;
+    height: 100%;
+    background-color: whitesmoke;
+    padding: 2%;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5%;
+}
+
+.Home-Main-Header{
+    border-radius: 20px;
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    padding: 10px;
+    align-items: center;
+}
+
+.Home-Main-Header-search{
+    width: 25%;
+    height: 100%;
+    background-color: gainsboro;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    color: gray;
+    padding: 20px;
+    gap: 10px;
+}
+
+.Home-Main-Header-search-input{
+    font-size: 9pt;
+    font-family: sans-serif;
+    position: relative;
+    width: 100%;
+    border: 0px;
+    background-color: gainsboro;
+    height: 30px;
+}
+
+.Home-Main-Header-search img{
+    width: 15px;
+}
+
+
+.Home-Main-Introduction{
+    width: 100%;
+    height: 30vh;
+    border-radius: 10px;
+    background-image: url('../../../public/images/Extude-introduction.png');
+    background-position: center;
+    background-size: cover;
+    color: rgb(58, 58, 58);
+    text-indent: 10px;
+    display: flex;
+    gap: 50%;
+    align-items: center;
+    padding-left: 2%;
+}
+
+.Home-Main-Content{
+    width: 100%;
+    height: 60vh;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.Home-Main-Content-title{
+    width: 100%;
+    height: 20%;
+    padding: 20px;
+    font-size: 14pt;
+    color: rgb(61, 61, 61);
+}
+
+.Home-Main-Content-text{
+    width: 100%;
+    height: 70%;
+    padding: 20px;
+    font-size: 14pt;
+    color: gray;
+    display: flex;
+    text-align: justify;
+}
+
+.Home-Main-Content-text text{
+    font-family: sans-serif;
+}
+
+.Home-Main-Content-author{
+    width: 100%;
+    height: 10%;
+    padding: 20px;
+    font-size: 12pt;
+    color: darkgray;
+    display: flex;
+    gap: 5%;
+    align-items: center;
+}
+
+
+
+#video-player{
+    height: 100px;
+    width: 100px;
+}
