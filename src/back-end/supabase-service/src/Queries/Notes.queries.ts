@@ -1,4 +1,3 @@
-import { title } from "process";
 import { supabase } from "../../database/client-db"
 
 
@@ -12,7 +11,7 @@ export class notes {
         try {
             const research = await supabase.from('notes').select('content').eq('user_id', id)
             const result = research.data![research.data!.length - 1].content
-            console.log(`this is the teste ${result}`);
+            // console.log(`this is the teste ${result}`);
 
             return result
 

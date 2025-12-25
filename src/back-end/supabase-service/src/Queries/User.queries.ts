@@ -83,8 +83,8 @@ export class User {
 
     async findUserByName(name: string) {
         try {
-            const research = await supabase.from('users').select('*').eq('name', name)
-            console.log("esse é o resultado da busca do nome", research.data);
+            const research = await supabase.from('app_users').select('*').eq('name', name)
+            // console.log("esse é o resultado da busca do nome", research.data);
 
             return research.data
 

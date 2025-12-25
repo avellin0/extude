@@ -8,7 +8,8 @@ export class GetLastSave {
 
         const user = new User()
         const userid = await user.findUserByName(user_name)
-
+        // console.log("Esse é o id do usuario:", userid);
+        
 
         const notes = new LastSaveNotes()
         const result = await notes.execute(userid![0].id)

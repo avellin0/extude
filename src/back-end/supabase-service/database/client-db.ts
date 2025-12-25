@@ -8,8 +8,8 @@ const supabaseKey = process.env.SUPABASE_KEY as string
 export const supabase = createClient(supabaseUrl, supabaseKey)
 
 
-supabase.from('app_users').select('*').then((response) => {
-})
+// supabase.from('app_users').select('*').then((response) => {
+// })
 
 
 // export class db {
