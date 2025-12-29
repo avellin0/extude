@@ -1,14 +1,8 @@
 import './Project.css';
 import { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
-import { parseVTT } from "../Legendas/Legendas"
-import { supabase } from "../../supabase/supa-client"
-
-// interface SaveProps {
-//   user_name: string;
-//   content_text: string;
-// }
-
+import { parseVTT } from "../Legendas/Legendas.tsx"
+import { supabase } from "../../supabase/supa-client.ts"
 
 
 export function AdmPage() {
@@ -59,9 +53,6 @@ export function AdmPage() {
 
   useEffect(() => {
 
-
-
-
     const fetchSubtitles = async () => {
       try {
         const res = await fetch("http://localhost:8000/subtitles", { cache: "no-store" });
@@ -69,7 +60,6 @@ export function AdmPage() {
         const parsed = parseVTT(text);
         setSubtitles(parsed);
 
-        // cria blob para track
         const blob = new Blob([text], { type: "text/vtt" });
         const blobUrl = URL.createObjectURL(blob);
 
@@ -102,6 +92,7 @@ export function AdmPage() {
   }, [subtitles, videoFile]);
 
 
+  
   const sendSubmit = async () => {
     console.log("Buscando legendas...");
 
@@ -130,7 +121,6 @@ export function AdmPage() {
     setSubtitleUrl(blobUrl);
 
   };
-
 
   const handleUrl = async () => {
     try {
@@ -161,7 +151,6 @@ export function AdmPage() {
         throw new Error('URL do vídeo não fornecida');
       }
 
-      // Faz a requisição para o backend
       const response = await fetch(`http://localhost:8000/video?url=${encodeURIComponent(videoUrl)}`);
 
       if (!response.ok) {
@@ -171,16 +160,16 @@ export function AdmPage() {
       const videoBlob = await response.blob();
       const videoUrlBlob = URL.createObjectURL(videoBlob);
 
-      // Cria um link de download temporário
+
       const a = document.createElement('a');
       a.href = videoUrlBlob;
-      a.download = 'video.mp4'; // Definindo o nome do arquivo
+      a.download = 'video.mp4';
       document.body.appendChild(a);
-      a.click(); // Dispara o download
-      document.body.removeChild(a); // Limpa o DOM
+      a.click();
+      document.body.removeChild(a);
 
 
-      // Libera o objeto URL após o download
+
       URL.revokeObjectURL(videoUrlBlob);
 
       setAviso('Vídeo pronto para download!');
@@ -203,9 +192,6 @@ export function AdmPage() {
       console.error('A nota está vazia');
       return;
     }
-
-    // const info: SaveProps = { user_name: id, content_text: note };
-
 
     try {
 
