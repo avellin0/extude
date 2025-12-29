@@ -1,61 +1,80 @@
-import './LoginPage.css'
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import "./LoginPage.css";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { supabase } from "../../supabase/supa-client.ts";
 
 export function LoginPage() {
-    const [email, setEmail] = useState('')
-    const [senha, setSenha] = useState('')
-    const navigate = useNavigate()
+    const [email, setEmail] = useState("");
+    const [senha, setSenha] = useState("");
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        console.log("Atual valor:", email);
+    }, []);
 
     const verificacao = async () => {
         try {
-            const getId = await fetch(`https://extude.onrender.com/verify_account`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    email: email,
-                    password: senha
-                })
-            })
+            console.log("email atual:", email);
 
-            if (!getId.ok) {
-                throw new Error('Não estou conseguindo buscar');
-            }
+            const { data } = await supabase.functions.invoke("login", {
+                body: { "email": email, "password": senha },
+            });
 
-            const data = await getId.json()
-
-            console.log("Esse é o resultado da pesquisa:", data[0].name);
+            console.log('dados', data.name);
             
 
-            const id = data[0].name
+            const name = data.name;
 
-            console.log("esse é o id do usuario:", id);
-
-            navigate(`/home/${id}`)
-
+            navigate(`/home/${name}`);
         } catch (err) {
-            console.log("Deu essa merda ai:", err);
+            console.log("Ocorreu um erro:", err);
         }
-    }
+    };
 
     return (
         <>
             <div id="Login-Scope">
                 <div id="login-form-scope">
-                    <h1 id='login-title'>Welcome <br /> back  to the <br /> exTude</h1>
+                    <h1 id="login-title">
+                        Welcome <br /> back to the <br /> exTude
+                    </h1>
                     <div id="login-input-scope">
-                        <input type="text" className='login-input' placeholder='Email' onChange={(e) => setEmail(e.target.value)} />
-                        <input type="text" className='login-input' placeholder='Senha' defaultValue={senha} onChange={(e) => setSenha(e.target.value)} />
-                        <div id='login-btn-scope'>
-                            <button className='login-btn' onClick={() => verificacao()}>Entrar</button>
-                            <button className='login-btn' id='login-btn-recrutadores' onClick={() => navigate('/home/Davi')}>Recrutadores</button>
+                        <input
+                            type="text"
+                            className="login-input"
+                            placeholder="Email"
+                            onChange={(e) => {
+                                setEmail(e.target.value);
+                            }}
+                        />
+                        <input
+                            type="text"
+                            className="login-input"
+                            placeholder="Senha"
+                            defaultValue={senha}
+                            onChange={(e) => setSenha(e.target.value)}
+                        />
+                        <div id="login-btn-scope">
+                            <button
+                                type="button"
+                                className="login-btn"
+                                onClick={() => verificacao()}
+                            >
+                                Entrar
+                            </button>
+                            <button
+                                type="button"
+                                className="login-btn"
+                                id="login-btn-recrutadores"
+                                onClick={() => navigate("/home/Davi")}
+                            >
+                                Recrutadores
+                            </button>
                         </div>
-
                     </div>
                 </div>
             </div>
         </>
-    )
+    );
 }

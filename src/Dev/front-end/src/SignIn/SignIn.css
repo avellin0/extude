@@ -1,0 +1,174 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+.register-body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    background-color: #041620;
+    color: white;
+}
+
+#register-introduction-scope {
+    width: 50%;
+    height: 100vh;
+    padding: 20px;
+}
+
+#register-triangulo-itens {
+    position: relative;
+    width: 30%;
+    height: 30%;
+    background-image: url("../image/triangulos.png");
+    background-size: cover;
+}
+
+#register-three-bolls-itens {
+    position: relative;
+    right: -70%;
+    bottom: -20%;
+    width: 30%;
+    height: 30%;
+    background-image: url("../image/TrheeBolls.png");
+    background-size: cover;
+}
+
+
+#register-introduction-text {
+    position: relative;
+    bottom: -50px;
+    right: -25%;
+    font-size: 30pt;
+}
+
+#register-introduction-text span {
+    color: #4fee4f;
+}
+
+form {
+    width: 50%;
+    height: 100%;
+}
+
+.register-scope {
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5%;
+}
+
+.register-header {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    font-family: sans-serif;
+    display: flex;
+    height: 12%;
+    width: 60%;
+    margin-bottom: 50px;
+}
+
+.register-header span {
+    color: #01d324;
+}
+
+.register-header span:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.register-fields {
+    display: flex;
+    flex-direction: column;
+    height: 40%;
+    width: 60%;
+    gap: 30px;
+    margin-bottom: 100px;
+
+}
+
+.register-field {
+    height: 100px;
+}
+
+.register-field p {
+    font-family: sans-serif;
+    font-size: 15pt;
+    margin-bottom: 5px;
+}
+
+.register-input-text {
+    text-indent: 5px;
+    height: 40px;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #01d324;
+    background-color: transparent;
+    color: white;
+}
+
+.register-input-submit {
+    background-color: #71ff71;
+    border: 1px solid #e3ece0;
+    border-radius: 20px;
+    height: 50px;
+    width: 60%;
+}
+
+.register-input-submit:hover {
+    cursor: pointer;
+    transition: .25s ease-in-out;
+    background-color: #4fee4f;
+}
+
+@media screen and (max-width: 500px) {
+
+    .register-body {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #register-introduction-scope {
+        height: 30vh;
+        width: 100vw;
+        display: flex;
+        align-items: top;
+        background-color: aqua;
+    }
+
+    #register-introduction-cel{
+        width: 100%;
+        height: 5%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 1px 1px 10px black;
+    }
+
+    .register-scope {
+        width: 100vw;
+        height: 80vh;
+        font-size: 8pt;        
+    }
+
+    .register-fields {
+        display: flex;
+        flex-direction: column;
+        gap: 5%
+    }
+
+    .register-input-submit{
+        margin-top: -15%;
+    }
+  
+}

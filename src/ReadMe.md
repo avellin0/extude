@@ -1,0 +1,1 @@
+Essa branch serve para ambiente de desenvolvimento, certifique-se de trocar todas as variaveis locais ao fazer merge!

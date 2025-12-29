@@ -2,11 +2,12 @@ import './Project.css';
 import { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { parseVTT } from "../Legendas/Legendas"
+import { supabase } from "../../supabase/supa-client"
 
-interface SaveProps {
-  user_name: string;
-  content_text: string;
-}
+// interface SaveProps {
+//   user_name: string;
+//   content_text: string;
+// }
 
 
 
@@ -21,6 +22,10 @@ export function AdmPage() {
   const [subtitles, setSubtitles] = useState<{ start: number; end: number; text: string }[]>([]);
   const [currentSubtitle, setCurrentSubtitle] = useState('');
 
+
+  const [aviso, setAviso] = useState('');
+  const [urlActive, setUrlActive] = useState(false);
+
   const videoRef = useRef<HTMLVideoElement>(null);
 
 
@@ -28,24 +33,21 @@ export function AdmPage() {
     const GetLastSave = async () => {
       try {
 
-        const response = await fetch(`http://localhost:3000/lastNote/${id}`);
-        if (!response.ok) {
+        console.log(id);
+
+        const getId = await supabase.from('app_users').select('*').eq("name", id)
+        const userId = getId.data![0].id
+
+        const response = await supabase.from('notes').select('content').eq('user_id', userId);
+
+        if (!response.data) {
           throw new Error('Erro ao buscar última mensagem');
         }
 
-        const data = await response.json();
+        const data = response.data;
         console.log("this is the data:", data);
-
-        if (data.data.message === "id não encontrado") {
-
-          console.log("Deu ruim");
-          throw new Error("Usuario não possui notas")
-
-        } else {
-          setMessage(data.data);
-        }
-
-
+        const lastMessage = data[data.length - 1]?.content || '';
+        setMessage(lastMessage);
 
       } catch (err) {
         console.log('Erro:', err);
@@ -56,6 +58,10 @@ export function AdmPage() {
   }, [id]);
 
   useEffect(() => {
+
+
+
+
     const fetchSubtitles = async () => {
       try {
         const res = await fetch("http://localhost:8000/subtitles", { cache: "no-store" });
@@ -71,12 +77,14 @@ export function AdmPage() {
 
 
         setSubtitleUrl(blobUrl);
-        
+
       } catch (err) {
         console.log("Erro ao buscar legendas:", err);
       }
     };
     fetchSubtitles();
+
+
   }, []);
 
   useEffect(() => {
@@ -123,8 +131,32 @@ export function AdmPage() {
 
   };
 
+
   const handleUrl = async () => {
     try {
+      setUrlActive(true);
+
+      setAviso('pode demorar alguns minutos')
+
+      const Apologize = [
+        'Buscando arquivos...',
+        'Organizando arquivos...',
+        'Melhorando desempenho...',
+        'Estamos quase terminando...'
+      ]
+
+      let index = 0
+
+      const interval = setInterval(() => {
+        setAviso(Apologize[index])
+        index = (index + 1) % Apologize.length
+      }, 5000) // 5 segundos
+
+
+
+      alert(`Aguarde enquanto processamos o vídeo. ${aviso}`);
+
+
       if (!videoUrl) {
         throw new Error('URL do vídeo não fornecida');
       }
@@ -135,7 +167,6 @@ export function AdmPage() {
       if (!response.ok) {
         throw new Error('Falha ao baixar o vídeo');
       }
-
 
       const videoBlob = await response.blob();
       const videoUrlBlob = URL.createObjectURL(videoBlob);
@@ -151,6 +182,11 @@ export function AdmPage() {
 
       // Libera o objeto URL após o download
       URL.revokeObjectURL(videoUrlBlob);
+
+      setAviso('Vídeo pronto para download!');
+      setUrlActive(false);
+      return () => clearInterval(interval)
+
     } catch (error) {
       console.error('Erro ao baixar o vídeo:', error);
     }
@@ -168,20 +204,19 @@ export function AdmPage() {
       return;
     }
 
-    const info: SaveProps = { user_name: id, content_text: note };
+    // const info: SaveProps = { user_name: id, content_text: note };
 
 
     try {
-      const response = await fetch('https://extude.onrender.com/notes', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(info),
-      });
+
+      const response = await supabase.from('notes').insert([
+        { user_id: id, content: note }
+      ]);
 
 
-      const alteracao = await response.json();
+
+
+      const alteracao = response.data;
       console.log(alteracao);
 
       const message = document.getElementById('project-notes-alert-save');
@@ -206,10 +241,11 @@ export function AdmPage() {
           <input
             type="text"
             id="project-video-url-input"
-            placeholder="Digite sua url"
+            placeholder="Busque um vídeo do YouTube"
             onChange={(e) => setVideoUrl(e.target.value)}
           />
-          <button id="project-video-url-btn" onClick={handleUrl}>
+
+          <button id="project-video-url-btn" type='button' onClick={handleUrl}>
             Buscar
           </button>
         </div>
@@ -228,7 +264,8 @@ export function AdmPage() {
 
         <div id="project-file-videos-scope">
           <input type="file" id="file_name" />
-          <button onClick={sendSubmit}>Enviar</button>
+          <button type='button' onClick={sendSubmit}>Enviar</button>
+          <p style={{ textIndent: '100px' }}>{urlActive ? aviso : ''}</p>
         </div>
       </div>
 

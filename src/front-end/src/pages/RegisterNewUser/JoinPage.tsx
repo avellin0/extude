@@ -85,7 +85,7 @@ export function Register() {
     }
 
     const pegarId = async() => {    
-        const getId = await fetch(`https://extude.onrender.com/student/${email}`)
+        const getId = await fetch(`http://localhost:3000/student/${email}`)
 
         if(!getId.ok){
             throw new Error('Não estou conseguindo buscar');
