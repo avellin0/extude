@@ -18,7 +18,7 @@ export function LoginPage() {
             console.log("email atual:", email);
 
             const { data } = await supabase.functions.invoke("login", {
-                body: { "email": email },
+                body: { "email": email, "password": senha },
             });
 
             console.log('dados', data.name);

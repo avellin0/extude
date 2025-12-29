@@ -22,14 +22,34 @@ Deno.serve(async (req) => {
     { global: { headers: CORS } },
   );
 
-  // const { data: { user } } = await supabase.auth.getUser();
+  const { email, password } = await req.json();
 
-  const { email } = await req.json();
-
-  const data = await supabase.from("app_users").select("name").eq("email", email)
+  const data = await supabase.from("app_users").select("name").eq(
+    "email",
+    email,
+  ).eq("password", password)
     .limit(1).single();
 
-  const name = data.data?.name;
+  console.log("data", data);
+
+  if (!data.data) {
+    return new Response(
+      JSON.stringify(
+        {
+          message: "User not found",
+        },
+      ),
+      {
+        headers: {
+          ...CORS,
+          "Content-Type": "application/json",
+        },
+        status: 404,
+      },
+    );
+  }
+
+  const name = data.data.name;
 
   return new Response(
     JSON.stringify(
