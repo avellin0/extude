@@ -1,6 +1,6 @@
 import express from 'express'
-import { ServerProtocol } from "./Adapter-Server-Protocol";
-import { route } from '../src/routes/routes';
+import { ServerProtocol } from "./Adapter-Server-Protocol.ts";
+import { route } from '../src/routes/routes.ts';
 import cors from 'cors'
 import bodyParser from 'body-parser'
 
