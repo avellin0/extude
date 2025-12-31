@@ -1,3 +1,10 @@
 {
-    "deno.enable": true
+    "deno.enable": true,
+    "python-envs.pythonProjects": [
+        {
+            "path": "front-end/src/pages/Post/RichTextEditor",
+            "envManager": "ms-python.python:venv",
+            "packageManager": "ms-python.python:pip"
+        }
+    ]
 }

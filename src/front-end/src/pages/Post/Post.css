@@ -1,0 +1,257 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#PS-page {
+  width: 100%;
+  height: 200vh;
+  display: flex;
+  flex-direction: column;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 1%;
+  background-color: white;
+}
+
+#PS-header {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 5%;
+}
+
+#PS-header-img {
+  border-radius: 10px;
+  width: 100%;
+  height: 75%;
+  background-image: url('./brain.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#PS-header-text {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5%;
+}
+
+#PS-header-title {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  height: 50%;
+  font-size: 2rem;
+  font-weight: bold;
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);
+}
+
+#PS-header-meta {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  height: 45%;
+  font-size: 1.1rem;
+  color: #555;
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);
+  gap: 2%;
+}
+
+/*================= MAIN  */
+
+
+#PS-main {
+  width: 100%;
+  height: 65%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2%;
+}
+
+#PS-content {
+  width: 75%;
+  height: 100%;
+}
+
+#PS-article {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.PS-article-text {
+  width: 90%;
+  height: auto;
+  text-align: justify;
+  font-size: 12pt;
+  font-weight: 500;
+  line-height: 1.2;
+
+  margin-top: 2%;
+  margin-bottom: 15px;
+  padding-bottom: 1%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.PS-article-text p {
+  width: auto;
+  height: auto;
+  font-family: sans-serif;
+  color: #383838;
+}
+
+
+.PS-article-text h2 {
+  color: #0b0f26;
+  font-size: 20pt;
+  font-family: sans-serif;
+  margin-bottom: 10px;
+  margin-top: 15px;
+}
+
+
+.PS-article-img-scope {
+  width: 100%;
+  height: 50%;
+  overflow-y: hidden;
+  margin-bottom: 15px;
+  border-radius: 10px;
+}
+
+.PS-article-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/*============ sidebar  */
+
+#PS-sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 22.5%;
+  height: 90%;
+}
+
+.PS-sidebar-content {
+  width: 100%;
+  height: 25%;
+  padding: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+.PS-sidebar-content-title {
+  width: 100%;
+  height: 35px;
+  text-align: center;
+  border-bottom: 1px solid #bfbfbf;
+}
+
+.PS-sidebar-content-title h3 {
+  font-family: sans-serif;
+  font-weight: 400;
+  color: #0b0f26
+}
+
+.PS-sidebar-content-list {
+  width: 100%;
+  height: 70%;
+  margin-top: 5%;
+  display: flex;
+  flex-direction: column;
+  gap: 10%;
+}
+
+.PS-sidebar-content-list-value {
+  width: 100%;
+  height: auto;
+}
+
+.PS-sidebar-content-list-value input {
+  height: 100%;
+  width: 100%;
+}
+
+#PS-sidebar-comment {
+  width: 100%;
+  height: 40%;
+  padding: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+#PS-sidebar-content-list {
+  width: 100%;
+  height: 90%;
+  margin-top: 5%;
+  display: flex;
+  flex-direction: column;
+  gap: 10%;
+}
+
+
+#PS-sidebar-comment-list {
+  width: 100%;
+  height: 90%;
+  margin-top: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.PS-sidebar-comment-inputs{
+  width: 100%;
+  height: 12.5%;
+}
+
+.PS-sidebar-comment-inputs input{
+  width: 100%;
+  height: 100%;
+  text-indent: 5%;
+}
+
+#PS-sidebar-coment-input-text{
+  width: 100%;
+  height: 50%;
+}
+
+#PS-make-comment{
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+}
+
+#PS-sidebar-btn{
+  width: 100%;
+  height: 15%;
+  cursor: pointer;
+  background-color: #172785;
+  color: white;
+  border: 1px solid white;
+  font-size: 13pt;
+  font-family: sans-serif;
+  font-weight: 400;
+  border-radius: 5px;
+}

@@ -40,7 +40,7 @@ export function EbookReader() {
 
 
     return (
-        <>
+        <div id="reader-root">
 
             <div id={width === "100vw" ? "reader-header-deactive" : "reader-header-active"}>
                 <div id="reader-settings">
@@ -57,6 +57,6 @@ export function EbookReader() {
             </div>
 
             <Reader url={`/books/${name}.epub`} width={width} />
-        </>
+        </div>
     )
 }
