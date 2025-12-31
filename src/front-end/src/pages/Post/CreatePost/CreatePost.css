@@ -1,0 +1,138 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#CP-body-scope {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #F5F7FA;
+}
+
+#CP-body {
+    width: 80%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #E5E7EB;
+    background-color: #FFFFFF;
+    padding: 1%;
+    border-radius: 10px;
+}
+
+#CP-header {
+    width: 90%;
+    height: 25%;
+    background-color: #F5F7FA;
+    border: 1px solid #E5E7EB;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    gap: 5%;
+}
+
+#CP-header > button{
+    width: 20%;
+    height: 20%;
+    border-radius: 5px;
+    border: 1px solid #F5F7FA;
+    background-color: #A5B4FC;
+    font-family: sans-serif;
+    font-size: 12pt;
+    font-weight: 500;
+    color: white;
+}
+
+#CP-main {
+    padding-top: 2%;
+    width: 90%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+    border-radius: 10px;
+}
+
+.CP-inputs-scope{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10%;
+}
+
+.CP-inputs-scope input{
+    height: 40%;
+    text-indent: 1%;
+}
+
+#CP-content-scope{
+    width: 90%;
+    height: 40%;
+}
+
+#CP-content-scope > textarea{
+    width: 100%;
+    height: 90%;
+    padding: 1%;
+}
+
+#CP-buttons-scope{
+    width: 90%;
+    height: 6%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 2%;
+}
+
+#CP-btn-cancelar{
+    width: 10%;
+    height: 100%;
+    border-radius: 5px;
+    border: 1px solid#E5E7EB;
+    background-color: #F5F7FA;
+}
+
+#CP-btn-cancelar:hover{
+    cursor: pointer;
+    background-color: rgb(255, 75, 75);
+    color: white;
+}
+
+#CP-btn-publicar{
+    width: 15%;
+    height: 100%;
+    background-color: #4F6EF7;
+    border: 1px solid #F5F7FA;
+    color: white;
+    border-radius: 5px;
+}
+
+#CP-btn-publicar:hover{
+    cursor: pointer;
+    background-color: #A5B4FC;
+    transition: ease-in-out .3s;
+}
+
+/* 
+
+Background geral: #F5F7FA
+Card / container: #FFFFFF
+Bordas: #E5E7EB
+Texto principal: #111827
+Texto secundário: #6B7280
+
+🔵 Cor primária (ação)
+
+Azul principal: #4F6EF7
+Hover: #3E5AE0
+Disabled: #A5B4FC */

@@ -4,11 +4,11 @@ import './HomePage.css'
 // import flash from "../icons/thunder.png"
 // import people from "../icons/people.png"
 import search from "../icons/search.png"
-import { useParams } from 'react-router-dom'
-
+import { useParams, useNavigate } from 'react-router-dom'
 
 export default function Home() {
     const { id } = useParams<{ id: string }>()
+    const navigate = useNavigate()
 
     return (
         <>
@@ -51,6 +51,10 @@ export default function Home() {
                             <img src={search} alt="" />
                             <input type="text" placeholder='search here' className='Home-Main-Header-search-input' />
                         </div>
+
+                        <button id='Home-Main-Header-Create-Post' type='button' onClick={() => navigate(`/create_post/${id}`)}>Creat Post</button>
+
+
                     </div>
 
                     <div className="Home-Main-Introduction">
@@ -58,7 +62,7 @@ export default function Home() {
                         <h2>to the Future</h2>
                     </div>
 
-                    <div className="Home-Main-Content">
+                    <div className="Home-Main-Content" onClick={() => navigate(`/post`)}>
                         <div className='Home-Main-Content-title'>
                             <h2>Como o cérebro aprende:</h2>
                         </div>
@@ -68,7 +72,7 @@ export default function Home() {
                                 Você sabia que entender como o cérebro funciona pode mudar completamente a forma como você estuda?
                                 Conheça os processos de memória, atenção e repetição que ajudam o aprendizado,
                                 e descubra técnicas para aprender de forma mais leve e eficiente.
-                            </text>
+                                </text>
                         </div>
 
                         <div className='Home-Main-Content-author'>

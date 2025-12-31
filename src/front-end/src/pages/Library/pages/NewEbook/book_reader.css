@@ -4,6 +4,12 @@
     box-sizing: border-box;
 }
 
+#reader-root{
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+
 #reader-header {
 
     background-attachment: fixed;
@@ -64,6 +70,7 @@
     width: 100%;
     height: 95%;
     text-indent: 10px;
+    background-color: white;
 }
 
 #save-notes{
@@ -76,6 +83,10 @@
     cursor: pointer;
 }
 
+#reader-header-active,
+#reader-header-deactive{
+    background-color: white;
+}
 
 #reader-header-active h2:hover,
 #reader-header-deactive h2:hover {

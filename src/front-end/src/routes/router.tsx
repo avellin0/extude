@@ -16,6 +16,8 @@ import { PersonalBooks } from '../pages/Library/pages/PrivateBooks/personalBook'
 import { TranslateEpub } from '../pages/Library/pages/Translate/Translate';
 import { PageNotFound } from '../pages/Library/pages/PageNotFound/PageNotFound';
 import { EbookReader } from "../pages/Library/pages/NewEbook/book_reader";
+import { Post } from "../pages/Post/Post";
+import { CreatePost } from "../pages/Post/CreatePost/CreatePost.tsx";
 
 import Library from "../pages/Library/pages/web_library/LibraryPage";
 
@@ -120,6 +122,14 @@ export const router = createBrowserRouter([
   {
     path: "/legendas",
     element: <Legendas />
+  },
+  {
+    path: "/post",
+    element: <Post />
+  },
+  {
+    path: "/create_post/:username",
+    element: <CreatePost/>
   }
 ])
 
