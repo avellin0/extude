@@ -60,7 +60,7 @@ export default function BookReader() {
 
                     <div id="book-side-chapter">
                         <h3>pagina {chapter + 1}</h3>
-                        <button id="book-side-btn" onClick={() => setChapter(chapter + 1)}>Proximo capitulo</button>
+                        <button type="button" id="book-side-btn" onClick={() => setChapter(chapter + 1)}>Proximo capitulo</button>
                     </div>
                 </div>
 

@@ -1,7 +1,7 @@
 import "./LoginPage.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { supabase } from "../../supabase/supa-client.ts";
+import { supabase } from "../../supabase/supa-client";
 
 export function LoginPage() {
     const [email, setEmail] = useState("");

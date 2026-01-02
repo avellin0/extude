@@ -1,8 +1,8 @@
 import './Project.css';
 import { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
-import { parseVTT } from "../Legendas/Legendas.tsx"
-import { supabase } from "../../supabase/supa-client.ts"
+import { parseVTT } from "../Legendas/Legendas"
+import { supabase } from "../../supabase/supa-client"
 
 
 export function AdmPage() {
