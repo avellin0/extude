@@ -73,7 +73,7 @@ function Library() {
             <div className='library-menu-row'>
                <div className="library-menu-books-area" onClick={() => handleBookClick('seneca')} id='library-menu-book-seneca' />
                <div className="library-menu-books-area" onClick={() => handleBookClick("freud")} id='library-menu-book-freud' />
-               <div className="library-menu-books-area" onClick={() => handleBookClick("conde")} id='library-menu-book-conde' />
+               <div className="library-menu-books-area" onClick={() => handleBookClick("conde_de_monte_cristo")} id='library-menu-book-conde' />
                <div className="library-menu-books-area" onClick={() => handleBookClick("prince")} id='library-menu-book-prince' />
                <div className="library-menu-books-area" onClick={() => handleBookClick("poemas")} id='library-menu-book-poemas' />
             </div>
