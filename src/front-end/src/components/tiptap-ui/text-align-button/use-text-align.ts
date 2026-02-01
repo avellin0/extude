@@ -65,9 +65,6 @@ export const textAlignLabels: Record<TextAlign, string> = {
   justify: "Align justify",
 }
 
-/**
- * Checks if text alignment can be performed in the current editor state
- */
 export function canSetTextAlign(
   editor: Editor | null,
   align: TextAlign
@@ -79,7 +76,7 @@ export function canSetTextAlign(
   )
     return false
 
-  return editor.can().setTextAlign(align)
+  return (editor.can() as any).setTextAlign(align)
 }
 
 export function hasSetTextAlign(
