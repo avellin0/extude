@@ -2,15 +2,17 @@ import { useState } from 'react';
 import { Search } from '../search_books/Search';
 import './LibraryPage.css'
 
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams} from 'react-router-dom'
 
 function Library() {
    const navigate = useNavigate();
    const [view, setView] = useState(false)
 
+   const {id} = useParams<{id: string}>()
+
 
    const handleBookClick = (bookName: string) => {
-      navigate(`/book/${bookName}`);
+      navigate(`/book/${id}/${bookName}`);
    }
 
    const searchBooks = () => {

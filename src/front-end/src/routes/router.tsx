@@ -17,13 +17,14 @@ import { TranslateEpub } from '../pages/Library/pages/Translate/Translate';
 import { PageNotFound } from '../pages/Library/pages/PageNotFound/PageNotFound';
 import { EbookReader } from "../pages/Library/pages/NewEbook/book_reader";
 import { Post } from "../pages/Post/Post";
-import { CreatePost } from "../pages/Post/CreatePost/CreatePost.tsx";
+import { CreatePost } from "../pages/Post/CreatePost/CreatePost";
 
 import Library from "../pages/Library/pages/web_library/LibraryPage";
 
 import { BookReader } from "../pages/Library/pages/book_reader/book_reader";
 import { Legendas } from "../pages/Legendas/Legendas";
 import { Demo } from "../pages/Chat/Demo/Demo";
+import { Preview } from "@/pages/Post/Preview/Preview";
 
 
 export const router = createBrowserRouter([
@@ -60,7 +61,7 @@ export const router = createBrowserRouter([
     element: <Library />
   },
   {
-    path: "/book/:name",
+    path: "/book/:id/:name",
     element: <EbookReader />,
   },
   {
@@ -124,12 +125,16 @@ export const router = createBrowserRouter([
     element: <Legendas />
   },
   {
-    path: "/post",
+    path: "/post/:id",
     element: <Post />
   },
   {
     path: "/create_post/:username",
     element: <CreatePost/>
+  },
+  {
+    path: '/create_post/:username/preview',
+    element: <Preview/>
   }
 ])
 

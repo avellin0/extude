@@ -39,7 +39,7 @@
     gap: 5%;
 }
 
-#CP-header > button{
+#CP-header>button {
     width: 20%;
     height: 20%;
     border-radius: 5px;
@@ -61,7 +61,7 @@
     border-radius: 10px;
 }
 
-.CP-inputs-scope{
+.CP-inputs-scope {
     width: 100%;
     height: 100%;
     display: flex;
@@ -69,23 +69,19 @@
     gap: 10%;
 }
 
-.CP-inputs-scope input{
+.CP-inputs-scope input {
     height: 40%;
     text-indent: 1%;
 }
 
-#CP-content-scope{
+#CP-content-scope {
     width: 90%;
     height: 40%;
+    display: flex;
+    flex-direction: column;
 }
 
-#CP-content-scope > textarea{
-    width: 100%;
-    height: 90%;
-    padding: 1%;
-}
-
-#CP-buttons-scope{
+#CP-buttons-scope {
     width: 90%;
     height: 6%;
     display: flex;
@@ -94,7 +90,7 @@
     gap: 2%;
 }
 
-#CP-btn-cancelar{
+#CP-btn-cancelar {
     width: 10%;
     height: 100%;
     border-radius: 5px;
@@ -102,13 +98,13 @@
     background-color: #F5F7FA;
 }
 
-#CP-btn-cancelar:hover{
+#CP-btn-cancelar:hover {
     cursor: pointer;
     background-color: rgb(255, 75, 75);
     color: white;
 }
 
-#CP-btn-publicar{
+#CP-btn-publicar {
     width: 15%;
     height: 100%;
     background-color: #4F6EF7;
@@ -117,10 +113,39 @@
     border-radius: 5px;
 }
 
-#CP-btn-publicar:hover{
+#CP-btn-publicar:hover {
     cursor: pointer;
     background-color: #A5B4FC;
     transition: ease-in-out .3s;
+}
+
+#CP-content-scope .tiptap {
+    min-height: 200px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    cursor: text;
+    overflow-y: scroll;
+}
+
+#CP-content-scope .tiptap:hover {
+    cursor: context-menu;
+}
+
+#CP-content-scope .tiptap:focus {
+    border-color: #6366f1;
+}
+
+#CP-content-scope .ProseMirror {
+    width: 100%;
+    height: 100%;
+    font-size: 11pt;
+    font-weight: 500;
+}
+
+#CP-content-scope .ProseMirror p {
+    font-family: sans-serif;
 }
 
 /* 

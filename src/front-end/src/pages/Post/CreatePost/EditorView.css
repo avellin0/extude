@@ -1,0 +1,31 @@
+/* container que limita a área */
+.editor-container {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+/* 🔥 A ÁREA EDITÁVEL DE VERDADE 🔥 */
+.editor-content {
+  max-height: 400px;     /* LIMITE REAL */
+  overflow-y: auto;      /* SCROLL AQUI */
+  padding: 12px;
+
+  box-sizing: border-box;
+  line-height: 1.6;
+  outline: none;
+}
+
+/* garante que o ProseMirror não quebre o limite */
+.editor-content.ProseMirror {
+  height: 170px !important;
+  min-height: unset !important;
+}
+
+/* placeholder */
+.editor-content p.is-editor-empty:first-child::before {
+  content: 'Digite aqui...';
+  color: #9ca3af;
+  pointer-events: none;
+  float: left;
+  height: 0;
+}
