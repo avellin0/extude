@@ -17,7 +17,7 @@ export function EbookReader() {
     const [width, setWidth] = useState("100vw")
 
 
-    const { name } = useParams<{ name: string }>();
+    const { name, id } = useParams<{ name: string , id: string}>();
 
     if (name === undefined) return
 
@@ -27,7 +27,7 @@ export function EbookReader() {
         const blob = new Blob([texto], { type: "text/plain" });
         const link = document.createElement("a");
         link.href = URL.createObjectURL(blob);
-        link.download = "meu_arquivo.txt"; // Você pode permitir que o usuário escolha
+        link.download = "meu_arquivo.txt";
         link.click();
         URL.revokeObjectURL(link.href);
     };
@@ -43,18 +43,72 @@ export function EbookReader() {
         setNotes(true)
     }
 
-    const handleSalvar = async () => {
+    const HandleUpdate = async () => {
+
+        const atual_cfi = await supabase.from('books').select('book_cfi').eq('book_name', name)
+        let atualizar_cfi: any | any[];
+
+        if (localStorage.getItem(name) === null) {
+            console.log("Não tem nada no cache");
+            atualizar_cfi = atual_cfi.data![0].book_cfi
+        } else {
+            console.log('Tem algo no cache');
+            atualizar_cfi = localStorage.getItem(name)
+        }
+
+
+        console.log("esse é o valor do cfi", atualizar_cfi);
+
 
         const { data, error } = await supabase
             .from('books')
-            .update({'book_notes': anotacoes })
-            .eq('book_name', 'conde_de_monte_cristo')
+            .update(
+                {
+                    'book_cfi': atualizar_cfi as string,
+                    'book_notes': texto
+                },
+            )
+            .eq('book_name', name)
             .select()
 
-        if (!data || error) {   
-            console.log("Deu erro em buscar o ultimo diz:", error);
+        if (error) {
+            console.error('Erro no update:', error)
         }
+
+        return data
+
+    }
+
+    const handleSave = async () => {
+
+        const response = (await supabase.from('app_users').select('id').eq('name', id)).data
+        const userId = response![0].id
         
+        const { data, error } = await supabase
+            .from('books')
+            .insert([
+                { 'book_name': name, 'book_cfi': localStorage.getItem(name), 'book_notes': texto , 'user_id': userId},
+            ])
+            .select()
+
+        if (error) {
+            console.log('erro em salvar pagina', error);
+        }
+
+        return data
+    }
+
+    const handleBack = async () => {
+        const updateBook = HandleUpdate()
+        const data = await updateBook
+
+        if (data?.length === 0) {
+            console.log('Novo livro');
+            const response = await handleSave()
+            return response
+        }
+
+        navigate(-1)
     }
 
     const GetLastNotes = async () => {
@@ -80,25 +134,25 @@ export function EbookReader() {
     return (
         <div id="reader-root">
 
-                <div id={width === "100vw" ? "reader-header-deactive" : "reader-header-active"}>
-                    <div id="reader-settings">
-                        <img src={write} alt="" className="icon" onClick={handleNotes} />
-                        <img src={back} alt="" className="icon" onClick={() => handleSalvar()} />
-                    </div>
-
-                    {width === "80vw" && notes ? (
-                        <div id="reader-scope">
-                            <textarea
-                                id="reader-notes"
-                                spellCheck="false"
-                                defaultValue={anotacoes}
-                                placeholder="Deixe sua mente livre..."
-                                onChange={(e) => setTexto(e.target.value)} />
-
-                            <button type="button" id="save-notes" onClick={handleDownload}>Download</button>
-                        </div>
-                    ) : ""}
+            <div id={width === "100vw" ? "reader-header-deactive" : "reader-header-active"}>
+                <div id="reader-settings">
+                    <img src={write} alt="" className="icon" onClick={handleNotes} />
+                    <img src={back} alt="" className="icon" onClick={() => handleBack()} />
                 </div>
+
+                {width === "80vw" && notes ? (
+                    <div id="reader-scope">
+                        <textarea
+                            id="reader-notes"
+                            spellCheck="false"
+                            defaultValue={anotacoes}
+                            placeholder="Deixe sua mente livre..."
+                            onChange={(e) => setTexto(e.target.value)} />
+
+                        <button type="button" id="save-notes" onClick={handleDownload}>Download</button>
+                    </div>
+                ) : ""}
+            </div>
 
             <Reader url={`/books/${name}.epub`} width={width} />
         </div>

@@ -1,7 +1,49 @@
 import './Post.css'
-import study from "./study.jpg"
+import { supabase } from "../../supabase/supa-client"
+import { useEffect, useState } from 'react'
+import { PostRenderer } from './PostRender/PostRender'
+import { useParams } from 'react-router-dom'
 
 export function Post() {
+
+  const [title, setTitle] = useState('')
+  const [content, setContent] = useState()
+
+  const {id} = useParams<{id: string}>()
+
+
+  const GetInfo = async () => {
+    let { data: post, error } = await supabase
+      .from('post')
+      .select('*')
+      .eq('id', id)
+
+    console.log("Esses são os dados:", post)
+
+    const teste = JSON.parse(post![0].content)
+
+    if(!teste || typeof(teste) === 'undefined') return 
+
+    console.log('Esse é o json:', teste.content)
+
+
+    if (error) {
+      console.log("Esse é o erro ao buscar post", error);
+    }
+
+
+    setContent(teste)
+    setTitle(post![0].title)
+
+    return post
+  }
+
+
+  useEffect(() => {
+    GetInfo()
+  },[])
+
+
   return (
     <div id="PS-page">
 
@@ -9,7 +51,9 @@ export function Post() {
         <div id="PS-header-img" />
 
         <div id="PS-header-text">
-          <h1 id="PS-header-title">Como o cérebro aprende</h1>
+          <h1 id="PS-header-title">
+            {title}
+          </h1>
 
           <div id="PS-header-meta">
             <p>Por Davi Avelino</p>
@@ -22,36 +66,9 @@ export function Post() {
       <div id="PS-main">
         <div id='PS-content'>
           <div id='PS-article'>
-
-            <div className='PS-article-text'>
-              <p>
-                O cérebro humano é uma máquina incrível, capaz de aprender e se adaptar a novas informações e experiências. Mas como exatamente o cérebro aprende? Neste artigo, exploraremos os principais mecanismos envolvidos no processo de aprendizagem.
-              </p>
-
-            </div>
-
-            <div className='PS-article-img-scope'>
-              <img className='PS-article-img' src={study} alt="Imagem ilustrativa de um cérebro humano" />
-            </div>
-
-            <div className='PS-article-text'>
-              <h2>Neuroplasticidade</h2>
-              <p>
-                A neuroplasticidade é a capacidade do cérebro de reorganizar suas conexões neurais em resposta a novas experiências. Isso significa que, quando aprendemos algo novo, nosso cérebro cria novas sinapses ou fortalece as existentes, facilitando a retenção da informação.
-              </p>
-              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias atque, omnis consectetur voluptatem voluptate architecto mollitia iure fugit facilis aut dicta pariatur, consequuntur quibusdam similique ipsam, id quis? Enim, consectetur.</p>
-
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia deleniti minus, nisi deserunt dolore iure voluptatibus neque numquam! Iste velit qui corporis esse eum eaque consequuntur veniam consectetur at suscipit.</p>
-
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A voluptate repellendus tempora, sit sapiente placeat illo possimus minima iste dolor adipisci amet provident aliquid similique ratione fugiat, porro libero officiis.</p>
-
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur molestias non maxime, quos assumenda sit facilis accusamus, porro eligendi omnis laudantium quaerat possimus corporis! Cumque obcaecati asperiores in reiciendis eligendi.</p>
-
-            </div>
-
+            <PostRenderer content={content}/>
           </div>
         </div>
-
         <div id='PS-sidebar'>
 
           <div className='PS-sidebar-content'>
@@ -76,7 +93,7 @@ export function Post() {
 
             </div></div>
 
-              <div className='PS-sidebar-content'>
+          <div className='PS-sidebar-content'>
 
             <div className='PS-sidebar-content-title'>
               <h3>Comentários</h3>
@@ -104,7 +121,7 @@ export function Post() {
 
           </div>
 
-              <div id='PS-sidebar-comment'>
+          <div id='PS-sidebar-comment'>
 
             <div className='PS-sidebar-content-title'>
               <h3>Deixe um Comentário</h3>

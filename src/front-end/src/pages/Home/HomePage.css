@@ -176,7 +176,7 @@ input:focus{
 .Home-Main-Content{
     z-index: 100;
     width: 100%;
-    height: 60vh;
+    height: 20%;
     background-color: white;
     border-radius: 10px;
     display: flex;
@@ -223,4 +223,64 @@ input:focus{
 #video-player{
     height: 100px;
     width: 100px;
+}
+
+
+.Home-Empty-State {
+    min-height: 50vh;
+    max-width: 600px;
+    margin: 80px auto;
+    padding: 40px 32px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+
+    background: #fafafa;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+}
+
+.Home-Empty-State h2 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #111;
+}
+
+.Home-Empty-State p {
+    font-size: 0.95rem;
+    color: #666;
+}
+
+.Home-Empty-State p:first-of-type {
+    margin: -4px 0;
+    font-weight: 500;
+}
+
+.Home-Empty-State button {
+    margin-top: 20px;
+    padding: 10px 24px;
+
+    font-size: 0.95rem;
+    font-weight: 500;
+
+    background-color: #111;
+    color: #fff;
+
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 100;
+
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.Home-Empty-State button:hover {
+    background-color: #000;
+}
+
+.Home-Empty-State button:active {
+    transform: scale(0.97);
 }

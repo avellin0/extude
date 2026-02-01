@@ -1,11 +1,29 @@
 import "./CreatePost.css"
-import { useNavigate, useParams} from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
+import { EditorProvider } from '@tiptap/react'
+import StarterKit from '@tiptap/starter-kit'
+
+import { Toolbar } from './ToolBar'
+import { EditorView } from './EditorView'
+import { useState } from "react"
 
 export const CreatePost = () => {
 
-    const {username} = useParams<{username: string}>()
+    const [sendCheck, setSendCheck] = useState(false)
+    const [titulo, setTitulo] =  useState('')
+    const [subTitulo, setSubTitulo] = useState('')
+
+    const { username } = useParams<{ username: string }>()
     const navigate = useNavigate()
 
+   
+    const handleSend = async () => {
+        localStorage.setItem('titulo', titulo)
+        localStorage.setItem('subtitulo', subTitulo)
+        
+        setSendCheck(true)
+        navigate(`preview`)
+    }
 
     return (
         <>
@@ -20,22 +38,29 @@ export const CreatePost = () => {
                     <div id="CP-main">
                         <div className="CP-inputs-scope">
                             <p>Titulo</p>
-                            <input type="text" placeholder="Digite o titulo do post..." />
+                            <input type="text" placeholder="Digite o titulo do post..." onChange={(e) => setTitulo(e.target.value)}/>
                         </div>
                         <div className="CP-inputs-scope">
                             <p>Subtitulo</p>
-                            <input type="text" placeholder="Escreva uma breve descrição do post..." />
+                            <input type="text" placeholder="Escreva uma breve descrição do post..." onChange={(e) => setSubTitulo(e.target.value)}/>
                         </div>
                     </div>
 
                     <div id="CP-content-scope">
-                        <p>Conteúdo</p>
-                        <textarea name="" id="" placeholder="Comece a escrever o conteúdo do post..."></textarea>
+                        <p>Content</p>
+                        <EditorProvider extensions={[StarterKit]} editorProps={{
+                            attributes: {
+                                class: 'editor-content',
+                            },
+                        }}>
+                            <Toolbar />
+                            <EditorView send={sendCheck} />
+                        </EditorProvider>
                     </div>
 
                     <div id="CP-buttons-scope">
                         <button type="button" id="CP-btn-cancelar" onClick={() => navigate(`/home/${username}`)}>Cancelar</button>
-                        <button type="button" id="CP-btn-publicar">Vizualizar</button>
+                        <button type="button" id="CP-btn-publicar" onClick={() => handleSend()}>Vizualizar</button>
                     </div>
                 </div>
             </div>

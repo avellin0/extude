@@ -1,14 +1,51 @@
+// deno-lint-ignore-file
 import './HomePage.css'
-// import star from "../icons/star.png" 
-// import graphic from "../icons/statistics.png"
-// import flash from "../icons/thunder.png"
-// import people from "../icons/people.png"
 import search from "../icons/search.png"
 import { useParams, useNavigate } from 'react-router-dom'
+import { supabase } from '../../supabase/supa-client'
+import { useEffect, useState } from 'react'
 
 export default function Home() {
+
+    const [post, setPost] = useState<any[]>([])
+
+
     const { id } = useParams<{ id: string }>()
     const navigate = useNavigate()
+
+    const GetUserId = async () => {
+        const { data: user_id, error } = await supabase.from('app_users').select('id').eq('name', id)
+
+        if (error) {
+            console.log("this is the GetUserId error", error);
+            return
+        }
+
+        console.log("this is the user id", user_id[0].id);
+
+
+        return user_id[0].id
+    }
+
+    const GetInfo = async () => {
+        const author_id = await GetUserId()
+
+        const { data, error } = await supabase.from('post').select('*').eq('author_id', author_id)
+
+        if (error) {
+            console.log("this is the GetInfo error", error);
+            return
+        }
+
+        setPost(data)
+
+        return data
+    }
+
+    useEffect(() => {
+        GetInfo()
+    }, [])
+
 
     return (
         <>
@@ -62,67 +99,35 @@ export default function Home() {
                         <h2>to the Future</h2>
                     </div>
 
-                    <div className="Home-Main-Content" onClick={() => navigate(`/post`)}>
-                        <div className='Home-Main-Content-title'>
-                            <h2>Como o cérebro aprende:</h2>
+                    {post && post.length > 0 ? post.map((content, index) => (
+                        <div key={index} className="Home-Main-Content" onClick={() => navigate(`/post/${content.id}`)}>
+                            <div className='Home-Main-Content-title'>
+                                <h2>{content.title}</h2>
+                            </div>
+
+                            <div className='Home-Main-Content-text'>
+                                {content.subtitle}
+                            </div>
+
+                            <div className='Home-Main-Content-author'>
+                                <p>Davi Avelino</p>
+                                <p>21/05/26</p>
+                                <p className='like'>👍</p>
+                                <p className='deslike'>👎</p>
+                            </div>
                         </div>
 
-                        <div className='Home-Main-Content-text'>
-                            <text>
-                                Você sabia que entender como o cérebro funciona pode mudar completamente a forma como você estuda?
-                                Conheça os processos de memória, atenção e repetição que ajudam o aprendizado,
-                                e descubra técnicas para aprender de forma mais leve e eficiente.
-                                </text>
-                        </div>
+                    )) : (
+                        <>
+                            <div className="Home-Empty-State">
+                                <h2>Armazene suas ideias</h2>
+                                <p>E</p>
+                                <h2>Compartilhe seu aprendizado</h2>
+                                <p>Clique aqui para criar seu primeiro post</p>
+                                <button>Criar Post</button>
+                            </div>
+                        </>)}
 
-                        <div className='Home-Main-Content-author'>
-                            <p>Davi Avelino</p>
-                            <p>21/05/26</p>
-                            <p className='like'>👍</p>
-                            <p className='deslike'>👎</p>
-                        </div>
-                    </div>
-
-                    <div className="Home-Main-Content">
-                        <div className='Home-Main-Content-title'>
-                            <h2>Como funciona numeros Binarios ?</h2>
-                        </div>
-
-                        <div className='Home-Main-Content-text'>
-                            <text>Você já se perguntou como o computador entende tudo o que fazemos — desde abrir um vídeo até jogar um game ou escrever um texto?
-                                Por trás de toda essa tecnologia existe um sistema simples, mas poderoso: o sistema binário. Formado apenas pelos números 0 e 1,
-                                ele é a base da linguagem dos computadores e de praticamente todos os dispositivos digitais.
-                            </text>
-                        </div>
-
-                        <div className='Home-Main-Content-author'>
-                            <p>Davi Avelino</p>
-                            <p>20/05/26</p>
-                            <p className='like'>👍</p>
-                            <p className='deslike'>👎</p>
-                        </div>
-                    </div>
-
-                    <div className="Home-Main-Content">
-                        <div className='Home-Main-Content-title'>
-                            <h2>Como organizar seus estudos para aprender mais em menos tempo</h2>
-                        </div>
-
-                        <div className='Home-Main-Content-text'>
-                            <text>
-                                Manter o foco e estudar com constância é um desafio, mas com as estratégias certas tudo fica mais fácil.
-                                Aprenda a montar um cronograma eficiente, usar métodos como Pomodoro e revisão espaçada,
-                                e descubra como estudar menos tempo e aprender muito mais.
-                            </text>
-                        </div>
-
-                        <div className='Home-Main-Content-author'>
-                            <p>Davi Avelino</p>
-                            <p>19/05/26</p>
-                            <p className='like'>👍</p>
-                            <p className='deslike'>👎</p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </>

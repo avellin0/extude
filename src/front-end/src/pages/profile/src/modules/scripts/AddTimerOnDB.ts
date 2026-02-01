@@ -1,4 +1,4 @@
-import { DadosAcumulados } from "../clock/Clock"
+import type { DadosAcumulados } from "../clock/Clock.tsx";
 
 export async function AddTimerOnDB(tempoEstudado: DadosAcumulados, username: string | undefined) {
     try {
