@@ -1,7 +1,6 @@
 import "./LoginPage.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { supabase } from "../../supabase/supa-client";
 
 export function LoginPage() {
     const [email, setEmail] = useState("");
@@ -9,26 +8,22 @@ export function LoginPage() {
 
     const navigate = useNavigate();
 
-    useEffect(() => {
-        console.log("Atual valor:", email);
-    }, []);
-
+ 
     const verificacao = async () => {
         try {
-            console.log("email atual:", email);
+            const { data } = await fetch("http://localhost:3000/login", { //Preciso mudar isso aqui, no back-end é /login/:id. Como passar o id antes de saber o usuario ? talvez seja melhor mudar a lógica
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ email, "password": senha, "refresh_email": email}),
+                credentials: "include"
+            }).then((res) => res.json());
 
-            const { data } = await supabase.functions.invoke("login", {
-                body: { "email": email, "password": senha },
-            });
 
-            console.log('dados', data.name);
-            
-
-            const name = data.name;
-
-            navigate(`/home/${name}`);
+            navigate(`/home/${data.username}/${data.id}`);
         } catch (err) {
-            console.log("Ocorreu um erro:", err);
+            console.error("Erro ao fazer login:", err);
         }
     };
 
@@ -67,7 +62,7 @@ export function LoginPage() {
                                 type="button"
                                 className="login-btn"
                                 id="login-btn-recrutadores"
-                                onClick={() => navigate("/home/Davi")}
+                                onClick={() => navigate("/home/recruiter/0744edd3-f3fc-44b7-9837-3f0a3f9927c4")}
                             >
                                 Recrutadores
                             </button>

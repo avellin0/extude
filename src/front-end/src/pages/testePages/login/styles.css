@@ -1,0 +1,702 @@
+/* ==========================================================================
+   Root tokens
+   ========================================================================== */
+:root {
+  --lg-color-bg: #0a0c1a;
+  --lg-color-bg-deep: #060713;
+  --lg-color-bg-elevated: #12152a;
+  --lg-color-bg-card: #11142450;
+  --lg-color-border: #262b4a;
+  --lg-color-border-soft: #1c2038;
+  --lg-color-primary: #6c63ff;
+  --lg-color-primary-dark: #5347e8;
+  --lg-color-primary-soft: rgba(108, 99, 255, 0.14);
+  --lg-color-text: #f4f5fb;
+  --lg-color-text-muted: #a7acc8;
+  --lg-color-text-faint: #6b7094;
+  --lg-color-success: #4fd17a;
+  --lg-color-danger: #ef5a5a;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 18px;
+  --radius-pill: 999px;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+
+  --font-display: 'Georgia', 'Times New Roman', serif;
+  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  --shadow-card: 0 1px 0 rgba(255, 255, 255, 0.03) inset, 0 20px 60px rgba(0, 0, 0, 0.45);
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.25s ease;
+}
+
+* {
+  box-sizing: border-box;
+}
+ 
+/* html,
+body {
+  background: var(.tl-$1-bg);
+} */
+
+/* button {
+  font-family: inherit;
+  cursor: pointer;
+} */
+
+/* input {
+  font-family: inherit;
+} */
+
+/* ==========================================================================
+   Base shell
+   ========================================================================== */
+.lg-app-shell {
+  position: relative;
+  min-height: 100vh;
+  background: radial-gradient(circle at 18% 10%, rgba(108, 99, 255, 0.16), transparent 45%),
+    radial-gradient(circle at 85% 30%, rgba(79, 70, 229, 0.12), transparent 50%),
+    linear-gradient(180deg, var(--lg-color-bg) 0%, var(--lg-color-bg-deep) 100%);
+  color: var(--lg-color-text);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   Toast
+   ========================================================================== */
+.lg-toast {
+  position: fixed;
+  top: var(--space-5);
+  right: var(--space-5);
+  background: var(--lg-color-bg-elevated);
+  border: 1px solid var(--lg-color-primary);
+  color: var(--lg-color-text);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  z-index: 1000;
+  font-size: 14px;
+  max-width: 320px;
+  animation: toast-in 0.2s ease;
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   Top bar
+   ========================================================================== */
+.lg-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-5) var(--space-7);
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.lg-topbar__logo {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.lg-topbar__right {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+.lg-topbar__prompt {
+  color: var(--lg-color-text-muted);
+  font-size: 14px;
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+.lg-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid transparent;
+  transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast), opacity var(--transition-fast);
+  white-space: nowrap;
+}
+
+.lg-btn--primary {
+  background: linear-gradient(135deg, var(--lg-color-primary), var(--lg-color-primary-dark));
+  color: #fff;
+  padding: var(--space-3) var(--space-5);
+}
+
+.lg-btn--primary:hover {
+  filter: brightness(1.08);
+}
+
+.lg-btn--primary:active {
+  transform: translateY(1px);
+}
+
+.lg-btn--primary:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+.lg-btn--compact {
+  padding: var(--space-2) var(--space-4);
+}
+
+.lg-btn--full {
+  width: 100%;
+}
+
+.lg-btn--large {
+  padding: var(--space-3) var(--space-5);
+  font-size: 15px;
+}
+
+.lg-btn--success {
+  background: linear-gradient(135deg, var(--lg-color-success), #2fae58);
+}
+
+.lg-btn--social {
+  width: 100%;
+  justify-content: flex-start;
+  background: var(--lg-color-bg-elevated);
+  border-color: var(--lg-color-border);
+  color: var(--lg-color-text);
+  padding: var(--space-3) var(--space-4);
+}
+
+.lg-btn--social:hover {
+  border-color: var(--lg-color-text-faint);
+  background: #161a33;
+}
+
+.lg-btn--social__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+}
+
+/* ==========================================================================
+   Main layout
+   ========================================================================== */
+.lg-main {
+  display: flex;
+  gap: var(--space-7);
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: var(--space-5) var(--space-7) var(--space-7);
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   Brand panel (left)
+   ========================================================================== */
+.lg-brand-panel {
+  flex: 1.1;
+  min-width: 320px;
+  padding-top: var(--space-6);
+}
+
+.lg-brand-panel__title {
+  font-family: var(--font-display);
+  font-size: 46px;
+  line-height: 1.15;
+  font-weight: 700;
+  margin: 0 0 var(--space-4);
+}
+
+.lg-brand-panel__title em {
+  font-style: italic;
+  color: var(--lg-color-primary);
+}
+
+
+.lg-brand-panel__subtitle {
+  color: var(--lg-color-text-muted);
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 420px;
+  margin: 0 0 var(--space-6);
+}
+
+.lg-benefits-list {
+  list-style: none;
+  margin: 0 0 var(--space-6);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.lg-benefit-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.lg-benefit-item__icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background: var(--lg-color-primary-soft);
+  color: var(--lg-color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(108, 99, 255, 0.25);
+}
+
+.lg-benefit-item__title {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0 0 2px;
+}
+
+.lg-benefit-item__description {
+  font-size: 13px;
+  color: var(--lg-color-text-faint);
+  margin: 0;
+  line-height: 1.5;
+  max-width: 320px;
+}
+
+/* ==========================================================================
+   Device mock illustration
+   ========================================================================== */
+.lg-device-mock {
+  margin-top: var(--space-6);
+  display: flex;
+  justify-content: flex-start;
+}
+
+.lg-device-mock__laptop {
+  width: 100%;
+  max-width: 460px;
+}
+
+.lg-device-mock__screen {
+  background: #0d1024;
+  border: 1px solid var(--lg-color-border);
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+.lg-device-mock__topbar {
+  display: flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--lg-color-border-soft);
+  font-size: 11px;
+  color: var(--lg-color-text-faint);
+  font-family: var(--font-display);
+}
+
+.lg-device-mock__body {
+  display: flex;
+}
+
+.lg-device-mock__sidebar {
+  width: 80px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-2);
+  border-right: 1px solid var(--lg-color-border-soft);
+  font-size: 9px;
+  color: var(--lg-color-text-faint);
+}
+
+.lg-device-mock__content {
+  flex: 1;
+  padding: var(--space-3);
+}
+
+.lg-device-mock__video {
+  background: linear-gradient(145deg, #1c2048, #11132a);
+  border-radius: var(--radius-sm);
+  aspect-ratio: 16 / 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  text-align: center;
+  padding: var(--space-3);
+}
+
+.lg-device-mock__caption {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--lg-color-primary);
+  font-weight: 700;
+}
+
+.lg-device-mock__subtitle {
+  font-size: 10px;
+  color: var(--lg-color-text-muted);
+}
+
+.lg-device-mock__base {
+  height: 10px;
+  background: linear-gradient(180deg, #1a1d36, #0d0f1f);
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+}
+
+/* ==========================================================================
+   Login card (right)
+   ========================================================================== */
+.lg-login-card {
+  flex: 1;
+  min-width: 340px;
+  max-width: 460px;
+  background: var(--lg-color-bg-elevated);
+  border: 1px solid var(--lg-color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-card);
+}
+
+.lg-login-card__title {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0 0 var(--space-2);
+}
+
+.lg-login-card__subtitle {
+  color: var(--lg-color-text-muted);
+  font-size: 14px;
+  margin: 0 0 var(--space-5);
+}
+
+/* ---------- Form fields ---------- */
+.lg-login-form {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.lg-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.lg-field__label {
+  width: 100%;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--lg-color-text-muted);
+}
+
+.lg-field__control {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: var(--lg-color-bg-deep);
+  border: 1px solid var(--lg-color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-3);
+  transition: border-color var(--transition-fast);
+}
+
+.lg-field__control:focus-within {
+  border-color: var(--lg-color-primary);
+}
+
+.lg-field__control--error {
+  border-color: var(--lg-color-danger);
+}
+
+.lg-field__icon {
+  color: var(--lg-color-text-faint);
+  display: flex;
+  flex-shrink: 0;
+}
+
+.lg-field__input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--lg-color-text);
+  font-size: 14px;
+  font-family: var(--font-body);
+}
+
+.lg-field__input::placeholder {
+  color: var(--lg-color-text-faint);
+}
+
+.lg-field__toggle {
+  background: none;
+  border: none;
+  color: var(--lg-color-text-faint);
+  display: flex;
+  flex-shrink: 0;
+  transition: color var(--transition-fast);
+}
+
+.lg-field__toggle:hover {
+  color: var(--lg-color-text);
+}
+
+.lg-field__error {
+  font-size: 12px;
+  color: var(--lg-color-danger);
+}
+
+/* ---------- Remember me / forgot password ---------- */
+.lg-form-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.lg-checkbox {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 13px;
+  color: var(--lg-color-text-muted);
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+}
+
+.lg-checkbox input {
+  position: absolute;
+  opacity: 0;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.lg-checkbox__box {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  border: 1px solid var(--lg-color-border);
+  background: var(--lg-color-bg-deep);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.lg-checkbox input:checked + .lg-checkbox__box {
+  background: var(--lg-color-primary);
+  border-color: var(--lg-color-primary);
+}
+
+.lg-checkbox input:checked + .lg-checkbox__box::after {
+  content: '';
+  width: 4px;
+  height: 8px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg) translate(-1px, -1px);
+}
+
+.lg-link-btn {
+  background: none;
+  border: none;
+  color: var(--lg-color-primary);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.lg-link-btn:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Spinner ---------- */
+.lg-spinner {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #fff;
+  display: inline-block;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------- Divider ---------- */
+.lg-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: var(--lg-color-text-faint);
+  font-size: 12px;
+  margin: var(--space-5) 0;
+}
+
+.lg-divider::before,
+.lg-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--lg-color-border-soft);
+}
+
+.lg-divider span {
+  padding: 0 var(--space-3);
+}
+
+/* ---------- Social buttons ---------- */
+.lg-social-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+/* ---------- Security note ---------- */
+.lg-security-note {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  justify-content: center;
+  color: var(--lg-color-text-faint);
+  font-size: 12px;
+  text-align: center;
+  margin: 0;
+}
+
+.lg-security-note svg {
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.lg-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  padding: var(--space-5) var(--space-7) var(--space-6);
+  border-top: 1px solid var(--lg-color-border-soft);
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.lg-footer__copyright {
+  color: var(--lg-color-text-faint);
+  font-size: 13px;
+}
+
+.lg-footer__links {
+  display: flex;
+  gap: var(--space-5);
+  flex-wrap: wrap;
+}
+
+.lg-footer__link {
+  background: none;
+  border: none;
+  color: var(--lg-color-text-faint);
+  font-size: 13px;
+  transition: color var(--transition-fast);
+}
+
+.lg-footer__link:hover {
+  color: var(--lg-color-text);
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media (max-width: 1000px) {
+  .lg-main {
+    flex-direction: column;
+  }
+
+  .lg-brand-panel {
+    padding-top: 0;
+  }
+
+  .lg-login-card {
+    max-width: none;
+    width: 100%;
+  }
+
+  .lg-device-mock {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .lg-topbar {
+    padding: var(--space-4) var(--space-4);
+  }
+
+  .lg-main {
+    padding: var(--space-4) var(--space-4) var(--space-6);
+    gap: var(--space-5);
+  }
+
+  .lg-brand-panel__title {
+    font-size: 32px;
+  }
+
+  .lg-login-card {
+    padding: var(--space-5);
+  }
+
+  .lg-device-mock__sidebar {
+    width: 60px;
+  }
+
+  .lg-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: var(--space-4) var(--space-4) var(--space-5);
+  }
+}

@@ -1,0 +1,64 @@
+#chart-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.chart-container > svg {
+    width: 100%;
+    background: #fff;
+    border: 1px solid #ccc;
+}
+
+circle:hover {
+    cursor: pointer;
+}
+
+#chart-info {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+    display: flex;
+    gap: 20px;
+}
+
+#your-goals{
+    margin-top: 2.5%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#your-goals > p, #your-goals > strong{
+    font-family: 'sans-serif';
+    font-size: 1.2rem;
+    color: #333;
+}
+
+#your-goals-input{
+    margin-top: 2.5%;
+    padding: 10px;
+    font-family: 'sans-serif';
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#your-goals-input:focus{
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+#your-goals-list{
+    margin-top: 1%;
+    width: 100%;
+    max-height: 100%;
+    padding: 10px;
+    font-family: 'sans-serif';
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}

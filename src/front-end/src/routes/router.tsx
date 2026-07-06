@@ -25,6 +25,25 @@ import { BookReader } from "../pages/Library/pages/book_reader/book_reader";
 import { Legendas } from "../pages/Legendas/Legendas";
 import { Demo } from "../pages/Chat/Demo/Demo";
 import { Preview } from "@/pages/Post/Preview/Preview";
+import { Schedule } from "@/pages/profile/src/modules/schedule/schedule";
+import { Reading } from "@/pages/Library/pages/reading/reading";
+import { Posted } from "@/pages/Post/Posted/Posted";
+
+
+
+import { StudyFlow2 } from "@/pages/testePages/videos/StudyFlow2";
+import { BookLibrary } from "@/pages/testePages/library/Library";
+import { Page } from "@/pages/testePages/landingPage/LandingPage"
+import HomePage from "@/pages/testePages/home/HomePage";
+import { ChatPage } from "@/pages/testePages/chat/Chat";
+import { Translate } from "@/pages/testePages/translate/Translate";
+import { Login } from "@/pages/testePages/login/Login";
+import { Biblioteca } from "@/pages/testePages/biblioteca/Biblioteca";
+import { Cadastro } from "@/pages/testePages/cadastro/Cadastro";
+import GrupoEstudo from "@/pages/testePages/grupos/GrupoEstudo";
+import { Metas } from "@/pages/testePages/metas/Metas";
+import { Grupo } from "@/pages/testePages/grupos/grupoInfo/Grupo";
+import {Pomodoro} from "@/pages/testePages/pomodoro/Pomodoro";
 
 
 export const router = createBrowserRouter([
@@ -33,7 +52,63 @@ export const router = createBrowserRouter([
     element: <Default />
   },
   {
-    path: "/home/:id",
+    path: "/pomodoro/:name/:id",
+    element: <Pomodoro/>
+  },
+  {
+    path: "/metas/:name/:id",
+    element: <Metas />
+  },
+  {
+    path: "/grupo/:name/:id",
+    element: <Grupo />
+  },
+  {
+    path: "/grupos/:name/:id",
+    element: <GrupoEstudo />
+  },
+  {
+    path: "/biblioteca/:name/:id",
+    element: <Biblioteca />
+  },
+  {
+    path: "/teste-login",
+    element: <Login />
+  },
+  {
+    path: "/teste-cadastro",
+    element: <Cadastro />
+  },
+  {
+    path: "/traduzir/:name/:id",
+    element: <Translate />
+  },
+  {
+    path: "/chat/:name/:id",
+    element: <ChatPage />
+  },
+  {
+    path: "/home/:name/:id",
+    element: <HomePage />
+  },
+  {
+    path: "/page",
+    element: <Page />
+  },
+  {
+    path: "/books/:name/:id",
+    element: <BookLibrary />
+  },
+  {
+    path: "/videos/:name/:id",
+    element: <StudyFlow2 />
+  },
+
+  //---------------------------------------
+
+
+  {
+    path: "/home/:name/:id",
     element: <Home />
   },
   {
@@ -49,7 +124,7 @@ export const router = createBrowserRouter([
     element: <Register />
   },
   {
-    path: "/project/:id",
+    path: "/project/:name/:id",
     element: <AdmPage />
   },
   {
@@ -57,15 +132,15 @@ export const router = createBrowserRouter([
     element: <Download />
   },
   {
-    path: "/library/:id",
+    path: "/library/:name/:id",
     element: <Library />
   },
   {
-    path: "/book/:id/:name",
+    path: "/book/:name/:id/:book_name/:author",
     element: <EbookReader />,
   },
   {
-    path: "/personal_book",
+    path: "/personal_book/:name/:id",
     element: <PersonalBooks mobile={false} />
   },
   {
@@ -81,40 +156,44 @@ export const router = createBrowserRouter([
     element: <PageNotFound />
   },
   {
-    path: "/reading",
-    element: <PageNotFound />
+    path: "/reading/:name/:id",
+    element: <Reading />
   },
   {
     path: "/comunity/:id",
     element: <Home />
   },
+  // {
+  //   path: "/chat/:id",
+  //   element: <Chat />
+  // },
+  // {
+  //   path: "/chat/recruiter",
+  //   element: <Demo />
+  // },
+  // {
+  //   path: "/chat/:username/:id",
+  //   element: <Chat />
+  // },
   {
-    path: "/chat/:id",
-    element: <Chat />
-  },
-  {
-    path: "/chat/recruiter",
-    element: <Demo />
-  },
-  {
-    path: "/chat/:id/:username",
-    element: <Chat />
-  },
-  {
-    path: "chat/:id/new_friends",
+    path: "/chat/:id/new_friends",
     element: <AddFriends />
   },
   {
-    path: "comunity/:id/:username/new_friends",
+    path: "/comunity/:id/:username/new_friends",
     element: <AddFriends />
   },
   {
-    path: "profile/:id",
+    path: "/profile/:name/:id",
     element: <UserProfile />
   },
   {
-    path: "profile-timer/:id",
+    path: "/profile-timer/:name/:id",
     element: <UserProfileTimer />
+  },
+  {
+    path: "/schedule/:name/:id",
+    element: <Schedule />
   },
   {
     path: "/book/:name",
@@ -129,12 +208,16 @@ export const router = createBrowserRouter([
     element: <Post />
   },
   {
-    path: "/create_post/:username",
-    element: <CreatePost/>
+    path: "/create_post/:username/:id",
+    element: <CreatePost />
   },
   {
-    path: '/create_post/:username/preview',
-    element: <Preview/>
+    path: '/create_post/:username/:id/preview',
+    element: <Preview />
+  },
+  {
+    path: "/projects/:name/:id",
+    element: <Posted />
   }
 ])
 

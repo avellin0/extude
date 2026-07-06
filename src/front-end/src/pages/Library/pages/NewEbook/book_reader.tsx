@@ -17,9 +17,9 @@ export function EbookReader() {
     const [width, setWidth] = useState("100vw")
 
 
-    const { name, id } = useParams<{ name: string , id: string}>();
+    const { name, id, book_name, author } = useParams<{ name: string, id: string, book_name: string, author: string }>();
 
-    if (name === undefined) return
+    if (name === undefined || book_name === undefined || author === undefined) return
 
 
 
@@ -83,11 +83,11 @@ export function EbookReader() {
 
         const response = (await supabase.from('app_users').select('id').eq('name', id)).data
         const userId = response![0].id
-        
+
         const { data, error } = await supabase
             .from('books')
             .insert([
-                { 'book_name': name, 'book_cfi': localStorage.getItem(name), 'book_notes': texto , 'user_id': userId},
+                { 'book_name': name, 'book_cfi': localStorage.getItem(name), 'book_notes': texto, 'user_id': userId },
             ])
             .select()
 
@@ -154,7 +154,7 @@ export function EbookReader() {
                 ) : ""}
             </div>
 
-            <Reader url={`/books/${name}.epub`} width={width} />
+            <Reader url={`/public/books/${book_name}.epub`} width={width} name={book_name} author={author} />
         </div>
     )
 }

@@ -92,7 +92,6 @@ export function AdmPage() {
   }, [subtitles, videoFile]);
 
 
-  
   const sendSubmit = async () => {
     console.log("Buscando legendas...");
 
@@ -245,7 +244,6 @@ export function AdmPage() {
         </div>
 
         <div id="project-transcript-scope">
-          <p>{currentSubtitle}</p>
         </div>
 
         <div id="project-file-videos-scope">

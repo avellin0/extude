@@ -1,14 +1,12 @@
 import "./Translate.css";
 import React, { useState } from "react";
-import { useNavigate, useParams} from "react-router-dom";
-import back from "../../assets/icons/back.png";
+import { useNavigate} from "react-router-dom";
 
 export function TranslateEpub() {
   const [file, setFile] = useState<File | null>(null);
   const [sendMessage, setSendMessage] = useState(false);
   
   const navigate = useNavigate();
-  const { id } = useParams<{ id: string }>();
   
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -59,9 +57,6 @@ export function TranslateEpub() {
     <div id="translate-body">
       <div id="translate-welcome">
 
-        <div id="back-icon-scope">
-          <img src={back} alt="" id="back-icon" onClick={() => navigate(`/library/${id}`)} />
-        </div>
 
         <div id="translate-welcome-text">
           <h1>
@@ -74,7 +69,10 @@ export function TranslateEpub() {
         <div id="translate-main-content">
           <h1>Escolha seu Livro original</h1>
           <input type="file" accept=".epub" onChange={handleChange} />
-          <button onClick={handleUpload} id="translate-upload-button">Enviar e Baixar Traduzido</button>
+          <div id="translate-main-content-btn-scope">
+          <button onClick={handleUpload} id="translate-upload-button">traduzir arquivo</button>
+          <button id="translate-main-content-btn-back" onClick={() => navigate(-1)}>voltar</button>
+          </div>
           {sendMessage && <p id="translate-wait-message">Nossos poliglotas já estão traduzindo seu livro! se divirta enquanto isso.</p>}
 
         </div>

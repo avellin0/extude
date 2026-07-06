@@ -17,6 +17,7 @@ dist-ssr
 src/videos/api/whisper-env
 
 # Editor directories and files
+src/.vscode/
 .vscode/*
 !.vscode/extensions.json
 .idea

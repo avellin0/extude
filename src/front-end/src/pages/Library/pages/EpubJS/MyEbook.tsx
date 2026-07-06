@@ -1,80 +1,72 @@
-import { useEffect, useRef, useState } from "react"
-import { ReactReader } from "react-reader"
-import { useParams } from "react-router-dom"
-import { supabase } from '../../../../supabase/supa-client'
+import { useEffect, useRef, useState } from "react";
+import { ReactReader } from "react-reader";
 
 interface URLprops {
-  url: string | any,
-  width?: string
+  url: string;
+  width?: string;
+  name: string;
+  author: string;
 }
 
-export function Reader({ url, width }: URLprops) {
+export function Reader({ url, width, name, author }: URLprops) {
+  const [location, setLocation] = useState<string | number | null>(null);
 
-  const { name } = useParams<{ name: string }>()
-
-  if (!name) return
-
-  const [location, setLocation] = useState<string | number>(0)
-  const renditionRef = useRef<any>(null)
-
-  const debounceDB = async () => {
-    let { data: books, error } = await supabase
-      .from('books')
-      .select('book_cfi')
-      .eq('book_name', name)
-
-
-    if (!books || books.length === 0) {
-      console.log('Erro ao buscar livro');
-      setLocation(1)
-      return
-    }
-
-    if (error) {
-      console.log('this is the error:', error);
-    }
-
-    if( books[0].book_cfi === null){
-      setLocation(1)
-      return 
-    }
-
-
-    setLocation(books[0].book_cfi)
-  }
+  const renditionRef = useRef<any>(null);
 
   useEffect(() => {
-    const local = localStorage.getItem(name)
-    console.log("Estou buscando pelo local:", local);
+    const savedBook = localStorage.getItem(`epub.${name}`);
 
-    if (local === null) {
-      debounceDB()
-    } else if (local) {
-      setLocation(local)
-    } else {
-      debounceDB()
+    if (savedBook) {
+      const parsedBook = JSON.parse(savedBook);
+
+      console.log("Livro salvo:", parsedBook);
+
+      setLocation(parsedBook.location);
     }
-
-  }, [])
-
-
+  }, [name]);
 
   return (
-    <>
-      <div style={{ height: "100vh", width: width || "100vw" }}>
-        {location && (
-          <ReactReader
-            url={url}
-            location={location}
-            locationChanged={(epubCFI: string) => {
-              localStorage.setItem(name, epubCFI)
-            }}
-            getRendition={(rendition) => { renditionRef.current = rendition }}
-            epubInitOptions={{ openAs: "epub" }}
-          />
-        )}
+    <div style={{ height: "100vh", width: width || "100vw" }}>
+      <ReactReader
+        url={url}
+        location={location}
+        locationChanged={(epubCFI: string) => {
+          const rendition = renditionRef.current;
 
-      </div>
-    </>
-  )
+          let progress = 0;
+
+          try {
+            const percentage =
+              rendition.book.locations.percentageFromCfi(epubCFI);
+
+            progress = Math.round(percentage * 100);
+          } catch (err) {
+            console.log("Erro ao calcular progresso");
+          }
+
+          const bookData = {
+            location: epubCFI,
+            author,
+            progress,
+            updatedAt: new Date().toISOString(),
+          };
+
+          localStorage.setItem(
+            `epub.${name}`,
+            JSON.stringify(bookData)
+          );
+
+          setLocation(epubCFI);
+        }}
+        getRendition={(rendition) => {
+          renditionRef.current = rendition;
+
+          rendition.book.ready.then(() => {
+            return rendition.book.locations.generate(1000);
+          });
+        }}
+        epubInitOptions={{ openAs: "epub" }}
+      />
+    </div>
+  );
 }

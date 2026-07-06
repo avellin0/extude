@@ -1,10 +1,11 @@
 import "./Sidebar.css"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 
 
 
 export function Sidebar() {
 
+    const { name, id } = useParams<{name: string, id: string}>()
     const navigate = useNavigate()
 
     return (
@@ -30,17 +31,17 @@ export function Sidebar() {
 
                     <div className="user_info">
                         <p>Planner</p>
-                        <h3>Make Schedule</h3>
+                        <h3 onClick={() => navigate(`/Home/${name}/${id}`)}>Make Schedule</h3>
                     </div>
 
                     <div className="user_info">
                         <p>Your books</p>
-                        <h3>Library</h3>
+                        <h3 onClick={() => navigate(`/library/${name}/${id}`)}>Library</h3>
                     </div>
 
                     <div className="user_info">
                         <p>Your posts</p>
-                        <h3>Social</h3>
+                        <h3 onClick={() => navigate(`/Home/${name}/${id}`)}>Social</h3>
                     </div>
 
                 </div>

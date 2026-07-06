@@ -1,0 +1,245 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#reading-body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#reading-container {
+    width: 80%;
+    height: 85%;
+    display: flex;
+    box-shadow: 1px 1px 10px 5px #dcdbdb;
+    border-radius: 5px;
+}
+
+#reading-sidebar {
+    width: 5%;
+    height: 100%;
+    background-color: #eeeeee;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #d3d3d3;
+    border-radius: 5px 0px 0px 5px;
+}
+
+#reading-sidebar-logo-scope {
+    width: 100%;
+    height: 7.5%;
+    border-bottom: 1px solid #d3d3d3;
+    padding: 5%;
+}
+
+#reading-sidebar-logo {
+    width: 100%;
+    height: 100%;
+    background-image: url("/public/assets/icons/profile.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#reading-sidebar-icons-scope {
+    width: 100%;
+    height: 34%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.reading-sidebar-icons {
+    width: 100%;
+    height: 20%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.reading-sidebar-icons:hover{
+    cursor: pointer;
+}
+
+#reading-sidebar-icon-home {
+    background-image: url("/public/assets/icons/002-home.png");
+}
+
+#reading-sidebar-icon-book {
+    background-image: url("/public/assets/icons/003-agenda.png");
+}
+
+#reading-sidebar-icon-confirm {
+    background-image: url("/public/assets/icons/001-confirmation.png");
+}
+
+#reading-sidebar-icon-setting {
+    background-image: url("/public/assets/icons/004-setting.png");
+}
+
+#reading-books {
+    width: 95%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 0px 5px 5px 0px;
+}
+
+#reading-books-header {
+    width: 100%;
+    height: 7.5%;
+    border-bottom: 1px solid #d3d3d3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 42.5%;
+    color: rgb(44, 44, 44);
+    font-size: 15pt;
+    font-family: 'sans-serif';
+    font-weight: bold;
+}
+
+#reading-books-add {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+#reading-books-btn {
+    height: 75%;
+    width: 80%;
+    background-color: rgba(37, 108, 242, 0.8);
+    border: none;
+    border-radius: 2.5px;
+    font-weight: bold;
+    color: white;
+}
+
+#reading-books-btn:hover{
+    cursor: pointer;
+    background-color: rgba(37, 108, 242, 0.6);
+}
+
+#reading-books-title {
+    width: 70%;
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #d3d3d3;
+}
+
+#reading-books-progress {
+    width: 70%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5%;
+    padding-top: 2%;
+    overflow-y: scroll;
+}
+
+.book-item {
+    width: 80%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    border: 1px solid #d3d3d3;
+    border-radius: 5px;
+    gap: 5%;
+}
+
+.book-item-img-and-author {
+    width: 60%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    padding-left: 2.5%;
+    gap: 5%;
+}
+
+.book-item-img {
+    width: 10%;
+    height: 90%;
+    background-image: url("/public/assets/images/conde.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.reading-book-img {
+    width: 100%;
+    height: 3.5rem;
+}
+
+
+.book-item-btn-scope {
+    width: 35%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 5%;
+}
+
+.book-item-update-btn {
+    width: 50%;
+    height: 50%;
+    background-color: white;
+    border: 1px solid #d3d3d3;
+    border-radius: 2.5px;
+}
+
+.book-item-etc-btn {
+    width: 20%;
+    height: 50%;
+    background-color: white;
+    border: 1px solid #d3d3d3;
+    border-radius: 2.5px;
+    font-weight: bold;
+}
+
+.book-item-update-btn:hover,
+.book-item-etc-btn:hover {
+    cursor: pointer;
+    background-color: #eeeeee;
+}
+
+#reading-book-progress-noBooks {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5%;
+    color: gray;
+}
+
+
+#reading-book-img {
+    width: 15%;
+    height: 30%;
+}
+
+#reading-book-add-new-book {
+    width: 30%;
+    height: 15%;
+    background-color: white;
+    border: 1px solid #d3d3d3;
+    border-radius: 5px;
+    color: gray;
+}
+
+#reading-book-add-new-book:hover {
+    background-color: rgb(91, 139, 229);
+    color: white;
+    cursor: pointer;
+}

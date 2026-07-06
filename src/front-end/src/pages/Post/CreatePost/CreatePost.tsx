@@ -13,7 +13,7 @@ export const CreatePost = () => {
     const [titulo, setTitulo] =  useState('')
     const [subTitulo, setSubTitulo] = useState('')
 
-    const { username } = useParams<{ username: string }>()
+    const { username, id} = useParams<{ username: string, id: string }>()
     const navigate = useNavigate()
 
    
@@ -59,7 +59,7 @@ export const CreatePost = () => {
                     </div>
 
                     <div id="CP-buttons-scope">
-                        <button type="button" id="CP-btn-cancelar" onClick={() => navigate(`/home/${username}`)}>Cancelar</button>
+                        <button type="button" id="CP-btn-cancelar" onClick={() => navigate(`/home/${username}/${id}`)}>Cancelar</button>
                         <button type="button" id="CP-btn-publicar" onClick={() => handleSend()}>Vizualizar</button>
                     </div>
                 </div>

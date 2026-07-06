@@ -21,15 +21,13 @@
 }
 
 #user-profile-user-content-scope{
-    width: 25%;
+    width: 21vw;
     height: 100vh;
-    background-color: ghostwhite;
+    background-color: white;
     display: flex;
     flex-direction: column;
     padding: 20px;
     border: 1px solid #d3d3d3;
-    box-shadow: 2px 1px 6px 1px #d3d3d3;
-    border-radius: 0 5px 5px 0;
 }
 
 

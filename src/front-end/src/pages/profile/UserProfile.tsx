@@ -8,10 +8,10 @@ import { useNavigate, useParams} from "react-router-dom"
 
 export function UserProfile() {
     const navigate = useNavigate()
-    const {id} = useParams<{id: string}>()
+    const {name, id} = useParams<{name: string, id: string}>()
 
     const redirect = () => {
-        navigate(`/home/${id}`)
+        navigate(`/home/${name}/${id}`)
     }
 
     return (
@@ -22,7 +22,7 @@ export function UserProfile() {
                 </div>
                 <div id="user-profile-content-header">
                     <img src={userImg} alt="" />
-                    <h1>{id}</h1>
+                    <h1>{name}</h1>
                 </div>
                 <div id="user-profile-content-list">
 
@@ -46,10 +46,10 @@ export function UserProfile() {
             <div id="user-profile-info-scope">
                 <div id="user-profile-activies">
                     <button className="user-profile-activies-btn" >Overview</button>
-                    <button className="user-profile-activies-btn" >Activity</button>
+                    <button className="user-profile-activies-btn" onClick={() => navigate(`/schedule/${name}/${id}`)}>Activity</button>
                     <button className="user-profile-activies-btn" >Contracts</button>
                     <button className="user-profile-activies-btn" >Benefits</button>
-                    <button className="user-profile-activies-btn" >Projects</button>
+                    <button className="user-profile-activies-btn" onClick={() => navigate(`/projects/${name}/${id}`)}>Projects</button>
                 </div>
 
                 <div id="user-profile-progress">

@@ -1,108 +1,133 @@
 import { Reader } from "../EpubJS/MyEbook";
 import { useState, useRef, useEffect } from "react";
-import { useNavigate, useParams} from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import back from "../../assets/icons/back.png";
 import write from "../../assets/icons/write.png";
 
-import './personalBook.css'
+import "./personalBook.css";
 
 interface MobileProps {
     mobile: boolean;
 }
 
 export function PersonalBooks({ mobile }: MobileProps) {
-    const [file, setfile] = useState<string | null>(null)
-    const [header, setHeader] = useState(true)
-    const [notes, setNotes] = useState(false)
-    const [texto, setTexto] = useState<string>("");
+    const [file, setFile] = useState<string | null>(null);
+    const [showHeader, setShowHeader] = useState(true);
+    const [showNotes, setShowNotes] = useState(false);
+    const [texto, setTexto] = useState("");
 
-    const navigate = useNavigate()
-    const { id } = useParams<{ id: string }>();
+    const navigate = useNavigate();
+    const { name,id} = useParams<{ id: string, name: string}>();
 
-    const [width, setWidth] = useState("100vw")
+    const objectUrl = useRef<string | null>(null);
 
-    const objectUrl = useRef<string | null>(null)
+    const width = showNotes ? "80vw" : "100vw";
 
+    // cleanup do blob URL
     useEffect(() => {
-        if (objectUrl.current) {
-            URL.revokeObjectURL(objectUrl.current)
-            objectUrl.current = null
-        }
-    }, [])
+        return () => {
+            if (objectUrl.current) {
+                URL.revokeObjectURL(objectUrl.current);
+            }
+        };
+    }, []);
 
+    // Upload do EPUB
     const handleUrl = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0];
-        if (!file) return
+        const selectedFile = e.target.files?.[0];
+        if (!selectedFile) return;
 
-        const reader = new FileReader()
-
-        reader.onload = () => {
-            const data = reader.result as string
-            setfile(data)
+        // limpa URL antiga se existir
+        if (objectUrl.current) {
+            URL.revokeObjectURL(objectUrl.current);
         }
 
+        const url = URL.createObjectURL(selectedFile);
+        objectUrl.current = url;
 
-        reader.readAsDataURL(file);
-        setHeader(false)
-    }
-
-    const handleSalvar = () => {
-        const blob = new Blob([texto], { type: "text/plain" });
-        const link = document.createElement("a");
-        link.href = URL.createObjectURL(blob);
-        link.download = "meu_arquivo.txt"; // Você pode permitir que o usuário escolha
-        link.click();
-        URL.revokeObjectURL(link.href);
+        setFile(url);
+        setShowHeader(false);
     };
 
+    // Salvar notas
+    const handleSalvar = () => {
+        const blob = new Blob([texto], { type: "text/plain" });
+        const url = URL.createObjectURL(blob);
 
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "minhas_notas.txt";
+        link.click();
+
+        URL.revokeObjectURL(url);
+    };
+
+    // Toggle notes
     const handleNotes = () => {
-        setWidth("80vw")
-
-        if (notes) {
-            setWidth("100vw")
-            return setNotes(false)
-        }
-
-        setNotes(true)
-    }
-
+        setShowNotes((prev) => !prev);
+    };
 
     return (
-        <>
-            <div id="reader-body">
+        <div id="reader-body">
+            {/* HEADER */}
+            <div>
+                {showHeader ? (
+                    <div id="reader-header">
+                        <h1>Selecione seu Livro Epub</h1>
+                        <input
+                            type="file"
+                            accept="application/epub+zip"
+                            onChange={handleUrl}
+                        />
+                    </div>
+                ) : (
+                    <div
+                        id={
+                            showNotes
+                                ? "reader-header-active"
+                                : "reader-header-deactive"
+                        }
+                    >
+                        <div id="reader-settings">
+                            {!mobile && (
+                                <img
+                                    src={write}
+                                    alt="notes"
+                                    className="icon"
+                                    onClick={handleNotes}
+                                />
+                            )}
 
-                <div>
-                    {header ? (
-                        <div id="reader-header">
-                            <h1>Selecione seu Livro Epub</h1>
-                            <input type="file" accept="application/epub+zip" onChange={handleUrl} />
+                            <img
+                                src={back}
+                                alt="back"
+                                className="icon"
+                                onClick={() => navigate(`/library/${name}/${id}`)}
+                            />
                         </div>
-                    ) : (
-                        <div id={width === "100vw" ? "reader-header-deactive" : "reader-header-active"}>
 
-                            <div id="reader-settings">
-                                {!mobile && <img src={write} alt="" className="icon" onClick={handleNotes} />}
-                                <img src={back} alt="" className="icon" onClick={() => navigate(`/library/${id}`)} />
-
+                        {showNotes && (
+                            <div id="reader-scope">
+                                <textarea
+                                    id="reader-notes"
+                                    spellCheck="false"
+                                    placeholder="Deixe sua mente livre..."
+                                    value={texto}
+                                    onChange={(e) => setTexto(e.target.value)}
+                                />
+                                <button id="save-notes" onClick={handleSalvar}>
+                                    Salvar
+                                </button>
                             </div>
-
-                            {width === "80vw" && notes ? (
-                                <div id="reader-scope">
-                                    <textarea id="reader-notes" spellCheck="false" placeholder="Deixe sua mente livre..." onChange={(e) => setTexto(e.target.value)} />
-                                    <button id="save-notes" onClick={handleSalvar}>Salvar</button>
-                                </div>
-                            ) : ""}
-                        </div>
-                    )}
-                </div>
-
-                <div>
-                    {file && <Reader url={file} width={width} />}
-
-                </div>
+                        )}
+                    </div>
+                )}
             </div>
 
-        </>
-    )
+            {/* READER */}
+            <div>
+                {file && <Reader url={file} width={width} name={id || "default-book"} />}
+            </div>
+        </div>
+    );
 }

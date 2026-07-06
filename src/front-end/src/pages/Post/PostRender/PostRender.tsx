@@ -4,7 +4,7 @@ import StarterKit from '@tiptap/starter-kit'
 import './PostRender.css'
 
 type Props = {
-  content: any // JSON vindo do banco
+  content: any 
 }
 
 export function PostRenderer({ content }: Props) {

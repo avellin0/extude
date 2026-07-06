@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom"
 import { Mobile } from "./Modules/mobile/Mobile"
 import { SideBar } from "./Modules/sidebar/SideBar"
 import { MessagesInput } from "./Modules/InteractiveChat/Messages"
+import { useNavigate } from "react-router-dom"
 
 interface TypeOfMessage {
     message: string
@@ -18,13 +19,27 @@ interface TypeOfMessage {
     remetentId: string
 }
 
+const mockFriends = [
+    {
+        id: "1",
+        name: "Pedro"
+    },
+    {
+        id: "2",
+        name: "Tiago"
+    },
+    {
+        id: "3",
+        name: "Joao"
+    }
+]
 
 
 export function Chat() {
 
     const [hasMessage, setHasMessage] = useState<TypeOfMessage[]>([])
     const [message, setMessage] = useState<TypeOfMessage[]>([])
-
+    const navigate = useNavigate()
 
 
     const { id, username } = useParams<{ id: string, username: string }>()
@@ -37,17 +52,12 @@ export function Chat() {
             setMessage((current) => [...current, data])
         }
 
-
-
         socket.on("port3004", handleMessage)
-
 
         return () => {
             socket.off("port3004", handleMessage)
         }
     }, [])
-
-
 
     const getMessages = async () => {
         const response = await fetch(`https://chat-service-tjzg.onrender.com/refresh_message/${id}`)
@@ -56,16 +66,14 @@ export function Chat() {
         setHasMessage(Array.isArray(data) ? data : [])
     }
 
-    return (
-        <div id="body">
-            <div id="chat-body-scope">
+    if (username === "recruiter") {
+        return (
+            <div id="body">
+                <div id="chat-body-scope">
+                    <Mobile />
+                    <SideBar recruiter={true} friendsOptions={mockFriends}/>
 
-                <Mobile />
-
-                <SideBar id={id} />
-
-                {/* CHAT AREA */}
-
+                    {/* CHAT AREA */}
 
                     <div id="chat-scope">
                         <div id="chat-scope-area" >
@@ -82,8 +90,6 @@ export function Chat() {
                                 </>
 
                             ))}
-
-
 
                             {message.map((msg, index) => (
                                 <>
@@ -104,6 +110,56 @@ export function Chat() {
                         {username ? <MessagesInput friend={username} id={id} /> : <></>}
 
                     </div>
+                </div>
+            </div >
+        )
+    }
+
+    return (
+        <div id="body">
+            <div id="chat-body-scope">
+                <Mobile />
+                <SideBar id={id} />
+
+                {/* CHAT AREA */}
+
+                <div id="chat-scope">
+                    <div id="chat-scope-area" >
+
+                        {hasMessage.map((msg, index) => (
+                            <>
+                                {
+                                    (msg.remetentId === username && msg.destinatarioId === id) || (msg.remetentId === id && msg.destinatarioId === username) ?
+                                        <div key={index} className={msg.remetentId === id ? 'chat-left-side' : 'chat-right-side'}>
+                                            <p><span>{msg.remetentId}</span>: {msg.conteudo}</p>
+                                        </div>
+                                        : ""
+                                }
+                            </>
+
+                        ))}
+
+
+
+                        {message.map((msg, index) => (
+                            <>
+                                {msg.addresse === id || msg.author === id ?
+                                    < div key={index} className={msg.addresse === id ? 'chat-right-side' : 'chat-left-side'}>
+                                        <p><span>{msg.author}</span>: {msg.message}</p>
+                                    </div >
+
+                                    : ""}
+                            </>
+                        ))
+                        }
+
+
+                    </div>
+
+
+                    {username ? <MessagesInput friend={username} id={id} /> : <></>}
+
+                </div>
             </div>
         </div >
     )

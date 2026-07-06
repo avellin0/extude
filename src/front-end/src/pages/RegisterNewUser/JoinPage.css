@@ -93,6 +93,7 @@ form{
 }
 
 .register-input-text{
+    font-family: sans-serif;
     text-indent: 5px;
     height: 40px;
     width: 100%;

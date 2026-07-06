@@ -1,9 +1,11 @@
 // Clock.tsx
-import { useEffect, useRef } from "react";
-import { useParams } from "react-router-dom";
-import type { ChangeEvent } from "react";
 import "./Clock.css";
-import {AddTimerOnDB} from "../scripts/AddTimerOnDB"
+
+import type { ClockProps, DadosAcumulados } from "./Clock.interface";
+import type { ChangeEvent } from "react";
+
+import { ClockButtons } from "./Clock.buttons";
+import { useEffect, useRef } from "react";
 
 const formatTime = (seconds: number): string => {
   const m = Math.floor(seconds / 60);
@@ -11,98 +13,52 @@ const formatTime = (seconds: number): string => {
   return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
 };
 
+export default function Clock({
+  time,
+  setTime,
+  tempoInicial,
+  setTempoInicial,
+  acumulado,
+  setAcumulado,
+  running,
+  setRunning
 
-type ClockProps = {
-  time: number;
-  setTime: (value: number) => void;
-  tempoInicial: number;
-  setTempoInicial: (value: number) => void;
-  acumulado: number;
-  setAcumulado: (value: number) => void;
-  running: boolean;
-  setRunning: (value: boolean) => void;
-};
+}: ClockProps) {
 
-export type DadosAcumulados = {
-  totalEstudado: number;
-  ultima_atualizacao: string;
-};
+  const params: ClockProps = { time, setTime, tempoInicial, setTempoInicial, acumulado, setAcumulado, running, setRunning };
+  const OmitParams: Omit<ClockProps, "acumulado" | "setAcumulado" | "running" | "setRunning"> = { time, setTime, tempoInicial, setTempoInicial };
+  const ClockButtonsInstance = new ClockButtons();
 
-export default function Clock({time,setTime,tempoInicial,setTempoInicial,acumulado,setAcumulado,running,setRunning}: ClockProps) {
-
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
-  const started = tempoInicial > 0;
-
-    const {id} = useParams<{id: string}>()
-  
   let tempoEstudado: DadosAcumulados = JSON.parse(localStorage.getItem("dadosAcumulados") || "null");
 
+  const started = tempoInicial > 0;
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+
   useEffect(() => {
-    if (running) {
+    if (params.running) {
       intervalRef.current = setInterval(() => {
-        if (time <= 1) {
-          clearInterval(intervalRef.current!);
-          setRunning(false);
-          setAcumulado(acumulado + tempoInicial);
-          setTime(0);
-        } else {
-          setTime(time - 1);
-        }
+        ClockButtonsInstance.reloadPage(params);
       }, 1000);
-    } else {
+    }
+    else {
       if (intervalRef.current) clearInterval(intervalRef.current);
     }
+
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
-  }, [running, time, tempoInicial, acumulado, setAcumulado, setRunning, setTime]);
 
-  const handleRestart = () => {
-    setTime(0);
-    setRunning(false);
-    setTempoInicial(0);
+  }, [running, time, acumulado]);
 
-    console.log("tempo atual:", tempoEstudado, "quanto estudou de verdade:", acumulado + (tempoInicial - time));
-    
 
-    // AddTimerOnDB(tempoEstudado, id);
-  };
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => ClockButtons.handleInputChange(e, OmitParams);
+  const handleRestart = () => ClockButtonsInstance.handleRestart(params, tempoEstudado);
 
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const minutes = parseInt(e.target.value);
-    
-    if (!isNaN(minutes)) {
-      const seconds = minutes * 60;
-      setTime(seconds);
-      setTempoInicial(time);
-    }
-  };
+  const toggleRunning = () => ClockButtons.toggleRunning(params, tempoEstudado);
+  const addTime = () => ClockButtons.addTime(OmitParams);
+  const subtractTime = () => ClockButtons.subtractTime(OmitParams);
 
-  const addTime = () => {
-    setTime(time + 600);
-    setTempoInicial(tempoInicial + 600);
-  };
-
-  const subtractTime = () => {
-    const newTime = Math.max(time - 600, 0);
-    setTime(newTime);
-    setTempoInicial(Math.max(tempoInicial - 600, 0));
-  };
-
-  const toggleRunning = () => {
-    if (!running) {
-      setTempoInicial(time);
-      AddTimerOnDB(tempoEstudado, id);
-    } else {
-      const tempoPassado = tempoInicial - time;
-      if (tempoPassado > 0) {
-        setAcumulado(acumulado + tempoPassado);
-        tempoEstudado.totalEstudado = 0;
-      }
-    }
-
-    setRunning(!running);
-  };
 
   return (
     <div className="container">
