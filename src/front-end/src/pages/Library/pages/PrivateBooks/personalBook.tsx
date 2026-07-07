@@ -17,7 +17,7 @@ export function PersonalBooks({ mobile }: MobileProps) {
     const [texto, setTexto] = useState("");
 
     const navigate = useNavigate();
-    const { name,id} = useParams<{ id: string, name: string}>();
+    const { name,id,author} = useParams<{ id: string, name: string, author: string}>();
 
     const objectUrl = useRef<string | null>(null);
 
@@ -126,7 +126,7 @@ export function PersonalBooks({ mobile }: MobileProps) {
 
             {/* READER */}
             <div>
-                {file && <Reader url={file} width={width} name={id || "default-book"} />}
+                {file && <Reader author={typeof(author) === 'string'? author : ""} url={file} width={width} name={id || "default-book"} />}
             </div>
         </div>
     );

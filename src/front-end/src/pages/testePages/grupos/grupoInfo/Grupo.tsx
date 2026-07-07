@@ -9,23 +9,23 @@ import { LeftBar } from "../../home/components/leftBar/LeftBar"
    TIPOS
    ============================================================ */
 
-type gpTabId = "visao" | "ranking" | "chat" | "membros" | "metas" | "config"
+// type gpTabId = "visao" | "ranking" | "chat" | "membros" | "metas" | "config"
 
-interface gpNavItem {
-  id: string
-  label: string
-  icon: gpIconName
-}
+// interface gpNavItem {
+//   id: string
+//   label: string
+//   icon: gpIconName
+// }
 
-interface gpNavSection {
-  title?: string
-  items: gpNavItem[]
-}
+// interface gpNavSection {
+//   title?: string
+//   items: gpNavItem[]
+// }
 
-interface gpTab {
-  id: gpTabId
-  label: string
-}
+// interface gpTab {
+//   id: gpTabId
+//   label: string
+// }
 
 interface gpStat {
   id: string
@@ -341,38 +341,38 @@ function GpIcon({ name, size = 20 }: { name: gpIconName; size?: number }) {
    DADOS MOCKADOS
    ============================================================ */
 
-const gpNavSections: gpNavSection[] = [
-  {
-    items: [
-      { id: "home", label: "Home", icon: "home" },
-      { id: "videos", label: "Vídeos", icon: "video" },
-      { id: "livros", label: "Livros", icon: "book" },
-    ],
-  },
-  {
-    title: "Conectar",
-    items: [
-      { id: "grupos", label: "Grupos", icon: "groups" },
-      { id: "chat", label: "Chat", icon: "chat" },
-    ],
-  },
-  {
-    title: "Produtividade",
-    items: [
-      { id: "metas", label: "Metas", icon: "goal" },
-      { id: "pomodoro", label: "Pomodoro", icon: "pomodoro" },
-    ],
-  },
-]
+// const gpNavSections: gpNavSection[] = [
+//   {
+//     items: [
+//       { id: "home", label: "Home", icon: "home" },
+//       { id: "videos", label: "Vídeos", icon: "video" },
+//       { id: "livros", label: "Livros", icon: "book" },
+//     ],
+//   },
+//   {
+//     title: "Conectar",
+//     items: [
+//       { id: "grupos", label: "Grupos", icon: "groups" },
+//       { id: "chat", label: "Chat", icon: "chat" },
+//     ],
+//   },
+//   {
+//     title: "Produtividade",
+//     items: [
+//       { id: "metas", label: "Metas", icon: "goal" },
+//       { id: "pomodoro", label: "Pomodoro", icon: "pomodoro" },
+//     ],
+//   },
+// ]
 
-const gpTabs: gpTab[] = [
-  { id: "visao", label: "Visão geral" },
-  { id: "ranking", label: "Ranking" },
-  { id: "chat", label: "Chat" },
-  { id: "membros", label: "Membros" },
-  { id: "metas", label: "Metas" },
-  { id: "config", label: "Configurações" },
-]
+// const gpTabs: gpTab[] = [
+//   { id: "visao", label: "Visão geral" },
+//   { id: "ranking", label: "Ranking" },
+//   { id: "chat", label: "Chat" },
+//   { id: "membros", label: "Membros" },
+//   { id: "metas", label: "Metas" },
+//   { id: "config", label: "Configurações" },
+// ]
 
 const gpStatsData: gpStat[] = [
   { id: "s1", icon: "clock", value: "376h 20m", label: "Tempo total estudado", tone: "indigo" },
@@ -548,15 +548,15 @@ function GpCategoryBadge({ icon, tone }: { icon: gpIconName; tone: gpTone }) {
    ============================================================ */
 
 export function Grupo() {
-  const [gpActiveNav, setGpActiveNav] = useState<string>("grupos")
-  const [gpActiveTab, setGpActiveTab] = useState<gpTabId>("visao")
+  // const [gpActiveNav, setGpActiveNav] = useState<string>("grupos")
+  // const [gpActiveTab, setGpActiveTab] = useState<gpTabId>("visao")
   const [gpMessages, setGpMessages] = useState<gpMessage[]>(gpInitialMessages)
   const [gpDraft, setGpDraft] = useState<string>("")
   const [gpPinnedOpen, setGpPinnedOpen] = useState<boolean>(true)
   const [gpReactions, setGpReactions] = useState<Record<string, boolean>>({})
-  const [gpDark, setGpDark] = useState<boolean>(false)
+  // const [gpDark, setGpDark] = useState<boolean>(false)
   const [gpJoined, setGpJoined] = useState<boolean>(true)
-  const [gpProfileOpen, setGpProfileOpen] = useState<boolean>(false)
+  // const [gpProfileOpen, setGpProfileOpen] = useState<boolean>(false)
 
   const gpGoalTotal = 500
   const gpGoalDone = 376
@@ -594,10 +594,10 @@ export function Grupo() {
     setGpReactions((prev) => ({ ...prev, [id]: !prev[id] }))
   }
 
-  const gpToggleTheme = () => setGpDark((d) => !d)
+  // const gpToggleTheme = () => setGpDark((d) => !d)
 
   return (
-    <div className={`gp-app${gpDark ? " gp-dark" : ""}`}>
+    <div className={`gp-app`}>
       {/* ============ SIDEBAR ============ */}
       {/* <aside className="gp-sidebar">
         <div className="gp-brand">

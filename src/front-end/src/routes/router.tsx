@@ -4,13 +4,11 @@ import Home from "../pages/Home/HomePage";
 import LandingPage from "../pages/CourseLandingPage/LandingPage";
 import { LoginPage } from "../pages/Login/LoginPage";
 import { Register } from "../pages/RegisterNewUser/JoinPage";
-import { AdmPage } from "../pages/Project/Project";
 import { Download } from "../pages/Downloader/Download";
 
 
-import { UserProfileTimer } from "../pages/profile/src/App"
 import { UserProfile } from "../pages/profile/UserProfile"
-import { Chat } from "../pages/Chat/Chat"
+// import { Chat } from "../pages/Chat/Chat"
 import { AddFriends } from "../pages/Chat/AddFriends/AddFriends"
 import { PersonalBooks } from '../pages/Library/pages/PrivateBooks/personalBook';
 import { TranslateEpub } from '../pages/Library/pages/Translate/Translate';
@@ -23,7 +21,7 @@ import Library from "../pages/Library/pages/web_library/LibraryPage";
 
 import { BookReader } from "../pages/Library/pages/book_reader/book_reader";
 import { Legendas } from "../pages/Legendas/Legendas";
-import { Demo } from "../pages/Chat/Demo/Demo";
+// import { Demo } from "../pages/Chat/Demo/Demo";
 import { Preview } from "@/pages/Post/Preview/Preview";
 import { Schedule } from "@/pages/profile/src/modules/schedule/schedule";
 import { Reading } from "@/pages/Library/pages/reading/reading";
@@ -123,10 +121,7 @@ export const router = createBrowserRouter([
     path: "/cadastro",
     element: <Register />
   },
-  {
-    path: "/project/:name/:id",
-    element: <AdmPage />
-  },
+
   {
     path: "/Baixe",
     element: <Download />
@@ -186,10 +181,6 @@ export const router = createBrowserRouter([
   {
     path: "/profile/:name/:id",
     element: <UserProfile />
-  },
-  {
-    path: "/profile-timer/:name/:id",
-    element: <UserProfileTimer />
   },
   {
     path: "/schedule/:name/:id",

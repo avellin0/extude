@@ -1,4 +1,4 @@
-import { IconBooks, IconChat, IconClips, IconCommunity, IconExplore, IconGoals, IconHome, IconPomodoro, IconPosts, IconSaved, IconTranscripts, IconVideos } from "../icons/icons";
+import { IconBooks, IconChat, IconClips, IconCommunity, IconGoals, IconHome, IconPomodoro, IconTranscripts, IconVideos } from "../icons/icons";
 import type { LoggedUser, PopularContent, Post, Topic } from "../interfaces/interface";
 
 

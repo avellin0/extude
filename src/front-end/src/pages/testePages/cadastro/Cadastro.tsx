@@ -316,7 +316,6 @@ export const Cadastro: React.FC = () => {
       });
 
       if (response.ok) {
-        console.log("Usuário encontrado");
         return true;
       }
 
@@ -361,7 +360,6 @@ export const Cadastro: React.FC = () => {
     event.preventDefault();
     try {
       if (!validateInput()) {
-        console.log("Erro de validação:", errors);
         return;
       }
 
@@ -381,13 +379,9 @@ export const Cadastro: React.FC = () => {
         console.error("Erro ao criar usuário:", criandoUsuario?.message);
         return;
       }
-
-      console.log(criandoUsuario);
-      
       await navigateToHome(criandoUsuario.data?.id || '');
-
-      console.log("enviado com sucesso");
-
+      console.log(UserId);
+      
     } catch (err) {
       console.log("erro aqui:", err);
     }

@@ -52,12 +52,12 @@ interface FooterLink {
 
 // ---------- Icons (inline SVG, no external deps) ----------
 
-const IconSearch = () => (
-  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2">
-    <circle cx="11" cy="11" r="7" />
-    <line x1="21" y1="21" x2="16.65" y2="16.65" />
-  </svg>
-);
+// const IconSearch = () => (
+//   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2">
+//     <circle cx="11" cy="11" r="7" />
+//     <line x1="21" y1="21" x2="16.65" y2="16.65" />
+//   </svg>
+// );
 
 const IconUpload = () => (
   <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2">
@@ -305,7 +305,7 @@ const LANG_BADGES = [
 // ---------- Component ----------
 
 export const Translate: React.FC = () => {
-  const [searchQuery, setSearchQuery] = useState('');
+  // const [searchQuery, setSearchQuery] = useState('');
   const [activeNav, setActiveNav] = useState('Traduzir');
   const [targetLanguage, setTargetLanguage] = useState('');
   const [translationStyle, setTranslationStyle] = useState('equilibrado');
@@ -371,9 +371,9 @@ export const Translate: React.FC = () => {
     });
   }, [translations]);
 
-  const handleNavClick = useCallback((label: string) => {
-    setActiveNav(label);
-  }, []);
+  // const handleNavClick = useCallback((label: string) => {
+  //   setActiveNav(label);
+  // }, []);
 
   const handleSelectFileClick = useCallback(() => {
     fileInputRef.current?.click();

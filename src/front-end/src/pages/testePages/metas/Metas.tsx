@@ -320,29 +320,29 @@ function MtIcon({ name, size = 20 }: MtIconProps) {
 
 /* ============================ MOCK DATA ============================ */
 
-const MT_NAV_LEARN: { label: string; icon: MtIconName }[] = [
-  { label: "Home", icon: "home" },
-  { label: "Explorar", icon: "explore" },
-  { label: "Meus Posts", icon: "posts" },
-  { label: "Salvos", icon: "saved" },
-]
+// const MT_NAV_LEARN: { label: string; icon: MtIconName }[] = [
+//   { label: "Home", icon: "home" },
+//   { label: "Explorar", icon: "explore" },
+//   { label: "Meus Posts", icon: "posts" },
+//   { label: "Salvos", icon: "saved" },
+// ]
 
-const MT_NAV_APRENDER: { label: string; icon: MtIconName }[] = [
-  { label: "Vídeos", icon: "video" },
-  { label: "Livros", icon: "book" },
-  { label: "Transcrições", icon: "transcript" },
-  { label: "Clips", icon: "clips" },
-]
+// const MT_NAV_APRENDER: { label: string; icon: MtIconName }[] = [
+//   { label: "Vídeos", icon: "video" },
+//   { label: "Livros", icon: "book" },
+//   { label: "Transcrições", icon: "transcript" },
+//   { label: "Clips", icon: "clips" },
+// ]
 
-const MT_NAV_COMUNIDADE: { label: string; icon: MtIconName }[] = [
-  { label: "Comunidade", icon: "community" },
-  { label: "Chat", icon: "chat" },
-]
+// const MT_NAV_COMUNIDADE: { label: string; icon: MtIconName }[] = [
+//   { label: "Comunidade", icon: "community" },
+//   { label: "Chat", icon: "chat" },
+// ]
 
-const MT_NAV_PRODUTIVIDADE: { label: string; icon: MtIconName }[] = [
-  { label: "Metas", icon: "goals" },
-  { label: "Pomodoro", icon: "pomodoro" },
-]
+// const MT_NAV_PRODUTIVIDADE: { label: string; icon: MtIconName }[] = [
+//   { label: "Metas", icon: "goals" },
+//   { label: "Pomodoro", icon: "pomodoro" },
+// ]
 
 const MT_STATS: MtStat[] = [
   { id: "s1", value: "5", label: "Metas ativas", icon: "target", tone: "violet" },
@@ -637,7 +637,7 @@ function MtGoalCard({ goal, expanded, onToggle, onProgress }: MtGoalCardProps) {
 /* ============================ MAIN COMPONENT ============================ */
 
 export function Metas() {
-  const [mtActiveNav, setMtActiveNav] = useState<string>("Metas")
+  // const [mtActiveNav, setMtActiveNav] = useState<string>("Metas")
   const [mtActiveTab, setMtActiveTab] = useState<MtTabKey>("minhas")
   const [mtCategoryFilter, setMtCategoryFilter] = useState<MtCategoryKey | "all">("all")
   const [mtCategoryOpen, setMtCategoryOpen] = useState<boolean>(false)
@@ -645,7 +645,7 @@ export function Metas() {
   const [mtExpandedId, setMtExpandedId] = useState<string | null>(null)
   const [mtGoalCounter, setMtGoalCounter] = useState<number>(MT_INITIAL_GOALS.length)
   const [mtTipIndex, setMtTipIndex] = useState<number>(0)
-  const [mtDarkMode, setMtDarkMode] = useState<boolean>(false)
+  // const [mtDarkMode, setMtDarkMode] = useState<boolean>(false)
   const [mtSelectedDay, setMtSelectedDay] = useState<number>(3)
 
   const mtHandleTabChange = (tab: MtTabKey): void => {
@@ -720,7 +720,7 @@ export function Metas() {
       : MT_CATEGORIES.find((c) => c.key === mtCategoryFilter)?.label ?? "Todas as categorias"
 
   return (
-    <div className={`mt-app${mtDarkMode ? " mt-app--dark" : ""}`}>
+    <div className={`mt-app`}>
       {/* ============ SIDEBAR ============ */}
       <div className="hp-layout">
         <LeftBar />
@@ -936,21 +936,21 @@ export function Metas() {
 
 /* ============================ NAV ITEM ============================ */
 
-interface MtNavItemProps {
-  item: { label: string; icon: MtIconName }
-  active: string
-  onClick: (label: string) => void
-}
+// interface MtNavItemProps {
+//   item: { label: string; icon: MtIconName }
+//   active: string
+//   onClick: (label: string) => void
+// }
 
-function MtNavItem({ item, active, onClick }: MtNavItemProps) {
-  return (
-    <button
-      type="button"
-      className={`mt-nav-item${active === item.label ? " mt-nav-item--active" : ""}`}
-      onClick={() => onClick(item.label)}
-    >
-      <MtIcon name={item.icon} size={20} />
-      <span>{item.label}</span>
-    </button>
-  )
-}
+// function MtNavItem({ item, active, onClick }: MtNavItemProps) {
+//   return (
+//     <button
+//       type="button"
+//       className={`mt-nav-item${active === item.label ? " mt-nav-item--active" : ""}`}
+//       onClick={() => onClick(item.label)}
+//     >
+//       <MtIcon name={item.icon} size={20} />
+//       <span>{item.label}</span>
+//     </button>
+//   )
+// }

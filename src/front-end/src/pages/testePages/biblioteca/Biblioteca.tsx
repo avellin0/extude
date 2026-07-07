@@ -39,24 +39,24 @@ interface FooterLinkItem {
 
 // ---------- Icons ----------
 
-const IconSearch = () => (
-  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2">
-    <circle cx="11" cy="11" r="7" />
-    <line x1="21" y1="21" x2="16.65" y2="16.65" />
-  </svg>
-);
+// const IconSearch = () => (
+//   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2">
+//     <circle cx="11" cy="11" r="7" />
+//     <line x1="21" y1="21" x2="16.65" y2="16.65" />
+//   </svg>
+// );
 
-const IconList = () => (
-  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2">
-    <path d="M4 7h12M4 12h16M4 17h12" strokeLinecap="round" />
-  </svg>
-);
+// const IconList = () => (
+//   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2">
+//     <path d="M4 7h12M4 12h16M4 17h12" strokeLinecap="round" />
+//   </svg>
+// );
 
-const IconBookmark = () => (
-  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2">
-    <path d="M6 4h12v17l-6-4-6 4V4z" strokeLinejoin="round" />
-  </svg>
-);
+// const IconBookmark = () => (
+//   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2">
+//     <path d="M6 4h12v17l-6-4-6 4V4z" strokeLinejoin="round" />
+//   </svg>
+// );
 
 const IconBookmarkFilled = () => (
   <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
@@ -64,17 +64,17 @@ const IconBookmarkFilled = () => (
   </svg>
 );
 
-const IconChevronLeft = () => (
-  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2">
-    <path d="M15 6l-6 6 6 6" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
+// const IconChevronLeft = () => (
+//   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2">
+//     <path d="M15 6l-6 6 6 6" strokeLinecap="round" strokeLinejoin="round" />
+//   </svg>
+// );
 
-const IconChevronRight = () => (
-  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2">
-    <path d="M9 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
+// const IconChevronRight = () => (
+//   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2">
+//     <path d="M9 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+//   </svg>
+// );
 
 const IconArrowRight = () => (
   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2">
@@ -116,11 +116,11 @@ const IconSparkleBooks = () => (
   </svg>
 );
 
-const IconChevronDown = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2">
-    <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
+// const IconChevronDown = () => (
+//   <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2">
+//     <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+//   </svg>
+// );
 
 // ---------- Mock data ----------
 
@@ -218,7 +218,7 @@ const FOOTER_LINKS: FooterLinkItem[] = [
 // ---------- Component ----------
 
 export const Biblioteca: React.FC = () => {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery] = useState('');
   const [activeNav, setActiveNav] = useState('Biblioteca');
   const [activeTab, setActiveTab] = useState<LibraryTab>('continuar');
   const [continueReading, setContinueReading] = useState<ContinueReadingBook[]>(INITIAL_CONTINUE_READING);

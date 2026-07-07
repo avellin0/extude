@@ -5,7 +5,6 @@ import { useParams } from "react-router-dom"
 import { Mobile } from "./Modules/mobile/Mobile"
 import { SideBar } from "./Modules/sidebar/SideBar"
 import { MessagesInput } from "./Modules/InteractiveChat/Messages"
-import { useNavigate } from "react-router-dom"
 
 interface TypeOfMessage {
     message: string
@@ -39,7 +38,7 @@ export function Chat() {
 
     const [hasMessage, setHasMessage] = useState<TypeOfMessage[]>([])
     const [message, setMessage] = useState<TypeOfMessage[]>([])
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
 
 
     const { id, username } = useParams<{ id: string, username: string }>()

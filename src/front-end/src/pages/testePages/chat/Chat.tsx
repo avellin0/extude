@@ -1,5 +1,5 @@
 
-import React, {
+import {
     useState,
     useRef,
     useEffect,
@@ -40,17 +40,17 @@ interface Channel {
     messages: Message[];
 }
 
-interface DirectMessage {
-    id: string;
-    user: User;
-    messages: Message[];
-}
+// interface DirectMessage {
+//     id: string;
+//     user: User;
+//     messages: Message[];
+// }
 
-interface Room {
-    id: string;
-    name: string;
-    members: number;
-}
+// interface Room {
+//     id: string;
+//     name: string;
+//     members: number;
+// }
 
 const ct_loggedUser: User = {
     id: "1",
@@ -220,11 +220,11 @@ const ct_channels: Channel[] = [
 
 
 export function ChatPage() {
-    const [ct_activeChannel, setHpActiveChannel] = useState<Channel>(ct_channels[0]);
+    const [ct_activeChannel] = useState<Channel>(ct_channels[0]);
     const [ct_messages, setHpMessages] = useState<Message[]>(ct_activeChannel.messages);
     const [ct_input, setHpInput] = useState("");
-    const [ct_search, setHpSearch] = useState("");
-    const [ct_showModal, setHpShowModal] = useState(false);
+    const [ct_search] = useState("");
+    // const [ct_showModal, sethpShowModal] = useState(false);
     const [ct_typing, setHpTyping] = useState(false);
     const [ct_loading, setHpLoading] = useState(true);
     const ct_inputRef = useRef<HTMLInputElement>(null);
@@ -268,34 +268,34 @@ export function ChatPage() {
 
     }, [ct_input]);
 
-    const ct_toggleReaction = (
-        messageId: string
-    ) => {
+    // const ct_toggleReaction = (
+    //     messageId: string
+    // ) => {
 
-        setHpMessages((messages) =>
-            messages.map(message => {
+    //     setHpMessages((messages) =>
+    //         messages.map(message => {
 
-                if (message.id !== messageId)
-                    return message;
+    //             if (message.id !== messageId)
+    //                 return message;
 
 
-                return {
-                    ...message,
-                    reactions:
-                        message.reactions.map(r => ({
-                            ...r,
-                            active: !r.active,
-                            count:
-                                r.active
-                                    ? r.count - 1
-                                    : r.count + 1
-                        }))
-                };
+    //             return {
+    //                 ...message,
+    //                 reactions:
+    //                     message.reactions.map(r => ({
+    //                         ...r,
+    //                         active: !r.active,
+    //                         count:
+    //                             r.active
+    //                                 ? r.count - 1
+    //                                 : r.count + 1
+    //                     }))
+    //             };
 
-            })
-        );
+    //         })
+    //     );
 
-    };
+    // };
 
     const {name} = useParams<{name: string}>()
 

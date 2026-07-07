@@ -17,24 +17,28 @@ export function RightBar() {
     }, []);
 
     const handlePublish = useCallback((partial: Partial<Post>) => {
-        const newPost: Post = {
-            id: Date.now(),
-            type: partial.type ?? "RESUMO",
-            title: partial.title ?? "",
-            description: partial.description ?? "",
-            author: LOGGED_USER.name,
-            username: LOGGED_USER.username,
-            avatarInitials: LOGGED_USER.initials,
-            avatarColor: "#5b5cf6",
-            timeAgo: "agora mesmo",
-            tags: partial.tags ?? [],
-            likes: 0,
-            comments: 0,
-            bookmarked: false,
-            liked: false,
-            thumbnailType: "default",
-        };
-        setPosts((prev) => [newPost, ...prev]);
+        try {
+            const newPost: Post = {
+                id: Date.now(),
+                type: partial.type ?? "RESUMO",
+                title: partial.title ?? "",
+                description: partial.description ?? "",
+                author: LOGGED_USER.name,
+                username: LOGGED_USER.username,
+                avatarInitials: LOGGED_USER.initials,
+                avatarColor: "#5b5cf6",
+                timeAgo: "agora mesmo",
+                tags: partial.tags ?? [],
+                likes: 0,
+                comments: 0,
+                bookmarked: false,
+                liked: false,
+                thumbnailType: "default",
+            };
+            setPosts((prev) => [newPost, ...prev]);
+        } catch (error) {
+            console.log(posts);
+        }
     }, []);
 
 

@@ -181,7 +181,7 @@ export const Login: React.FC = () => {
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [showPassword, setShowPassword] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<SubmitStatus>('idle');
+  const [submitStatus] = useState<SubmitStatus>('idle');
   const [toast, setToast] = useState<string | null>(null);
 
   const navigate = useNavigate();
@@ -206,17 +206,17 @@ export const Login: React.FC = () => {
     emailInputRef.current?.focus();
   }, []);
 
-  const handleEmailChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setFormState((prev) => ({ ...prev, email: value }));
-    setErrors((prev) => ({ ...prev, email: undefined }));
-  }, []);
+  // const handleEmailChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const value = e.target.value;
+  //   setFormState((prev) => ({ ...prev, email: value }));
+  //   setErrors((prev) => ({ ...prev, email: undefined }));
+  // }, []);
 
-  const handlePasswordChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setFormState((prev) => ({ ...prev, password: value }));
-    setErrors((prev) => ({ ...prev, password: undefined }));
-  }, []);
+  // const handlePasswordChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const value = e.target.value;
+  //   setFormState((prev) => ({ ...prev, password: value }));
+  //   setErrors((prev) => ({ ...prev, password: undefined }));
+  // }, []);
 
   const handleRememberMeToggle = useCallback(() => {
     setFormState((prev) => ({ ...prev, rememberMe: !prev.rememberMe }));

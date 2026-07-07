@@ -57,11 +57,11 @@ type GeNavId =
   | "pomodoro"
   | "perfil";
 
-interface GeNavItemData {
-  id: GeNavId;
-  label: string;
-  icon: React.ReactNode;
-}
+// interface GeNavItemData {
+//   id: GeNavId;
+//   label: string;
+//   icon: React.ReactNode;
+// }
 
 interface GeFilterState {
   comVagas: boolean;
@@ -158,26 +158,26 @@ const GeIconCheck: React.FC = () => (
   </svg>
 );
 
-const GeIconHome: React.FC = () => (
-  <svg {...geIconProps}>
-    <path d="M3 11.5 12 4l9 7.5" />
-    <path d="M5.5 10v9.5a1 1 0 0 0 1 1H17.5a1 1 0 0 0 1-1V10" />
-  </svg>
-);
+// const GeIconHome: React.FC = () => (
+//   <svg {...geIconProps}>
+//     <path d="M3 11.5 12 4l9 7.5" />
+//     <path d="M5.5 10v9.5a1 1 0 0 0 1 1H17.5a1 1 0 0 0 1-1V10" />
+//   </svg>
+// );
 
-const GeIconPlay: React.FC = () => (
-  <svg {...geIconProps}>
-    <circle cx="12" cy="12" r="9" />
-    <polygon points="10 8.5 16 12 10 15.5" fill="currentColor" stroke="none" />
-  </svg>
-);
+// const GeIconPlay: React.FC = () => (
+//   <svg {...geIconProps}>
+//     <circle cx="12" cy="12" r="9" />
+//     <polygon points="10 8.5 16 12 10 15.5" fill="currentColor" stroke="none" />
+//   </svg>
+// );
 
-const GeIconBook: React.FC = () => (
-  <svg {...geIconProps}>
-    <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15.5H6.5A2.5 2.5 0 0 0 4 21Z" />
-    <line x1="4" y1="19" x2="4" y2="5.5" />
-  </svg>
-);
+// const GeIconBook: React.FC = () => (
+//   <svg {...geIconProps}>
+//     <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15.5H6.5A2.5 2.5 0 0 0 4 21Z" />
+//     <line x1="4" y1="19" x2="4" y2="5.5" />
+//   </svg>
+// );
 
 const GeIconGroupUsers: React.FC = () => (
   <svg {...geIconProps}>
@@ -188,26 +188,26 @@ const GeIconGroupUsers: React.FC = () => (
   </svg>
 );
 
-const GeIconChat: React.FC = () => (
-  <svg {...geIconProps}>
-    <path d="M4 5.5h16v10.5H9l-4.5 4V16H4Z" />
-  </svg>
-);
+// const GeIconChat: React.FC = () => (
+//   <svg {...geIconProps}>
+//     <path d="M4 5.5h16v10.5H9l-4.5 4V16H4Z" />
+//   </svg>
+// );
 
-const GeIconFlag: React.FC = () => (
-  <svg {...geIconProps}>
-    <line x1="5" y1="3" x2="5" y2="21" />
-    <path d="M5 4.5h13l-3 4 3 4H5" />
-  </svg>
-);
+// const GeIconFlag: React.FC = () => (
+//   <svg {...geIconProps}>
+//     <line x1="5" y1="3" x2="5" y2="21" />
+//     <path d="M5 4.5h13l-3 4 3 4H5" />
+//   </svg>
+// );
 
-const GeIconTimer: React.FC = () => (
-  <svg {...geIconProps}>
-    <circle cx="12" cy="13" r="8" />
-    <line x1="12" y1="13" x2="12" y2="9" />
-    <line x1="9.5" y1="3" x2="14.5" y2="3" />
-  </svg>
-);
+// const GeIconTimer: React.FC = () => (
+//   <svg {...geIconProps}>
+//     <circle cx="12" cy="13" r="8" />
+//     <line x1="12" y1="13" x2="12" y2="9" />
+//     <line x1="9.5" y1="3" x2="14.5" y2="3" />
+//   </svg>
+// );
 
 const GeIconUser: React.FC = () => (
   <svg {...geIconProps}>
@@ -216,32 +216,32 @@ const GeIconUser: React.FC = () => (
   </svg>
 );
 
-const GeIconSun: React.FC = () => (
-  <svg {...geIconProps} width={15} height={15}>
-    <circle cx="12" cy="12" r="4.2" />
-    <line x1="12" y1="2.5" x2="12" y2="4.5" />
-    <line x1="12" y1="19.5" x2="12" y2="21.5" />
-    <line x1="4.2" y1="4.2" x2="5.6" y2="5.6" />
-    <line x1="18.4" y1="18.4" x2="19.8" y2="19.8" />
-    <line x1="2.5" y1="12" x2="4.5" y2="12" />
-    <line x1="19.5" y1="12" x2="21.5" y2="12" />
-    <line x1="4.2" y1="19.8" x2="5.6" y2="18.4" />
-    <line x1="18.4" y1="5.6" x2="19.8" y2="4.2" />
-  </svg>
-);
+// const GeIconSun: React.FC = () => (
+//   <svg {...geIconProps} width={15} height={15}>
+//     <circle cx="12" cy="12" r="4.2" />
+//     <line x1="12" y1="2.5" x2="12" y2="4.5" />
+//     <line x1="12" y1="19.5" x2="12" y2="21.5" />
+//     <line x1="4.2" y1="4.2" x2="5.6" y2="5.6" />
+//     <line x1="18.4" y1="18.4" x2="19.8" y2="19.8" />
+//     <line x1="2.5" y1="12" x2="4.5" y2="12" />
+//     <line x1="19.5" y1="12" x2="21.5" y2="12" />
+//     <line x1="4.2" y1="19.8" x2="5.6" y2="18.4" />
+//     <line x1="18.4" y1="5.6" x2="19.8" y2="4.2" />
+//   </svg>
+// );
 
-const GeIconMoon: React.FC = () => (
-  <svg {...geIconProps} width={15} height={15} fill="currentColor" stroke="none">
-    <path d="M20 14.2A8.4 8.4 0 0 1 9.8 4a8.6 8.6 0 1 0 10.2 10.2Z" />
-  </svg>
-);
+// const GeIconMoon: React.FC = () => (
+//   <svg {...geIconProps} width={15} height={15} fill="currentColor" stroke="none">
+//     <path d="M20 14.2A8.4 8.4 0 0 1 9.8 4a8.6 8.6 0 1 0 10.2 10.2Z" />
+//   </svg>
+// );
 
-const GeIconBell: React.FC = () => (
-  <svg {...geIconProps}>
-    <path d="M6 10.5a6 6 0 0 1 12 0c0 4 1.5 5.2 1.5 5.2H4.5S6 14.5 6 10.5Z" />
-    <path d="M10.3 19a1.9 1.9 0 0 0 3.4 0" />
-  </svg>
-);
+// const GeIconBell: React.FC = () => (
+//   <svg {...geIconProps}>
+//     <path d="M6 10.5a6 6 0 0 1 12 0c0 4 1.5 5.2 1.5 5.2H4.5S6 14.5 6 10.5Z" />
+//     <path d="M10.3 19a1.9 1.9 0 0 0 3.4 0" />
+//   </svg>
+// );
 
 const GeIconGraduationCap: React.FC = () => (
   <svg width={34} height={34} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
@@ -278,16 +278,16 @@ const GeIconFire: React.FC = () => (
   </svg>
 );
 
-const GeIconRuler: React.FC = () => (
-  <span className="ge-emoji-icon">📐</span>
-);
-const GeIconGlobe2: React.FC = () => <span className="ge-emoji-icon">🌐</span>;
-const GeIconAim: React.FC = () => <span className="ge-emoji-icon">🎯</span>;
-const GeIconHeartbeat: React.FC = () => <span className="ge-emoji-icon">💓</span>;
-const GeIconFlask: React.FC = () => <span className="ge-emoji-icon">⚗️</span>;
-const GeIconFlagBr: React.FC = () => <span className="ge-emoji-icon">🇪🇸</span>;
-const GeIconPuzzle: React.FC = () => <span className="ge-emoji-icon">🧩</span>;
-const GeIconColumns: React.FC = () => <span className="ge-emoji-icon">🏛️</span>;
+// const GeIconRuler: React.FC = () => (
+//   <span className="ge-emoji-icon">📐</span>
+// );
+// const GeIconGlobe2: React.FC = () => <span className="ge-emoji-icon">🌐</span>;
+// const GeIconAim: React.FC = () => <span className="ge-emoji-icon">🎯</span>;
+// const GeIconHeartbeat: React.FC = () => <span className="ge-emoji-icon">💓</span>;
+// const GeIconFlask: React.FC = () => <span className="ge-emoji-icon">⚗️</span>;
+// const GeIconFlagBr: React.FC = () => <span className="ge-emoji-icon">🇪🇸</span>;
+// const GeIconPuzzle: React.FC = () => <span className="ge-emoji-icon">🧩</span>;
+// const GeIconColumns: React.FC = () => <span className="ge-emoji-icon">🏛️</span>;
 
 const GeIconGrid: React.FC = () => (
   <svg {...geIconProps} width={15} height={15}>
@@ -297,7 +297,7 @@ const GeIconGrid: React.FC = () => (
     <rect x="13.5" y="13.5" width="7" height="7" rx="1.3" />
   </svg>
 );
-const GeIconGraduate: React.FC = () => <span className="ge-emoji-icon">🎓</span>;
+// const GeIconGraduate: React.FC = () => <span className="ge-emoji-icon">🎓</span>;
 const GeIconTrophy: React.FC = () => <span className="ge-emoji-icon">🏆</span>;
 const GeIconCodeSmall: React.FC = () => <span className="ge-emoji-icon">{"</>"}</span>;
 const GeIconSpeech: React.FC = () => <span className="ge-emoji-icon">💬</span>;
@@ -623,21 +623,21 @@ const geAllGroups: GeGroup[] = [
   },
 ];
 
-const geMainNav: GeNavItemData[] = [
-  { id: "home", label: "Home", icon: <GeIconHome /> },
-  { id: "videos", label: "Vídeos", icon: <GeIconPlay /> },
-  { id: "livros", label: "Livros", icon: <GeIconBook /> },
-];
+// const geMainNav: GeNavItemData[] = [
+//   { id: "home", label: "Home", icon: <GeIconHome /> },
+//   { id: "videos", label: "Vídeos", icon: <GeIconPlay /> },
+//   { id: "livros", label: "Livros", icon: <GeIconBook /> },
+// ];
 
-const geConnectNav: GeNavItemData[] = [
-  { id: "grupos", label: "Grupos", icon: <GeIconGroupUsers /> },
-  { id: "chat", label: "Chat", icon: <GeIconChat /> },
-];
+// const geConnectNav: GeNavItemData[] = [
+//   { id: "grupos", label: "Grupos", icon: <GeIconGroupUsers /> },
+//   { id: "chat", label: "Chat", icon: <GeIconChat /> },
+// ];
 
-const geProductivityNav: GeNavItemData[] = [
-  { id: "metas", label: "Metas", icon: <GeIconFlag /> },
-  { id: "pomodoro", label: "Pomodoro", icon: <GeIconTimer /> },
-];
+// const geProductivityNav: GeNavItemData[] = [
+//   { id: "metas", label: "Metas", icon: <GeIconFlag /> },
+//   { id: "pomodoro", label: "Pomodoro", icon: <GeIconTimer /> },
+// ];
 
 const geNavLabels: Record<GeNavId, string> = {
   home: "Home",
@@ -813,10 +813,9 @@ const GrupoEstudo: React.FC = () => {
   const [geJoinedGroups, setGeJoinedGroups] = useState<Set<string>>(
     new Set()
   );
-  const [geTheme, setGeTheme] = useState<"light" | "dark">("light");
-  const [geShowNotifications, setGeShowNotifications] =
+  // const [geShowNotifications, setGeShowNotifications] =
     useState<boolean>(false);
-  const [geShowUserMenu, setGeShowUserMenu] = useState<boolean>(false);
+  // const [geShowUserMenu, setGeShowUserMenu] = useState<boolean>(false);
   const [geShowAllDestaque, setGeShowAllDestaque] = useState<boolean>(false);
   const [geShowCreateModal, setGeShowCreateModal] = useState<boolean>(false);
   const [geNewGroupName, setGeNewGroupName] = useState<string>("");
@@ -825,7 +824,7 @@ const GrupoEstudo: React.FC = () => {
   const geCarouselRef = useRef<HTMLDivElement>(null);
 
   const navigate = useNavigate()
-  const {name,id} = useParams<{name: string, id: string}>()
+  const {name} = useParams<{name: string, id: string}>()
   /* ---------------- Handlers ---------------- */
 
   const geHandleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -894,19 +893,19 @@ const GrupoEstudo: React.FC = () => {
     });
   };
 
-  const geToggleTheme = () => {
-    setGeTheme((prev) => (prev === "light" ? "dark" : "light"));
-  };
+  // const geToggleTheme = () => {
+  //   setGeTheme((prev) => (prev === "light" ? "dark" : "light"));
+  // };
 
-  const geToggleNotifications = () => {
-    setGeShowNotifications((prev) => !prev);
-    setGeShowUserMenu(false);
-  };
+  // const geToggleNotifications = () => {
+  //   setGeShowNotifications((prev) => !prev);
+  //   setGeShowUserMenu(false);
+  // };
 
-  const geToggleUserMenu = () => {
-    setGeShowUserMenu((prev) => !prev);
-    setGeShowNotifications(false);
-  };
+  // const geToggleUserMenu = () => {
+  //   setGeShowUserMenu((prev) => !prev);
+  //   setGeShowNotifications(false);
+  // };
 
   const geToggleShowAllDestaque = () => {
     setGeShowAllDestaque((prev) => !prev);
@@ -1009,7 +1008,7 @@ const GrupoEstudo: React.FC = () => {
   /* ---------------- Render ---------------- */
 
   return (
-    <div className={`ge-app ge-theme-${geTheme}`}>
+    <div className={`ge-app`}>
       {/* ---------------- SIDEBAR ---------------- */}
       {/* <aside className="ge-sidebar">
         <div className="ge-logo">
