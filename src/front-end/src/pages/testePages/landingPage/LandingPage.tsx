@@ -295,7 +295,7 @@ export  function Page() {
           </ul>
 
           <div id="lp_navbar_actions">
-            <button className="lp_btn_ghost" onClick={() => navigate("/teste-login")}>Entrar</button>
+            <button className="lp_btn_ghost" onClick={() => navigate("/login")}>Entrar</button>
             <button
               className="lp_btn_primary"
               onClick={() => scrollTo(heroRef)}
@@ -329,7 +329,7 @@ export  function Page() {
               </button>
             ))}
             <hr className="lp_mobile_divider" />
-            <button className="lp_btn_ghost lp_mobile_btn" onClick={() => navigate("/teste-login")}>Entrar</button>
+            <button className="lp_btn_ghost lp_mobile_btn" onClick={() => navigate("/login")}>Entrar</button>
             <button className="lp_btn_primary lp_mobile_btn" onClick={() => navigate("/cadastro")}>Começar gratuitamente →</button>
           </div>
         )}
@@ -359,7 +359,7 @@ export  function Page() {
             <div id="lp_hero_cta_row">
               <button
                 className="lp_btn_primary lp_btn_lg"
-                onClick={() => navigate("/teste-cadastro")}
+                onClick={() => navigate("/cadastro")}
               >
                 Começar gratuitamente →
               </button>

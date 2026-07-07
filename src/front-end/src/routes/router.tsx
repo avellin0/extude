@@ -1,31 +1,31 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Default } from '../pages/LandingPage/Default'
-import Home from "../pages/Home/HomePage";
-import LandingPage from "../pages/CourseLandingPage/LandingPage";
-import { LoginPage } from "../pages/Login/LoginPage";
-import { Register } from "../pages/RegisterNewUser/JoinPage";
-import { Download } from "../pages/Downloader/Download";
+// import Home from "../pages/Home/HomePage";
+// import LandingPage from "../pages/CourseLandingPage/LandingPage";
+// import { LoginPage } from "../pages/Login/LoginPage";
+// import { Register } from "../pages/RegisterNewUser/JoinPage";
+// import { Download } from "../pages/Downloader/Download";
 
 
-import { UserProfile } from "../pages/profile/UserProfile"
-// import { Chat } from "../pages/Chat/Chat"
-import { AddFriends } from "../pages/Chat/AddFriends/AddFriends"
-import { PersonalBooks } from '../pages/Library/pages/PrivateBooks/personalBook';
-import { TranslateEpub } from '../pages/Library/pages/Translate/Translate';
-import { PageNotFound } from '../pages/Library/pages/PageNotFound/PageNotFound';
-import { EbookReader } from "../pages/Library/pages/NewEbook/book_reader";
-import { Post } from "../pages/Post/Post";
-import { CreatePost } from "../pages/Post/CreatePost/CreatePost";
+// import { UserProfile } from "../pages/profile/UserProfile"
+// // import { Chat } from "../pages/Chat/Chat"
+// import { AddFriends } from "../pages/Chat/AddFriends/AddFriends"
+// import { PersonalBooks } from '../pages/Library/pages/PrivateBooks/personalBook';
+// import { TranslateEpub } from '../pages/Library/pages/Translate/Translate';
+// import { PageNotFound } from '../pages/Library/pages/PageNotFound/PageNotFound';
+// import { EbookReader } from "../pages/Library/pages/NewEbook/book_reader";
+// import { Post } from "../pages/Post/Post";
+// import { CreatePost } from "../pages/Post/CreatePost/CreatePost";
 
-import Library from "../pages/Library/pages/web_library/LibraryPage";
+// import Library from "../pages/Library/pages/web_library/LibraryPage";
 
-import { BookReader } from "../pages/Library/pages/book_reader/book_reader";
-import { Legendas } from "../pages/Legendas/Legendas";
-// import { Demo } from "../pages/Chat/Demo/Demo";
-import { Preview } from "@/pages/Post/Preview/Preview";
-import { Schedule } from "@/pages/profile/src/modules/schedule/schedule";
-import { Reading } from "@/pages/Library/pages/reading/reading";
-import { Posted } from "@/pages/Post/Posted/Posted";
+// import { BookReader } from "../pages/Library/pages/book_reader/book_reader";
+// import { Legendas } from "../pages/Legendas/Legendas";
+// // import { Demo } from "../pages/Chat/Demo/Demo";
+// import { Preview } from "@/pages/Post/Preview/Preview";
+// import { Schedule } from "@/pages/profile/src/modules/schedule/schedule";
+// import { Reading } from "@/pages/Library/pages/reading/reading";
+// import { Posted } from "@/pages/Post/Posted/Posted";
 
 
 
@@ -41,17 +41,17 @@ import { Cadastro } from "@/pages/testePages/cadastro/Cadastro";
 import GrupoEstudo from "@/pages/testePages/grupos/GrupoEstudo";
 import { Metas } from "@/pages/testePages/metas/Metas";
 import { Grupo } from "@/pages/testePages/grupos/grupoInfo/Grupo";
-import {Pomodoro} from "@/pages/testePages/pomodoro/Pomodoro";
+import { Pomodoro } from "@/pages/testePages/pomodoro/Pomodoro";
 
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Default />
+    element: <Page />
   },
   {
     path: "/pomodoro/:name/:id",
-    element: <Pomodoro/>
+    element: <Pomodoro />
   },
   {
     path: "/metas/:name/:id",
@@ -70,11 +70,11 @@ export const router = createBrowserRouter([
     element: <Biblioteca />
   },
   {
-    path: "/teste-login",
+    path: "/login",
     element: <Login />
   },
   {
-    path: "/teste-cadastro",
+    path: "/cadastro",
     element: <Cadastro />
   },
   {
@@ -90,10 +90,6 @@ export const router = createBrowserRouter([
     element: <HomePage />
   },
   {
-    path: "/page",
-    element: <Page />
-  },
-  {
     path: "/books/:name/:id",
     element: <BookLibrary />
   },
@@ -105,59 +101,59 @@ export const router = createBrowserRouter([
   //---------------------------------------
 
 
-  {
-    path: "/home/:name/:id",
-    element: <Home />
-  },
-  {
-    path: "/landingPage",
-    element: <LandingPage />
-  },
-  {
-    path: "/login",
-    element: <LoginPage />
-  },
-  {
-    path: "/cadastro",
-    element: <Register />
-  },
+  // {
+  //   path: "/home/:name/:id",
+  //   element: <Home />
+  // },
+  // {
+  //   path: "/landingPage",
+  //   element: <LandingPage />
+  // },
+  // {
+  //   path: "/login",
+  //   element: <LoginPage />
+  // },
+  // {
+  //   path: "/cadastro",
+  //   element: <Register />
+  // },
 
-  {
-    path: "/Baixe",
-    element: <Download />
-  },
-  {
-    path: "/library/:name/:id",
-    element: <Library />
-  },
-  {
-    path: "/book/:name/:id/:book_name/:author",
-    element: <EbookReader />,
-  },
-  {
-    path: "/personal_book/:name/:id",
-    element: <PersonalBooks mobile={false} />
-  },
-  {
-    path: "/m_personal_book",
-    element: <PersonalBooks mobile={true} />
-  },
-  {
-    path: "/translate",
-    element: <TranslateEpub />
-  },
-  {
-    path: "/favorites",
-    element: <PageNotFound />
-  },
-  {
-    path: "/reading/:name/:id",
-    element: <Reading />
-  },
-  {
-    path: "/comunity/:id",
-    element: <Home />
-  },
+  // {
+  //   path: "/Baixe",
+  //   element: <Download />
+  // },
+  // {
+  //   path: "/library/:name/:id",
+  //   element: <Library />
+  // },
+  // {
+  //   path: "/book/:name/:id/:book_name/:author",
+  //   element: <EbookReader />,
+  // },
+  // {
+  //   path: "/personal_book/:name/:id",
+  //   element: <PersonalBooks mobile={false} />
+  // },
+  // {
+  //   path: "/m_personal_book",
+  //   element: <PersonalBooks mobile={true} />
+  // },
+  // {
+  //   path: "/translate",
+  //   element: <TranslateEpub />
+  // },
+  // {
+  //   path: "/favorites",
+  //   element: <PageNotFound />
+  // },
+  // {
+  //   path: "/reading/:name/:id",
+  //   element: <Reading />
+  // },
+  // {
+  //   path: "/comunity/:id",
+  //   element: <Home />
+  // },
   // {
   //   path: "/chat/:id",
   //   element: <Chat />
@@ -170,45 +166,45 @@ export const router = createBrowserRouter([
   //   path: "/chat/:username/:id",
   //   element: <Chat />
   // },
-  {
-    path: "/chat/:id/new_friends",
-    element: <AddFriends />
-  },
-  {
-    path: "/comunity/:id/:username/new_friends",
-    element: <AddFriends />
-  },
-  {
-    path: "/profile/:name/:id",
-    element: <UserProfile />
-  },
-  {
-    path: "/schedule/:name/:id",
-    element: <Schedule />
-  },
-  {
-    path: "/book/:name",
-    element: <BookReader />,
-  },
-  {
-    path: "/legendas",
-    element: <Legendas />
-  },
-  {
-    path: "/post/:id",
-    element: <Post />
-  },
-  {
-    path: "/create_post/:username/:id",
-    element: <CreatePost />
-  },
-  {
-    path: '/create_post/:username/:id/preview',
-    element: <Preview />
-  },
-  {
-    path: "/projects/:name/:id",
-    element: <Posted />
-  }
+  //   {
+  //     path: "/chat/:id/new_friends",
+  //     element: <AddFriends />
+  //   },
+  //   {
+  //     path: "/comunity/:id/:username/new_friends",
+  //     element: <AddFriends />
+  //   },
+  //   {
+  //     path: "/profile/:name/:id",
+  //     element: <UserProfile />
+  //   },
+  //   {
+  //     path: "/schedule/:name/:id",
+  //     element: <Schedule />
+  //   },
+  //   {
+  //     path: "/book/:name",
+  //     element: <BookReader />,
+  //   },
+  //   {
+  //     path: "/legendas",
+  //     element: <Legendas />
+  //   },
+  //   {
+  //     path: "/post/:id",
+  //     element: <Post />
+  //   },
+  //   {
+  //     path: "/create_post/:username/:id",
+  //     element: <CreatePost />
+  //   },
+  //   {
+  //     path: '/create_post/:username/:id/preview',
+  //     element: <Preview />
+  //   },
+  //   {
+  //     path: "/projects/:name/:id",
+  //     element: <Posted />
+  //   }
 ])
 
