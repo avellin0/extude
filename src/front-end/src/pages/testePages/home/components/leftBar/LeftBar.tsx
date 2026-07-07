@@ -83,7 +83,7 @@ export function LeftBar({ sidebarOpen, setSidebarOpen }: LeftBarProps) {
                         <div id="hp_user_menu">
                             <button className="hp_dropdown_item">Perfil</button>
                             <button className="hp_dropdown_item">Configurações</button>
-                            <button className="hp_dropdown_item hp_dropdown_danger" onClick={() => navigate("/page")}>Sair</button>
+                            <button className="hp_dropdown_item hp_dropdown_danger" onClick={() => navigate("/")}>Sair</button>
                         </div>
                     )}
 
