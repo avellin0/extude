@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Default } from '../pages/LandingPage/Default'
+// import { Default } from '../pages/LandingPage/Default'
 // import Home from "../pages/Home/HomePage";
 // import LandingPage from "../pages/CourseLandingPage/LandingPage";
 // import { LoginPage } from "../pages/Login/LoginPage";
