@@ -13,7 +13,6 @@ import { createBrowserRouter } from "react-router-dom";
 // import { PersonalBooks } from '../pages/Library/pages/PrivateBooks/personalBook';
 // import { TranslateEpub } from '../pages/Library/pages/Translate/Translate';
 // import { PageNotFound } from '../pages/Library/pages/PageNotFound/PageNotFound';
-// import { EbookReader } from "../pages/Library/pages/NewEbook/book_reader";
 // import { Post } from "../pages/Post/Post";
 // import { CreatePost } from "../pages/Post/CreatePost/CreatePost";
 
@@ -42,6 +41,10 @@ import GrupoEstudo from "@/pages/testePages/grupos/GrupoEstudo";
 import { Metas } from "@/pages/testePages/metas/Metas";
 import { Grupo } from "@/pages/testePages/grupos/grupoInfo/Grupo";
 import { Pomodoro } from "@/pages/testePages/pomodoro/Pomodoro";
+import { EbookReader } from "../pages/Library/pages/NewEbook/book_reader";
+import { Post } from "@/pages/testePages/posts/post";
+import { Perfil } from "@/pages/testePages/perfil/perfil";
+import { Chat } from "@/pages/testePages/chat/Chat2";
 
 
 export const router = createBrowserRouter([
@@ -70,6 +73,10 @@ export const router = createBrowserRouter([
     element: <Biblioteca />
   },
   {
+    path: "/perfil/:name/:id",
+    element: <Perfil/>
+  },
+  {
     path: "/login",
     element: <Login />
   },
@@ -83,11 +90,15 @@ export const router = createBrowserRouter([
   },
   {
     path: "/chat/:name/:id",
-    element: <ChatPage />
+    element: <Chat />
   },
   {
     path: "/home/:name/:id",
     element: <HomePage />
+  },
+  {
+    path: "/post/:name/:id/:post_id",
+    element: <Post/>
   },
   {
     path: "/books/:name/:id",
@@ -96,6 +107,10 @@ export const router = createBrowserRouter([
   {
     path: "/videos/:name/:id",
     element: <StudyFlow2 />
+  },
+  {
+    path: "/book/:name/:id/:book_name/:author",
+    element: <EbookReader />,
   },
 
   //---------------------------------------

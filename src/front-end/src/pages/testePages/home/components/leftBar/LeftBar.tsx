@@ -19,18 +19,11 @@ export function LeftBar({ sidebarOpen, setSidebarOpen }: LeftBarProps) {
     const { name, id } = useParams<{ name: string; id: string }>();
     const navigate = useNavigate();
 
-
-
-
-
-
     return (
         <>
             < aside id="hp_sidebar" className={sidebarOpen ? "hp_sidebar_open" : ""} >
                 <div id="hp_sidebar_logo">
                     <a href="#" id="hp_logo" aria-label="Extude home">
-
-
                         <span id="hp_logo_icon">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
                                 <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="white" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
@@ -81,7 +74,7 @@ export function LeftBar({ sidebarOpen, setSidebarOpen }: LeftBarProps) {
                     </button>
                     {userMenuOpen && (
                         <div id="hp_user_menu">
-                            <button className="hp_dropdown_item">Perfil</button>
+                            <button className="hp_dropdown_item" onClick={() => navigate(`/perfil/${name}/${id}`)}>Perfil</button>
                             <button className="hp_dropdown_item">Configurações</button>
                             <button className="hp_dropdown_item hp_dropdown_danger" onClick={() => navigate("/")}>Sair</button>
                         </div>

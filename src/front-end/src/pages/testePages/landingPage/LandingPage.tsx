@@ -276,7 +276,7 @@ export  function Page() {
       <nav id="lp_navbar" className={navScrolled ? "lp_navbar_scrolled" : ""}>
         <div id="lp_navbar_inner">
           <a href="#" id="lp_logo" aria-label="Estude.ex home">
-            Estude<span className="lp_logo_dot">.ex</span>
+            Extude<span className="lp_logo_dot">.ex</span>
           </a>
 
           <ul id="lp_nav_links" aria-label="Navegação principal">
@@ -596,7 +596,7 @@ export  function Page() {
       <footer id="lp_footer">
         <div id="lp_footer_inner">
           <span id="lp_footer_logo">
-            Estude<span className="lp_logo_dot">.ex</span>
+            Extude<span className="lp_logo_dot">.ex</span>
           </span>
           <p id="lp_footer_copy">© 2026 Extude.ex - Todos os direitos reservados.</p>
         </div>

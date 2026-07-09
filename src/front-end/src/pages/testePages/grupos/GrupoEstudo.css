@@ -412,6 +412,7 @@
   font-weight: 700;
 }
 
+
 .ge-checkbox-row {
   display: flex;
   align-items: center;
@@ -440,7 +441,7 @@
 .ge-main {
   height: 100vh;
   min-width: 0; 
-  overflow: scroll; 
+  overflow-y: scroll; 
   padding: 28px 36px 60px;
   display: flex;
   flex-direction: column;
@@ -634,6 +635,10 @@
   background: var(--ge-primary);
   border-color: var(--ge-primary);
   color: #fff;
+}
+
+.ge-pill-active:hover{
+  color: white;
 }
 
 .ge-pill-icon {
@@ -1192,10 +1197,9 @@
 .ge-modal-actions {
   width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   gap: 10px;
   margin-top: 6px;
-  margin-left: 40%;
 }
 
 /* ---------------------------------------------------------------------

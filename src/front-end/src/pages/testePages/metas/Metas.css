@@ -246,7 +246,7 @@
   flex: 1;
   height: 100vh;
   min-width: 0;
-  overflow: scroll;
+  overflow-y: scroll;
   padding: 28px 32px 40px;
 }
 
@@ -400,12 +400,15 @@
 .mt-app--dark .mt-stat-icon--violet {
   background: #2b2750;
 }
+
 .mt-app--dark .mt-stat-icon--green {
   background: #163224;
 }
+
 .mt-app--dark .mt-stat-icon--amber {
   background: #342d10;
 }
+
 .mt-app--dark .mt-stat-icon--blue {
   background: #16273f;
 }
@@ -732,6 +735,203 @@
   text-align: center;
   color: var(--mt-text-soft);
   font-size: 14px;
+}
+
+/* ============================ MODAL ================================  */
+.mt_modal_overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--hp-spacing-md);
+  backdrop-filter: blur(2px);
+}
+
+.mt_modal {
+  background: var(--hp-color-surface);
+  border-radius: var(--hp-radius-lg);
+  box-shadow: var(--hp-shadow-lg);
+  width: 100%;
+  max-width: 540px;
+  overflow: hidden;
+}
+
+.mt_modal_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--hp-spacing-md) var(--hp-spacing-lg);
+  border-bottom: 1px solid var(--hp-color-border);
+}
+
+.mt_modal_header h2 {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.mt_modal_close {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--hp-radius-sm);
+  color: var(--hp-color-text-muted);
+  transition: background var(--hp-transition);
+}
+
+.mt_modal_close:hover {
+  background: var(--hp-color-bg);
+  color: var(--hp-color-text);
+}
+
+.mt_modal_body {
+  padding: var(--hp-spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--hp-spacing-sm);
+}
+
+.mt_modal_error {
+  color: var(--hp-color-danger);
+  font-size: 0.82rem;
+  padding: 8px 12px;
+  background: #fef2f2;
+  border-radius: var(--hp-radius-sm);
+  border: 1px solid #fecaca;
+}
+
+.mt_modal_label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--hp-color-text);
+  margin-top: 4px;
+}
+
+.mt_required {
+  color: var(--hp-color-danger);
+}
+
+.mt_modal_input,
+.mt_modal_textarea {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1.5px solid var(--hp-color-border);
+  border-radius: var(--hp-radius-md);
+  font-size: 0.875rem;
+  color: var(--hp-color-text);
+  outline: none;
+  transition: border-color var(--hp-transition), box-shadow var(--hp-transition);
+  background: var(--hp-color-surface);
+}
+
+.mt_modal_input::placeholder,
+.mt_modal_textarea::placeholder {
+  color: var(--hp-color-text-subtle);
+}
+
+.mt_modal_input:focus,
+.mt_modal_textarea:focus {
+  border-color: var(--hp-color-primary);
+  box-shadow: 0 0 0 3px rgba(91, 92, 246, 0.1);
+}
+
+.mt_modal_textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.mt_tags_input_wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 8px;
+  border: 1.5px solid var(--hp-color-border);
+  border-radius: var(--hp-radius-md);
+  min-height: 44px;
+  transition: border-color var(--hp-transition);
+}
+
+.mt_tags_input_wrap:focus-within {
+  border-color: var(--hp-color-primary);
+  box-shadow: 0 0 0 3px rgba(91, 92, 246, 0.1);
+}
+
+.mt_tag_chip {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  background: var(--hp-color-primary-light);
+  color: var(--hp-color-primary-text);
+  border-radius: var(--hp-radius-full);
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
+.mt_tag_chip button {
+  display: flex;
+  align-items: center;
+  color: var(--hp-color-primary-text);
+  opacity: 0.7;
+  transition: opacity var(--hp-transition);
+}
+
+.mt_tag_chip button:hover {
+  opacity: 1;
+}
+
+.mt_tags_input {
+  border: none;
+  outline: none;
+  font-size: 0.875rem;
+  flex: 1;
+  min-width: 120px;
+  color: var(--hp-color-text);
+  background: transparent;
+}
+
+.mt_modal_footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--hp-spacing-sm);
+  padding: var(--hp-spacing-md) var(--hp-spacing-lg);
+  border-top: 1px solid var(--hp-color-border);
+}
+
+.mt_btn_primary {
+  padding: 9px 20px;
+  background: var(--hp-color-primary);
+  color: white;
+  border-radius: var(--hp-radius-md);
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: background var(--hp-transition), transform var(--hp-transition);
+}
+
+.mt_btn_primary:hover {
+  background: var(--hp-color-primary-dark);
+  transform: translateY(-1px);
+}
+
+.mt_btn_secondary {
+  padding: 9px 16px;
+  background: var(--hp-color-bg);
+  color: var(--hp-color-text-muted);
+  border: 1.5px solid var(--hp-color-border);
+  border-radius: var(--hp-radius-md);
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition: background var(--hp-transition), color var(--hp-transition);
+}
+
+.mt_btn_secondary:hover {
+  background: var(--hp-color-border);
+  color: var(--hp-color-text);
 }
 
 /* ============================ RIGHT RAIL ============================ */

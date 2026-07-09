@@ -9,7 +9,7 @@ import React, {
 import { IconBookmark, IconHeart, IconComment, IconDots, IconSearch, IconChevronDown } from "./components/icons/icons";
 
 import "./styles.css";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { LeftBar } from "./components/leftBar/LeftBar";
 import { RightBar } from "./components/rightBar/RightBar";
 import { INITIAL_POSTS } from "./components/mockDatas/homeMock";
@@ -134,8 +134,11 @@ const PostCard: React.FC<PostCardProps> = ({ post, onLike, onBookmark, commentRe
     }
   };
 
+  const navigate = useNavigate()
+  const { name, id } = useParams<{ name: string, id: string }>()
+  
   return (
-    <article className="hp_post_card">
+    <article className="hp_post_card" onClick={() => navigate(`/post/${name}/${id}/${post.id}`)}>
       {renderThumbnail()}
       <div className="hp_post_body">
         <div className="hp_post_header">

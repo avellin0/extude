@@ -297,11 +297,13 @@ export function ChatPage() {
 
     // };
 
-    const {name} = useParams<{name: string}>()
+    const { name } = useParams<{ name: string }>()
 
     return (
         <main id="ct_chat_layout">
-            <LeftBar />
+            <div className="hp_layout">
+                <LeftBar />
+            </div>
             <section id="ct_messages_area">
                 <div className="ct_messages_container">
                     {ct_loading ?
@@ -358,7 +360,7 @@ export function ChatPage() {
                             {user.avatar}
                         </span>
                         {user.name}
-                        <i className={user.online? 'ct_member_online':'ct_member_offline'}/>
+                        <i className={user.online ? 'ct_member_online' : 'ct_member_offline'} />
                     </div>
                 ))}
             </aside>

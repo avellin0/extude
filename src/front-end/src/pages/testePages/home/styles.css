@@ -28,7 +28,7 @@
   --hp-spacing-lg: 24px;
   --hp-spacing-xl: 32px;
 
-  --hp-sidebar-width: 220px;
+  --hp-sidebar-width: 192px;
   --hp-right-width: 280px;
   --hp-topbar-height: 60px;
 
@@ -515,6 +515,7 @@ a {
 }
 
 .hp_post_card:hover {
+  cursor: pointer;
   box-shadow: var(--hp-shadow-md);
   transform: translateY(-1px);
 }

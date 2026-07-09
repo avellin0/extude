@@ -3,7 +3,8 @@
 import { useMemo, useState } from "react"
 import "./Metas.css"
 import { LeftBar } from "../home/components/leftBar/LeftBar"
-
+import type { CreatePostModalProps } from "../home/components/interfaces/interface";
+import { IconX } from "../home/components/icons/icons";
 /* ============================ TYPES ============================ */
 
 type MtTabKey = "minhas" | "andamento" | "concluidas" | "arquivadas"
@@ -647,6 +648,7 @@ export function Metas() {
   const [mtTipIndex, setMtTipIndex] = useState<number>(0)
   // const [mtDarkMode, setMtDarkMode] = useState<boolean>(false)
   const [mtSelectedDay, setMtSelectedDay] = useState<number>(3)
+  const [mtEditGoal, setMtEditGoal] = useState(false);
 
   const mtHandleTabChange = (tab: MtTabKey): void => {
     setMtActiveTab(tab)
@@ -675,24 +677,25 @@ export function Metas() {
   }
 
   const mtHandleCreateGoal = (): void => {
-    const nextId = mtGoalCounter + 1
-    const newGoal: MtGoal = {
-      id: `g${nextId}`,
-      title: `Nova meta ${nextId}`,
-      description: "Descreva o objetivo e comece a acompanhar seu progresso.",
-      icon: "target",
-      category: "estudos",
-      status: "andamento",
-      current: 0,
-      total: 10,
-      unit: "etapas",
-      percent: 0,
-    }
-    setMtGoals((prev) => [newGoal, ...prev])
-    setMtGoalCounter(nextId)
-    setMtActiveTab("minhas")
-    setMtCategoryFilter("all")
-    setMtExpandedId(newGoal.id)
+    setMtEditGoal(true)
+    // const nextId = mtGoalCounter + 1
+    // const newGoal: MtGoal = {
+    //   id: `g${nextId}`,
+    //   title: `Nova meta ${nextId}`,
+    //   description: "Descreva o objetivo e comece a acompanhar seu progresso.",
+    //   icon: "target",
+    //   category: "estudos",
+    //   status: "andamento",
+    //   current: 0,
+    //   total: 10,
+    //   unit: "etapas",
+    //   percent: 0,
+    // }
+    // setMtGoals((prev) => [newGoal, ...prev])
+    // setMtGoalCounter(nextId)
+    // setMtActiveTab("minhas")
+    // setMtCategoryFilter("all")
+    // setMtExpandedId(newGoal.id)
   }
 
   const mtHandleTipChange = (index: number): void => {
@@ -719,6 +722,51 @@ export function Metas() {
       ? "Todas as categorias"
       : MT_CATEGORIES.find((c) => c.key === mtCategoryFilter)?.label ?? "Todas as categorias"
 
+
+  const [title, setTitle] = useState("");
+  const [body, setBody] = useState("");
+  const [tagInput, setTagInput] = useState("");
+  const [tagGoal, setTagGoal] = useState("");
+  const [tags, setTags] = useState<string[]>([]);
+  const [error, setError] = useState("");
+
+  const handleTagKey = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" || e.key === ",") {
+      e.preventDefault();
+      const tag = tagInput.trim().replace(/^#/, "");
+      if (tag && !tags.includes(`#${tag}`)) {
+        setTags([...tags, `#${tag}`]);
+      }
+      setTagInput("");
+    }
+  };
+
+  const removeTag = (tag: string) => setTags(tags.filter((t) => t !== tag));
+
+  const handlePublish = () => {
+    if (!title.trim()) { setError("O título é obrigatório."); return; }
+    const nextId = mtGoalCounter + 1
+    const newGoal: MtGoal = {
+      id: `g${nextId}`,
+      title: title,
+      description: body,
+      icon: "target",
+      category: "estudos",
+      status: "andamento",
+      current: 0,
+      total: Number(tagGoal),
+      unit: tagInput,
+      percent: 0,
+    }
+    setMtGoals((prev) => [newGoal, ...prev])
+    setMtGoalCounter(nextId)
+    setMtActiveTab("minhas")
+    setMtCategoryFilter("all")
+    setMtExpandedId(newGoal.id)
+    setMtEditGoal(false)
+  };
+
+
   return (
     <div className={`mt-app`}>
       {/* ============ SIDEBAR ============ */}
@@ -728,7 +776,6 @@ export function Metas() {
 
       {/* ============ MAIN ============ */}
       <main className="mt-main">
-     
         <div className="mt-content">
           <section className="mt-content-main">
 
@@ -930,6 +977,78 @@ export function Metas() {
           </aside>
         </div>
       </main>
+
+      {mtEditGoal && (
+        <>
+          <div className="mt_modal_overlay" onClick={(e) => e.target === e.currentTarget && setMtEditGoal(false)}>
+            <div className="mt_modal" role="dialog" aria-label="Criar novo post">
+              <div className="mt_modal_header">
+                <h2>Criar Meta</h2>
+                <button className="mt_modal_close" onClick={() => setMtEditGoal(false)} aria-label="Fechar modal">
+                  <IconX />
+                </button>
+              </div>
+              <div className="mt_modal_body">
+                {error && <p className="mt_modal_error">{error}</p>}
+                <label className="mt_modal_label" htmlFor="mt_modal_title">Meta <span className="mt_required">*</span></label>
+                <input
+                  id="mt_modal_title"
+                  className="mt_modal_input"
+                  type="text"
+                  placeholder="Escreva sua meta"
+                  value={title}
+                  onChange={(e) => { setTitle(e.target.value); setError(""); }}
+                />
+                <label className="mt_modal_label" htmlFor="mt_modal_body">Descrição</label>
+                <textarea
+                  id="mt_modal_body"
+                  className="mt_modal_textarea"
+                  placeholder="Descrever uma meta torna mais fácil de alcança-la"
+                  value={body}
+                  onChange={(e) => setBody(e.target.value)}
+                />
+                <label className="mt_modal_label">Progesso</label>
+                <div className="mt_tags_input_wrap">
+                  {tags.map((tag) => (
+                    <span key={tag} className="mt_tag_chip">
+                      {tag}
+                      <button onClick={() => removeTag(tag)} aria-label={`Remover tag ${tag}`}><IconX /></button>
+                    </span>
+                  ))}
+                  <input
+                    className="mt_tags_input"
+                    type="text"
+                    placeholder={`De nome ao progresso (ex: livros)`}
+                    value={tagInput}
+                    onChange={(e) => setTagInput(e.target.value)}
+                    onKeyDown={handleTagKey}
+                  />
+                </div>
+                <div className="mt_tags_input_wrap">
+                  {tags.map((tag) => (
+                    <span key={tag} className="mt_tag_chip">
+                      {tag}
+                      <button onClick={() => removeTag(tag)} aria-label={`Remover tag ${tag}`}><IconX /></button>
+                    </span>
+                  ))}
+                  <input
+                    className="mt_tags_input"
+                    type="number"
+                    placeholder={`Divida em pequenos passos (ex: 10)`}
+                    onChange={(e) => setTagGoal(e.target.value)}
+                    onKeyDown={handleTagKey}
+                  />
+                </div>
+              </div>
+              <div className="mt_modal_footer">
+                <button className="mt_btn_secondary" onClick={() => setMtEditGoal(false)}>Cancelar</button>
+                <button className="mt_btn_primary" onClick={handlePublish}>Publicar</button>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
+
     </div>
   )
 }

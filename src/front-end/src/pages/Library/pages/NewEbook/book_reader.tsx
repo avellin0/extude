@@ -133,27 +133,6 @@ export function EbookReader() {
 
     return (
         <div id="reader-root">
-
-            <div id={width === "100vw" ? "reader-header-deactive" : "reader-header-active"}>
-                <div id="reader-settings">
-                    <img src={write} alt="" className="icon" onClick={handleNotes} />
-                    <img src={back} alt="" className="icon" onClick={() => handleBack()} />
-                </div>
-
-                {width === "80vw" && notes ? (
-                    <div id="reader-scope">
-                        <textarea
-                            id="reader-notes"
-                            spellCheck="false"
-                            defaultValue={anotacoes}
-                            placeholder="Deixe sua mente livre..."
-                            onChange={(e) => setTexto(e.target.value)} />
-
-                        <button type="button" id="save-notes" onClick={handleDownload}>Download</button>
-                    </div>
-                ) : ""}
-            </div>
-
             <Reader url={`/public/books/${book_name}.epub`} width={width} name={book_name} author={author} />
         </div>
     )
