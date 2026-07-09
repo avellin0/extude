@@ -5,17 +5,6 @@ import "./perfil.css"
 import { LeftBar } from "../home/components/leftBar/LeftBar"
 
 /* ============================= Tipos ============================= */
-interface pfNavItem {
-  id: string
-  label: string
-  icon: JSX.Element
-}
-
-interface pfNavGroup {
-  title?: string
-  items: pfNavItem[]
-}
-
 interface pfStat {
   id: string
   label: string
@@ -227,30 +216,7 @@ const pfIcon = {
 }
 
 /* ============================= Dados mockados ============================= */
-const pfNavGroups: pfNavGroup[] = [
-  { items: [{ id: "home", label: "Home", icon: pfIcon.home }] },
-  {
-    title: "Aprender",
-    items: [
-      { id: "videos", label: "Videos", icon: pfIcon.play },
-      { id: "livros", label: "Livros", icon: pfIcon.book },
-    ],
-  },
-  {
-    title: "Comunidade",
-    items: [
-      { id: "comunidade", label: "Comunidade", icon: pfIcon.users },
-      { id: "chat", label: "Chat", icon: pfIcon.chat },
-    ],
-  },
-  {
-    title: "Produtividade",
-    items: [
-      { id: "metas", label: "Metas", icon: pfIcon.flag },
-      { id: "pomodoro", label: "Pomodoro", icon: pfIcon.clock },
-    ],
-  },
-]
+
 
 const pfStatsData: pfStat[] = [
   { id: "s1", label: "Livros lidos", value: "24", delta: "+5 este mês", icon: pfIcon.bookOpen },
@@ -374,7 +340,6 @@ function PfAchievementRow({ item }: { item: pfAchievement }) {
 /* ============================= Componente principal ============================= */
 export function Perfil() {
   const [pfSearchTerm, pfSetSearchTerm] = useState<string>("")
-  const [pfActiveNav, pfSetActiveNav] = useState<string>("home")
   const [pfActiveTab, pfSetActiveTab] = useState<pfTabId>("visao")
   const [pfInterests, pfSetInterests] = useState<pfInterest[]>(pfInitialInterests)
   const [pfGoals, pfSetGoals] = useState<pfGoal[]>(pfInitialGoals)
@@ -382,7 +347,6 @@ export function Perfil() {
   const [pfChartPeriod, pfSetChartPeriod] = useState<string>("Esta semana")
   const [pfNotifOpen, pfSetNotifOpen] = useState<boolean>(true)
 
-  const pfMaxHours = Math.max(...pfWeekData.map((d) => d.hours))
   const pfTotalMinutes = Math.round(pfWeekData.reduce((acc, d) => acc + d.hours, 0) * 60)
   const pfTotalLabel = `${Math.floor(pfTotalMinutes / 60)}h ${pfTotalMinutes % 60}m`
 

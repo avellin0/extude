@@ -3,7 +3,6 @@
 import { useMemo, useState } from "react"
 import "./Metas.css"
 import { LeftBar } from "../home/components/leftBar/LeftBar"
-import type { CreatePostModalProps } from "../home/components/interfaces/interface";
 import { IconX } from "../home/components/icons/icons";
 /* ============================ TYPES ============================ */
 

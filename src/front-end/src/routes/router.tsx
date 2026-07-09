@@ -32,7 +32,6 @@ import { StudyFlow2 } from "@/pages/testePages/videos/StudyFlow2";
 import { BookLibrary } from "@/pages/testePages/library/Library";
 import { Page } from "@/pages/testePages/landingPage/LandingPage"
 import HomePage from "@/pages/testePages/home/HomePage";
-import { ChatPage } from "@/pages/testePages/chat/Chat";
 import { Translate } from "@/pages/testePages/translate/Translate";
 import { Login } from "@/pages/testePages/login/Login";
 import { Biblioteca } from "@/pages/testePages/biblioteca/Biblioteca";
